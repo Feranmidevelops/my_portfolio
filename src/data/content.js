@@ -29,15 +29,15 @@ export const roleContent = {
     badge: "Software Engineer",
     roleLabel: "Software Engineer",
     stack: "React · TypeScript · Next.js · MERN · React Native",
-    tagline: "I build production-grade web & mobile applications",
+    tagline: "I build production grade web & mobile applications",
     taglineAccent: "that feel fast, clear, and finished.",
     intro:
       "Frontend-focused software engineer shipping real products across cooperative finance, e-commerce, analytics, and mobile — from complex Figma builds to full-stack apps and AI-powered features.",
     resume: "/Feranmi_Oyetunde_Resume_SoftwareDeveloper.pdf",
     summary:
-      "I'm a software engineer with hands-on experience building production-grade web and mobile applications across cooperative finance, e-commerce, analytics, and workflow automation. I care about interfaces that feel clear on the surface and stay reliable underneath — with a strong focus on performance, security, and consistency as products grow.",
+      "I'm a software engineer with hands-on experience building production grade web and mobile applications across cooperative finance, e-commerce, analytics, and workflow automation. I care about interfaces that feel clear on the surface and stay reliable underneath, with a strong focus on performance, security, and consistency as products grow.",
     about2:
-      "My work spans admin platforms, financial calculators, analytics dashboards, secure payment/settlement systems, and Python pipelines that have processed 300,000+ records. I enjoy turning complex Figma designs and messy business problems into experiences that feel simple and finished. I'm currently building internal tools at TEHC and ACUOP, and previously shipped a full-stack e-commerce platform during a remote UK internship at Drevad.",
+      "My work spans admin platforms, financial calculators, analytics dashboards, secure payment and settlement systems, and Python pipelines that have processed over 300,000 records. I enjoy turning complex Figma designs and messy business problems into experiences that feel simple and finished. Right now I'm building internal tools at TEHC and ACUOP, and before that I shipped a full-stack e-commerce platform during a remote UK internship at Drevad.",
     focus: [
       { icon: FiZap, title: "Performance", text: "Fast, responsive interfaces tuned for real devices and real networks." },
       { icon: FiLayers, title: "Scalable Frontends", text: "Reusable component systems that accelerate delivery across modules." },
@@ -64,14 +64,14 @@ export const roleContent = {
     roleLabel: "IT Systems Engineer",
     stack: "Microsoft 365 · SharePoint · Power Automate · Networking · Security",
     tagline: "I run Microsoft 365 environments & automate the work",
-    taglineAccent: "— backed by real software engineering.",
+    taglineAccent: " backed by real software engineering.",
     intro:
       "IT Systems Engineer administering M365 for 60+ staff, automating workflows with Power Automate & SharePoint, and managing enterprise infrastructure — with a developer's edge to build the bespoke tools M365 can't.",
     resume: "/Feranmi_Oyetunde_Resume_ITEngineer.pdf",
     summary:
-      "I'm an IT systems engineer administering Microsoft 365 environments for 60+ staff, driving digital transformation through SharePoint and Power Automate, and managing enterprise IT infrastructure — networking, hardware provisioning, backups, and cybersecurity awareness. I care about systems that stay dependable and about removing manual work wherever a workflow can do it instead.",
+      "I'm an IT systems engineer administering Microsoft 365 for 60+ staff, driving digital transformation through SharePoint and Power Automate, and managing enterprise IT infrastructure like networking, hardware provisioning, backups, and cybersecurity awareness. I care about systems that stay dependable, and about removing manual work wherever a workflow can do it instead.",
     about2:
-      "My force-multiplier is software development. Where standard M365 capabilities stop, I can build the bespoke tool that fills the gap — from automated financial calculators to data pipelines processing 300,000+ records. I currently run IT for TEHC and manage web systems for ACUOP, and previously shipped a full-stack platform during a remote UK internship at Drevad.",
+      "My real edge is software development. Where standard M365 capabilities stop, I can build the bespoke tool that fills the gap, from automated financial calculators to data pipelines that process over 300,000 records. I currently run IT for TEHC and manage web systems for ACUOP, and before that I shipped a full-stack platform during a remote UK internship at Drevad.",
     focus: [
       { icon: FiCloud, title: "M365 Administration", text: "Teams, SharePoint, OneDrive, Exchange, and user access provisioning for 60+ staff." },
       { icon: FiActivity, title: "Workflow Automation", text: "Power Automate & SharePoint flows that replace manual tracking end-to-end." },
@@ -149,10 +149,10 @@ export const experience = [
     swe: {
       title: "Software Engineering Intern",
       points: [
-        "Designed and built a full-stack e-commerce platform end-to-end — product catalog, cart, checkout, order management, and a role-based admin dashboard — with React/Vite/Tailwind and Node/Express on a PostgreSQL (Supabase) backend.",
-        "Integrated Paystack for online payments, architecting an idempotent settlement flow (webhook + client-verify reconciliation) that structurally prevents double-charge and double-fulfillment race conditions.",
-        "Engineered secure auth with short-lived JWT access tokens, rotating httpOnly refresh cookies, and CSRF protection — enabling true server-side session revocation on logout.",
-        "Built granular RBAC (super / sales / finance admin) with permission-scoped API routes, a CSV bulk-import pipeline with per-row validation, and a Vitest suite covering money-critical logic.",
+        "Designed and built a full-stack e-commerce platform end-to-end product catalog, cart, checkout, order management, and a role-based admin dashboard — with React/Vite/Tailwind and Node/Express on a PostgreSQL (Supabase) backend.",
+        "Integrated Paystack for online payments, architecting an idempotent settlement flow (webhook + client-verify reconciliation) that structurally prevents double charge and double fulfillment race conditions.",
+        "Engineered secure auth with short-lived JWT access tokens, rotating httpOnly refresh cookies, and CSRF protection enabling true server-side session revocation on logout.",
+        "Built granular RBAC (super / sales / finance admin) with permission-scoped API routes, a CSV bulk import pipeline with per row validation, and a Vitest suite covering money critical logic.",
       ],
       tags: ["React", "Node/Express", "Paystack", "JWT Auth", "PostgreSQL", "Vitest"],
     },
@@ -214,7 +214,7 @@ export const projects = [
     category: "Business · Booking Platform",
     year: "2025",
     description:
-      "A polished storefront and booking platform for a cakes & events business — customer booking flow, admin dashboard for managing bookings, and content management, backed by Supabase.",
+      "A polished storefront and booking platform for a cakes & events business & customer booking flow, admin dashboard for managing bookings, and content management, backed by Supabase.",
     highlights: ["Customer booking system", "Admin dashboard & auth", "Supabase backend", "Fully responsive"],
     tech: ["React", "TypeScript", "Supabase", "Tailwind", "Vite"],
     accent: "gold",
@@ -230,7 +230,7 @@ export const projects = [
     mobile: true,
     status: "In Development",
     description:
-      "A cross-platform mobile game: a daily camera-only photo challenge that a vision AI verifies as a match, daily streaks, an endless arcade mode, and a per-state Nigerian leaderboard (\"you're #5 in Lagos\"). Vision-AI runs server-side via a Supabase Edge Function.",
+      "A cross-platform mobile game: a daily camera-only photo challenge that a vision AI verifies as a match, daily streaks, an endless arcade mode, and a per-state Nigerian leaderboard (\"you're #2 in Lagos\"). Vision-AI runs server side via a Supabase Edge Function.",
     highlights: ["Camera-only AI photo verification", "Daily streaks + shared global challenge", "Per-state live leaderboard", "Arcade mode with scoring & unlocks"],
     tech: ["React Native", "Expo", "TypeScript", "Supabase", "Vision AI", "Edge Functions"],
     accent: "indigo",
@@ -245,7 +245,7 @@ export const projects = [
     category: "Automation · Data",
     year: "2025",
     description:
-      "An automated Python scraping pipeline that collected and processed 300,000+ audience profiles — resilient crawling, structured extraction, and clean data output for analysis.",
+      "An automated Python scraping pipeline that collected and processed 300,000+ audience profiles resilient crawling, structured extraction, and clean data output for analysis.",
     highlights: ["300,000+ profiles processed", "Resilient Selenium crawling", "Structured data pipeline"],
     tech: ["Python", "Selenium", "Web Scraping", "Automation"],
     accent: "purple",
