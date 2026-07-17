@@ -176,7 +176,7 @@ export const projects = [
     category: "Enterprise · Full-Stack",
     year: "2026",
     description:
-      "Enterprise expense-management system for TEHC & ACUOP (~50 staff): multi-level, level-based approval chains, AI receipt OCR, in-app notifications, budgets, and a full audit log — all enforced with Postgres Row-Level Security.",
+      "Enterprise expense-management system for TEHC & ACUOP (50 staff): multi-level, level-based approval chains, AI receipt OCR, in app notifications, budgets, and a full audit log, all enforced with Postgres Row-Level Security.",
     highlights: ["Level-based parallel approval routing", "Gemini 2.5 Flash receipt OCR", "RLS-first authorization", "Analytics with Recharts"],
     tech: ["Next.js 16", "TypeScript", "Supabase", "PostgreSQL", "Gemini AI", "Tailwind"],
     accent: "indigo",
@@ -193,7 +193,7 @@ export const projects = [
     category: "E-Commerce · Payments",
     year: "2025",
     description:
-      "A full-stack e-commerce platform I designed and built end-to-end during a UK software engineering internship — product catalog, cart, checkout, order management, and a role-based admin dashboard, with Paystack payments and hardened security.",
+      "A full-stack e-commerce platform I designed and built end-to-end during a UK software engineering internship, product catalog, cart, checkout, order management, and a role-based admin dashboard, with Paystack payments and hardened security.",
     highlights: [
       "Paystack payments with idempotent settlement (webhook + client-verify) that prevents double-charge",
       "Secure JWT + rotating httpOnly refresh tokens with CSRF protection",
@@ -230,7 +230,7 @@ export const projects = [
     mobile: true,
     status: "In Development",
     description:
-      "A cross-platform mobile game: a daily camera-only photo challenge that a vision AI verifies as a match, daily streaks, an endless arcade mode, and a per-state Nigerian leaderboard (\"you're #2 in Lagos\"). Vision-AI runs server side via a Supabase Edge Function.",
+      "A cross-platform mobile game: a daily camera-only photo challenge that a vision AI verifies as a match, daily streaks, an endless arcade mode, and a per-state Nigerian leaderboard (\"you're #2 in Lagos\"). Vision AI runs server side via a Supabase Edge Function.",
     highlights: ["Camera-only AI photo verification", "Daily streaks + shared global challenge", "Per-state live leaderboard", "Arcade mode with scoring & unlocks"],
     tech: ["React Native", "Expo", "TypeScript", "Supabase", "Vision AI", "Edge Functions"],
     accent: "indigo",
