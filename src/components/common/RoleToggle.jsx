@@ -31,15 +31,14 @@ export const RoleToggle = ({ size = "md" }) => {
             role="tab"
             aria-selected={active}
             onClick={() => changeRole(opt.key)}
-            className={`relative z-10 rounded-full font-semibold transition-colors ${pad} ${
-              active ? "text-white" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
+            className={`relative z-10 rounded-full font-semibold transition-colors ${pad}`}
+            style={{ color: active ? "var(--contrast-text)" : "var(--text-secondary)" }}
           >
             {active && (
               <motion.span
                 layoutId="roleActivePill"
                 className="absolute inset-0 rounded-full -z-10"
-                style={{ background: "linear-gradient(120deg, var(--accent), var(--accent-2))" }}
+                style={{ background: "var(--contrast-panel)" }}
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}

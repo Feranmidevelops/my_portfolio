@@ -1,57 +1,56 @@
 /* ==========================================================================
    Feranmi Oyetunde — Portfolio design tokens
-   Dark-first, sophisticated, with indigo/purple + golden accents.
+   Minimalist, spacious, monochrome. Light-first (cream), with a clean dark mode.
    ========================================================================== */
 
 :root {
-  /* Brand accents — indigo → purple, with a golden highlight */
-  --accent: #6366f1;          /* indigo */
-  --accent-2: #a855f7;        /* purple */
-  --accent-soft: rgba(99, 102, 241, 0.14);
-  --gold: #f5b301;            /* golden yellow — used for the signature + highlights */
-  --gold-soft: rgba(245, 179, 1, 0.14);
+  /* Single restrained accent (used sparingly for eyebrows / links / active) */
+  --accent: #4f46e5;
+  --accent-soft: rgba(79, 70, 229, 0.10);
+  --ok: #22c55e;
 
-  /* Fonts */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Sora', 'Inter', sans-serif;
-  --font-script: 'Dancing Script', cursive;
 
-  /* Radii */
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+  --radius-xl: 1.25rem;
 
-  --transition-base: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 240ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ---- Light theme (secondary) ---- */
+/* ---- Light (default) ---- */
 :root,
 [data-theme="light"] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f6f7fb;
-  --bg-elevated: #ffffff;
-  --border: rgba(15, 23, 42, 0.08);
-  --text-primary: #0f172a;
-  --text-secondary: #55607a;
-  --grid-line: rgba(15, 23, 42, 0.035);
+  --bg-primary: #f5f4f1;     /* page */
+  --bg-secondary: #efeeea;   /* subtle blocks */
+  --bg-elevated: #fbfaf8;    /* cards / panels */
+  --border: rgba(23, 23, 23, 0.10);
+  --border-strong: rgba(23, 23, 23, 0.16);
+  --text-primary: #191919;
+  --text-secondary: #6b6f76;
+  --text-tertiary: #9aa0a6;
+  --grid-line: rgba(23, 23, 23, 0.05);
+  --contrast-panel: #171717;
+  --contrast-text: #f5f4f1;
 }
 
-/* ---- Dark theme (default look) ---- */
+/* ---- Dark ---- */
 [data-theme="dark"] {
-  --bg-primary: #0a0a12;
-  --bg-secondary: #10101c;
-  --bg-elevated: #16162a;
-  --border: rgba(148, 163, 184, 0.12);
-  --text-primary: #f5f6fb;
-  --text-secondary: #a3adc7;
-  --grid-line: rgba(148, 163, 184, 0.05);
+  --bg-primary: #0d0d0f;
+  --bg-secondary: #131316;
+  --bg-elevated: #17171b;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --text-primary: #f2f2f3;
+  --text-secondary: #9a9ba1;
+  --text-tertiary: #6e6f75;
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --contrast-panel: #f5f4f1;
+  --contrast-text: #171717;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -71,68 +70,65 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  line-height: 1.2;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   font-weight: 700;
 }
 
-/* Signature / decorative cursive — used only for the name */
-.font-script {
-  font-family: var(--font-script);
-  letter-spacing: 0;
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
-/* Utility: gradient accent text */
-.text-gradient {
-  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.text-gold {
-  color: var(--gold);
-}
-
-/* Subtle dotted grid backdrop helper */
+/* Dotted grid backdrop */
 .bg-grid {
   background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
-  background-size: 26px 26px;
+  background-size: 22px 22px;
 }
 
-/* Container + section rhythm */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3rem;
-}
-
-@media (max-width: 1024px) {
-  .container { padding: 0 2rem; }
-}
-@media (max-width: 768px) {
-  .container { padding: 0 1.25rem; }
-}
-
-/* Scrollbar */
+/* Scrollbar — subtle */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--accent), var(--accent-2));
+  background: var(--border-strong);
   border-radius: 999px;
-  border: 2px solid var(--bg-secondary);
+  border: 2px solid var(--bg-primary);
 }
-::-webkit-scrollbar-thumb:hover { background: var(--accent-2); }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
 
-/* Accessibility focus */
+/* Focus */
 *:focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Respect reduced motion */
+/* ---- Moving stack marquee ---- */
+.marquee {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  will-change: transform;
+}
+.marquee--left { animation: marquee-left 34s linear infinite; }
+.marquee--right { animation: marquee-right 34s linear infinite; }
+.marquee-wrap:hover .marquee { animation-play-state: paused; }
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .marquee { animation: none !important; }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;

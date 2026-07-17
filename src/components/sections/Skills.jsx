@@ -1,63 +1,107 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  SiReact, SiTypescript, SiJavascript, SiNextdotjs, SiNodedotjs, SiExpress,
+  SiTailwindcss, SiVite, SiPostgresql, SiMongodb, SiSupabase, SiPython,
+  SiJsonwebtokens, SiVitest, SiGit, SiGithub, SiPostman, SiSwagger,
+  SiVercel, SiNetlify, SiExpo, SiAppwrite, SiWordpress, SiSelenium,
+} from "react-icons/si";
+import { FiCloud, FiUsers, FiMail, FiWifi, FiShield, FiHardDrive, FiActivity, FiServer } from "react-icons/fi";
 import { SectionHeading } from "./About";
+import { FadeIn } from "../animations/FadeIn";
 import { useRole } from "../../context/RoleContext";
-import { roleContent } from "../../data/content";
+
+const stacks = {
+  swe: [
+    { label: "React", Icon: SiReact, c: "#61DAFB" },
+    { label: "TypeScript", Icon: SiTypescript, c: "#3178C6" },
+    { label: "JavaScript", Icon: SiJavascript, c: "#F7DF1E" },
+    { label: "Next.js", Icon: SiNextdotjs },
+    { label: "React Native / Expo", Icon: SiExpo },
+    { label: "Node.js", Icon: SiNodedotjs, c: "#5FA04E" },
+    { label: "Express", Icon: SiExpress },
+    { label: "Tailwind CSS", Icon: SiTailwindcss, c: "#06B6D4" },
+    { label: "Vite", Icon: SiVite, c: "#646CFF" },
+    { label: "PostgreSQL", Icon: SiPostgresql, c: "#4169E1" },
+    { label: "MongoDB", Icon: SiMongodb, c: "#47A248" },
+    { label: "Supabase", Icon: SiSupabase, c: "#3FCF8E" },
+    { label: "Python", Icon: SiPython, c: "#3776AB" },
+    { label: "JWT Auth", Icon: SiJsonwebtokens },
+    { label: "Vitest", Icon: SiVitest, c: "#6E9F18" },
+    { label: "Appwrite", Icon: SiAppwrite, c: "#FD366E" },
+    { label: "Git", Icon: SiGit, c: "#F05032" },
+    { label: "GitHub", Icon: SiGithub },
+    { label: "Postman", Icon: SiPostman, c: "#FF6C37" },
+    { label: "Swagger", Icon: SiSwagger, c: "#85EA2D" },
+    { label: "Vercel", Icon: SiVercel },
+    { label: "Netlify", Icon: SiNetlify, c: "#00C7B7" },
+  ],
+  it: [
+    { label: "Microsoft 365", Icon: FiCloud, c: "#0F6CBD" },
+    { label: "SharePoint", Icon: FiServer, c: "#038387" },
+    { label: "Power Automate", Icon: FiActivity, c: "#0066FF" },
+    { label: "Teams", Icon: FiUsers, c: "#5059C9" },
+    { label: "Exchange", Icon: FiMail, c: "#0F6CBD" },
+    { label: "Networking", Icon: FiWifi },
+    { label: "Cybersecurity", Icon: FiShield },
+    { label: "Data Backups", Icon: FiHardDrive },
+    { label: "WordPress", Icon: SiWordpress, c: "#21759B" },
+    { label: "Python", Icon: SiPython, c: "#3776AB" },
+    { label: "Selenium", Icon: SiSelenium, c: "#43B02A" },
+    { label: "React", Icon: SiReact, c: "#61DAFB" },
+    { label: "Node.js", Icon: SiNodedotjs, c: "#5FA04E" },
+    { label: "TypeScript", Icon: SiTypescript, c: "#3178C6" },
+    { label: "Git", Icon: SiGit, c: "#F05032" },
+    { label: "GitHub", Icon: SiGithub },
+  ],
+};
+
+const Box = ({ item }) => (
+  <div
+    title={item.label}
+    className="shrink-0 w-16 h-16 rounded-xl border flex items-center justify-center transition-transform hover:-translate-y-0.5"
+    style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}
+  >
+    <item.Icon size={26} style={{ color: item.c || "var(--text-secondary)" }} />
+  </div>
+);
+
+const Row = ({ items, direction }) => (
+  <div className="marquee-wrap overflow-hidden py-1.5"
+       style={{ WebkitMaskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
+                maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)" }}>
+    <div className={`marquee marquee--${direction}`}>
+      {[...items, ...items].map((item, i) => (
+        <Box key={item.label + i} item={item} />
+      ))}
+    </div>
+  </div>
+);
 
 export const Skills = () => {
   const { role } = useRole();
-  const c = roleContent[role];
+  const items = stacks[role];
+  const rowA = items.filter((_, i) => i % 2 === 0);
+  const rowB = items.filter((_, i) => i % 2 === 1).reverse();
 
   return (
-    <section id="skills" className="py-24" style={{ background: "var(--bg-primary)" }}>
-      <div className="max-w-6xl mx-auto px-6">
-        <SectionHeading
-          eyebrow="Stack"
-          title="Technical Arsenal"
-          subtitle={role === "swe"
-            ? "The tools I reach for to design, build, and ship."
-            : "The platforms I administer, automate, and extend."}
-        />
-
+    <section id="skills" className="scroll-mt-24 py-10">
+      <FadeIn>
+        <SectionHeading title="Stack" description="Tools I reach for, day to day." />
         <AnimatePresence mode="wait">
           <motion.div
             key={role}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.4 }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-3"
           >
-            {c.skills.map((cat, idx) => (
-              <motion.div
-                key={cat.group}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.06 }}
-                className="rounded-2xl p-6 border transition-all hover:-translate-y-1"
-                style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="h-4 w-1 rounded-full" style={{ background: "linear-gradient(var(--accent), var(--accent-2))" }} />
-                  <h4 className="font-display font-bold text-[var(--text-primary)]">{cat.group}</h4>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {cat.items.map((item) => (
-                    <span
-                      key={item}
-                      className="px-3 py-1.5 text-sm rounded-lg border text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] hover:border-[var(--accent)]"
-                      style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+            <Row items={[...rowA, ...rowB]} direction="left" />
+            <Row items={[...rowB, ...rowA]} direction="right" />
           </motion.div>
         </AnimatePresence>
-      </div>
+      </FadeIn>
     </section>
   );
 };

@@ -1,149 +1,150 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FiGithub, FiExternalLink, FiSmartphone, FiArrowUpRight, FiLock } from "react-icons/fi";
+import { AnimatePresence, motion } from "framer-motion";
+import { FiChevronDown, FiExternalLink, FiGithub, FiLock, FiSmartphone } from "react-icons/fi";
 import { SectionHeading } from "./About";
+import { FadeIn } from "../animations/FadeIn";
 import { projects } from "../../data/content";
 
-const accentMap = {
-  indigo: "linear-gradient(135deg, #6366f1, #4f46e5)",
-  purple: "linear-gradient(135deg, #a855f7, #7c3aed)",
-  gold: "linear-gradient(135deg, #f5b301, #d97706)",
-};
-
-const ProjectCard = ({ project, index }) => {
-  const cover = accentMap[project.accent] || accentMap.indigo;
+const Row = ({ project, open, onToggle }) => {
+  const hasLinks = project.liveUrl || project.githubUrl;
   return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.97 }}
-      transition={{ duration: 0.45, delay: (index % 3) * 0.08 }}
-      className="group flex flex-col rounded-2xl overflow-hidden border transition-all hover:-translate-y-1.5 hover:shadow-2xl"
-      style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}
-    >
-      {/* Cover */}
-      <div className="relative h-44 overflow-hidden" style={{ background: cover }}>
-        <div className="absolute inset-0 bg-grid opacity-40" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-script text-white/90 text-5xl drop-shadow-lg">
-            {project.title.split(" ")[0]}
-          </span>
-        </div>
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex gap-2">
-          {project.mobile && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white/90 text-slate-900">
-              <FiSmartphone size={12} /> Mobile
-            </span>
-          )}
-          {project.status && (
-            <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/40 text-white backdrop-blur-sm">
-              {project.status}
-            </span>
-          )}
-          {project.private && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/40 text-white backdrop-blur-sm">
-              <FiLock size={11} /> Private · NDA
-            </span>
-          )}
-        </div>
-        <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/30 text-white backdrop-blur-sm">
-          {project.year}
+    <div className="border-b last:border-b-0" style={{ borderColor: "var(--border)" }}>
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center gap-4 py-4 text-left group"
+        aria-expanded={open}
+      >
+        {/* Monogram */}
+        <span
+          className="shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center font-display font-bold text-sm text-[var(--text-secondary)]"
+          style={{ borderColor: "var(--border)", background: "var(--bg-secondary)" }}
+        >
+          {project.title.charAt(0)}
         </span>
 
-        {/* Hover links */}
-        {(project.githubUrl || project.liveUrl) && (
-          <div className="absolute inset-0 bg-black/55 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-            {project.githubUrl && (
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="Source code"
-                 className="p-2.5 bg-white rounded-full text-slate-900 hover:scale-110 transition">
-                <FiGithub size={20} />
-              </a>
+        <span className="flex-1 min-w-0">
+          <span className="flex items-center gap-2 flex-wrap">
+            <span className="font-semibold text-[var(--text-primary)]">{project.title}</span>
+            {project.mobile && (
+              <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded-full border text-[var(--text-secondary)]" style={{ borderColor: "var(--border)" }}>
+                <FiSmartphone size={9} /> Mobile
+              </span>
             )}
-            {project.liveUrl && (
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label="Live demo"
-                 className="p-2.5 bg-white rounded-full text-slate-900 hover:scale-110 transition">
-                <FiExternalLink size={20} />
-              </a>
+            {project.status && (
+              <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
+                {project.status}
+              </span>
             )}
-          </div>
+          </span>
+          <span className="block text-xs text-[var(--text-tertiary)] mt-0.5">{project.category} · {project.year}</span>
+        </span>
+
+        {/* Right icons */}
+        <span className="flex items-center gap-2 text-[var(--text-tertiary)]">
+          {project.private && !hasLinks && <FiLock size={15} title="Private / NDA" />}
+          <FiChevronDown
+            size={18}
+            className="transition-transform"
+            style={{ transform: open ? "rotate(180deg)" : "none" }}
+          />
+        </span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28 }}
+            className="overflow-hidden"
+          >
+            <div className="pb-6 pl-13 pr-1" style={{ paddingLeft: "3.25rem" }}>
+              <p className="text-[var(--text-secondary)] leading-relaxed">{project.description}</p>
+
+              {project.highlights && (
+                <ul className="mt-3 space-y-1.5">
+                  {project.highlights.map((h) => (
+                    <li key={h} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
+                      <span className="mt-2 h-1 w-1 rounded-full shrink-0" style={{ background: "var(--text-tertiary)" }} />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {/* Actions */}
+              <div className="flex flex-wrap items-center gap-2.5 mt-4">
+                {project.liveUrl && (
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
+                     className="inline-flex items-center gap-1.5 text-sm font-medium px-3.5 py-1.5 rounded-full border transition-colors hover:border-[var(--accent)]"
+                     style={{ borderColor: "var(--border)", color: "var(--text-primary)" }}>
+                    Live Demo <FiExternalLink size={13} />
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+                     className="inline-flex items-center gap-1.5 text-sm font-medium px-3.5 py-1.5 rounded-full border transition-colors hover:border-[var(--accent)]"
+                     style={{ borderColor: "var(--border)", color: "var(--text-primary)" }}>
+                    Source <FiGithub size={13} />
+                  </a>
+                )}
+                {project.private && !hasLinks && (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full border text-[var(--text-secondary)]"
+                        style={{ borderColor: "var(--border)" }}>
+                    <FiLock size={12} /> Private · NDA — walkthrough on request
+                  </span>
+                )}
+              </div>
+
+              {/* Tech */}
+              <div className="flex flex-wrap gap-1.5 mt-4">
+                {project.tech.map((t) => (
+                  <span key={t} className="text-[11px] px-2 py-1 rounded-md border text-[var(--text-secondary)]"
+                        style={{ borderColor: "var(--border)", background: "var(--bg-secondary)" }}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         )}
-      </div>
-
-      {/* Body */}
-      <div className="p-6 flex flex-col flex-1">
-        <p className="text-xs font-semibold uppercase tracking-wider text-gold">{project.category}</p>
-        <h3 className="text-xl font-display font-bold text-[var(--text-primary)] mt-1.5 flex items-center gap-1.5">
-          {project.title}
-          {(project.liveUrl || project.githubUrl) && (
-            <FiArrowUpRight className="text-[var(--text-secondary)] opacity-0 group-hover:opacity-100 transition-opacity" size={16} />
-          )}
-        </h3>
-        <p className="mt-3 text-sm text-[var(--text-secondary)] leading-relaxed">{project.description}</p>
-
-        {project.highlights && (
-          <ul className="mt-4 space-y-1.5">
-            {project.highlights.map((h) => (
-              <li key={h} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0" style={{ background: "var(--accent)" }} />
-                {h}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <div className="flex flex-wrap gap-2 mt-5 pt-5 border-t" style={{ borderColor: "var(--border)" }}>
-          {project.tech.map((t) => (
-            <span
-              key={t}
-              className="text-xs px-2.5 py-1 rounded-md font-medium"
-              style={{ background: "var(--accent-soft)", color: "var(--accent)" }}
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.article>
+      </AnimatePresence>
+    </div>
   );
 };
 
 export const Projects = () => {
+  const [openId, setOpenId] = useState(projects[0]?.id);
   const [showAll, setShowAll] = useState(false);
+
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
   const shown = showAll ? [...featured, ...rest] : featured;
 
   return (
-    <section id="projects" className="py-24" style={{ background: "var(--bg-secondary)" }}>
-      <div className="max-w-6xl mx-auto px-6">
-        <SectionHeading
-          eyebrow="Work"
-          title="Featured Projects"
-          subtitle="Real-world web, mobile, and automation products that solve actual business problems."
-        />
-
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-          <AnimatePresence mode="popLayout">
-            {shown.map((p, i) => (
-              <ProjectCard key={p.id} project={p} index={i} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+    <section id="projects" className="scroll-mt-24 py-10">
+      <FadeIn>
+        <SectionHeading title="Projects" description="Selected work across web, mobile, and automation." />
+        <div className="rounded-2xl border px-5 md:px-6" style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}>
+          {shown.map((p) => (
+            <Row key={p.id} project={p} open={openId === p.id} onToggle={() => setOpenId(openId === p.id ? null : p.id)} />
+          ))}
+        </div>
 
         {rest.length > 0 && (
-          <div className="text-center mt-12">
+          <div className="mt-5 flex justify-center">
             <button
               onClick={() => setShowAll((s) => !s)}
-              className="px-8 py-3 rounded-full font-semibold border transition-all hover:-translate-y-0.5"
-              style={{ borderColor: "var(--accent)", color: "var(--text-primary)", background: "var(--bg-elevated)" }}
+              className="inline-flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-full border transition-colors hover:border-[var(--accent)]"
+              style={{ borderColor: "var(--border)", background: "var(--bg-elevated)", color: "var(--text-primary)" }}
             >
-              {showAll ? "Show Less" : `View All Projects (${projects.length})`}
+              {showAll ? "Show Less" : `Show More (${rest.length})`}
+              <FiChevronDown size={15} style={{ transform: showAll ? "rotate(180deg)" : "none" }} className="transition-transform" />
             </button>
           </div>
         )}
-      </div>
+      </FadeIn>
     </section>
   );
 };

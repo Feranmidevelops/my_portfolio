@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FiMail, FiMapPin, FiSend, FiGithub, FiLinkedin, FiCopy, FiCheck } from "react-icons/fi";
+import { FiSend, FiCopy, FiCheck } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
-import { SectionHeading } from "./About";
+import { FadeIn } from "../animations/FadeIn";
 import { profile } from "../../data/content";
 
 export const Contact = () => {
@@ -31,15 +31,24 @@ export const Contact = () => {
       if (!serviceId || !templateId || !publicKey) throw new Error("EmailJS config missing");
       await emailjs.send(
         serviceId, templateId,
-        { from_name: formData.name, from_email: formData.email, message: formData.message, to_name: "Feranmi" },
+        {
+          // These keys MUST match the {{variables}} in the EmailJS template:
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          title: `New portfolio message from ${formData.name}`,
+          time: new Date().toLocaleString(),
+        },
         publicKey
       );
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
-    } catch {
+    } catch (err) {
+      // Surface the exact EmailJS reason (status + text) in the console.
+      console.error("EmailJS send failed:", err?.status, err?.text || err?.message || err);
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 5000);
+      setTimeout(() => setStatus("idle"), 6000);
     }
   };
 
@@ -57,99 +66,74 @@ export const Contact = () => {
   };
 
   const inputCls = (field) =>
-    `w-full px-4 py-3 rounded-xl border bg-[var(--bg-secondary)] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] ${
-      errors[field] ? "border-red-500" : ""
-    }`;
+    `w-full px-4 py-3 rounded-xl border text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] ${errors[field] ? "border-red-500" : ""}`;
 
   return (
-    <section id="contact" className="py-24" style={{ background: "var(--bg-primary)" }}>
-      <div className="max-w-5xl mx-auto px-6">
-        <SectionHeading eyebrow="Contact" title="Let's build something" subtitle="Have a role or a project in mind? I reply within 24 hours." />
+    <section id="contact" className="scroll-mt-24 py-10">
+      <FadeIn>
+        {/* Dark contrast panel */}
+        <div
+          className="rounded-2xl p-8 md:p-10"
+          style={{ background: "var(--contrast-panel)", color: "var(--contrast-text)" }}
+        >
+          <p className="text-xs font-semibold tracking-[0.22em] uppercase opacity-60">Contact</p>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2" style={{ color: "var(--contrast-text)" }}>
+            Let's build something.
+          </h2>
+          <p className="mt-3 opacity-70 max-w-md">
+            Have a role or a project in mind — software or IT? I reply within 24 hours.
+          </p>
+          <button
+            onClick={copyEmail}
+            className="mt-5 inline-flex items-center gap-2 text-sm font-medium opacity-90 hover:opacity-100 transition-opacity"
+          >
+            {profile.email}
+            {copied ? <FiCheck size={15} style={{ color: "var(--ok)" }} /> : <FiCopy size={15} />}
+          </button>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Info */}
-          <div className="space-y-6">
-            <p className="text-[var(--text-secondary)] leading-relaxed">
-              Whether you want to hire me for software engineering or IT systems work, collaborate, or just say hi — my inbox is open.
-            </p>
-
-            <button
-              onClick={copyEmail}
-              className="group w-full flex items-center justify-between gap-4 p-4 rounded-xl border transition-all hover:-translate-y-0.5"
-              style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}
-            >
-              <span className="flex items-center gap-3 min-w-0">
-                <span className="p-2.5 rounded-lg" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
-                  <FiMail size={18} />
-                </span>
-                <span className="text-left min-w-0">
-                  <span className="block text-xs text-[var(--text-secondary)]">Email</span>
-                  <span className="block text-sm font-medium text-[var(--text-primary)] truncate">{profile.email}</span>
-                </span>
-              </span>
-              <span className="text-[var(--text-secondary)] group-hover:text-[var(--accent)] shrink-0">
-                {copied ? <FiCheck className="text-green-500" /> : <FiCopy />}
-              </span>
-            </button>
-
-            <div className="flex items-center gap-3 p-4 rounded-xl border" style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}>
-              <span className="p-2.5 rounded-lg" style={{ background: "var(--gold-soft)", color: "var(--gold)" }}>
-                <FiMapPin size={18} />
-              </span>
-              <span>
-                <span className="block text-xs text-[var(--text-secondary)]">Location</span>
-                <span className="block text-sm font-medium text-[var(--text-primary)]">{profile.location}</span>
-              </span>
-            </div>
-
-            <div className="flex gap-3 pt-2">
-              <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-                 className="p-3 rounded-full border transition hover:-translate-y-1"
-                 style={{ background: "var(--bg-elevated)", borderColor: "var(--border)", color: "var(--accent)" }}>
-                <FiGithub size={20} />
-              </a>
-              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-                 className="p-3 rounded-full border transition hover:-translate-y-1"
-                 style={{ background: "var(--bg-elevated)", borderColor: "var(--border)", color: "var(--accent)" }}>
-                <FiLinkedin size={20} />
-              </a>
-            </div>
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="rounded-2xl p-6 border space-y-4" style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}>
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="mt-4 rounded-2xl border p-6 md:p-8 space-y-4"
+          style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}
+        >
+          <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">Your name</label>
-              <input type="text" name="name" value={formData.name} onChange={handleChange} className={inputCls("name")} placeholder="Jane Doe" />
+              <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">Name</label>
+              <input type="text" name="name" value={formData.name} onChange={handleChange}
+                     className={inputCls("name")} placeholder="Jane Doe" style={{ background: "var(--bg-secondary)" }} />
               {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
             </div>
             <div>
-              <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">Email address</label>
-              <input type="email" name="email" value={formData.email} onChange={handleChange} className={inputCls("email")} placeholder="you@example.com" />
+              <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">Email</label>
+              <input type="email" name="email" value={formData.email} onChange={handleChange}
+                     className={inputCls("email")} placeholder="you@example.com" style={{ background: "var(--bg-secondary)" }} />
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
-            <div>
-              <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">Message</label>
-              <textarea name="message" rows={4} value={formData.message} onChange={handleChange} className={inputCls("message")} placeholder="Tell me about your role or project..." />
-              {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
-            </div>
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-white shadow-md transition-all disabled:opacity-70"
-              style={{ background: "linear-gradient(120deg, var(--accent), var(--accent-2))" }}
-            >
-              {status === "loading" ? (
-                <>Sending <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /></>
-              ) : (
-                <>Send Message <FiSend /></>
-              )}
-            </button>
-            {status === "success" && <p className="text-green-500 text-center text-sm">✓ Message sent! I'll reply soon.</p>}
-            {status === "error" && <p className="text-red-500 text-center text-sm">✗ Failed. Please email me directly.</p>}
-          </form>
-        </div>
-      </div>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">Message</label>
+            <textarea name="message" rows={4} value={formData.message} onChange={handleChange}
+                      className={inputCls("message")} placeholder="Tell me about your role or project..." style={{ background: "var(--bg-secondary)" }} />
+            {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
+          </div>
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-opacity disabled:opacity-70"
+            style={{ background: "var(--contrast-panel)", color: "var(--contrast-text)" }}
+          >
+            {status === "loading" ? (
+              <>Sending <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" /></>
+            ) : (
+              <>Send message <FiSend size={15} /></>
+            )}
+          </button>
+          {status === "success" && <p className="text-sm" style={{ color: "var(--ok)" }}>✓ Message sent! I'll reply soon.</p>}
+          {status === "error" && <p className="text-red-500 text-sm">✗ Failed. Please email me directly.</p>}
+        </form>
+      </FadeIn>
     </section>
   );
 };

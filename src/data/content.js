@@ -33,7 +33,9 @@ export const roleContent = {
       "Frontend-focused software engineer shipping real products across cooperative finance, e-commerce, analytics, and mobile — from complex Figma builds to full-stack apps and AI-powered features.",
     resume: "/Feranmi_Oyetunde_Resume_SoftwareDeveloper.pdf",
     summary:
-      "Software Engineer with hands-on experience building production-grade web and mobile applications across cooperative finance, e-commerce, analytics, and workflow automation. I transform complex Figma designs into scalable React apps, integrate REST APIs, and ship responsive experiences that solve real business problems — including admin platforms, financial calculators, analytics dashboards, secure payment/settlement systems, and Python pipelines processing 300,000+ records.",
+      "I'm a software engineer with hands-on experience building production-grade web and mobile applications across cooperative finance, e-commerce, analytics, and workflow automation. I care about interfaces that feel clear on the surface and stay reliable underneath — with a strong focus on performance, security, and consistency as products grow.",
+    about2:
+      "My work spans admin platforms, financial calculators, analytics dashboards, secure payment/settlement systems, and Python pipelines that have processed 300,000+ records. I enjoy turning complex Figma designs and messy business problems into experiences that feel simple and finished. I'm currently building internal tools at TEHC and ACUOP, and previously shipped a full-stack e-commerce platform during a remote UK internship at Drevad.",
     focus: [
       { icon: FiZap, title: "Performance", text: "Fast, responsive interfaces tuned for real devices and real networks." },
       { icon: FiLayers, title: "Scalable Frontends", text: "Reusable component systems that accelerate delivery across modules." },
@@ -65,7 +67,9 @@ export const roleContent = {
       "IT Systems Engineer administering M365 for 60+ staff, automating workflows with Power Automate & SharePoint, and managing enterprise infrastructure — with a developer's edge to build the bespoke tools M365 can't.",
     resume: "/Feranmi_Oyetunde_Resume_ITEngineer.pdf",
     summary:
-      "IT Systems Engineer administering Microsoft 365 environments for 60+ staff, driving digital transformation through SharePoint and Power Automate, and managing enterprise IT infrastructure — networking, hardware provisioning, and cybersecurity awareness. My force-multiplier is software development expertise (React, Python, Node.js) that lets me design bespoke tools — from automated financial calculators to pipelines processing 300,000+ records — solving problems beyond standard M365 capabilities.",
+      "I'm an IT systems engineer administering Microsoft 365 environments for 60+ staff, driving digital transformation through SharePoint and Power Automate, and managing enterprise IT infrastructure — networking, hardware provisioning, backups, and cybersecurity awareness. I care about systems that stay dependable and about removing manual work wherever a workflow can do it instead.",
+    about2:
+      "My force-multiplier is software development. Where standard M365 capabilities stop, I can build the bespoke tool that fills the gap — from automated financial calculators to data pipelines processing 300,000+ records. I currently run IT for TEHC and manage web systems for ACUOP, and previously shipped a full-stack platform during a remote UK internship at Drevad.",
     focus: [
       { icon: FiCloud, title: "M365 Administration", text: "Teams, SharePoint, OneDrive, Exchange, and user access provisioning for 60+ staff." },
       { icon: FiActivity, title: "Workflow Automation", text: "Power Automate & SharePoint flows that replace manual tracking end-to-end." },
