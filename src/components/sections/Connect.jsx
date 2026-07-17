@@ -6,7 +6,7 @@ import { profile } from "../../data/content";
 
 const links = [
   { label: "GitHub", value: profile.githubHandle, href: profile.github, Icon: FiGithub, external: true },
-  { label: "LinkedIn", value: "feranmi-oyetunde", href: profile.linkedin, Icon: FiLinkedin, external: true },
+  { label: "LinkedIn", value: profile.linkedinHandle, href: profile.linkedin, Icon: FiLinkedin, external: true },
   { label: "Email", value: profile.email, href: `mailto:${profile.email}`, Icon: FiMail, external: false },
 ];
 

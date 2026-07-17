@@ -59,7 +59,34 @@ const Row = ({ project, open, onToggle }) => {
             transition={{ duration: 0.28 }}
             className="overflow-hidden"
           >
-            <div className="pb-6 pl-13 pr-1" style={{ paddingLeft: "3.25rem" }}>
+            <div className="pb-6 pr-1" style={{ paddingLeft: "3.25rem" }}>
+              {project.image && (
+                <div className="relative mb-4" data-proj-img>
+                  <div className="rounded-xl overflow-hidden border" style={{ borderColor: "var(--border)" }}>
+                    <img
+                      src={project.image}
+                      alt={`${project.title} desktop screenshot`}
+                      loading="lazy"
+                      className="w-full h-auto block"
+                      onError={(e) => { const w = e.target.closest("[data-proj-img]"); if (w) w.style.display = "none"; }}
+                    />
+                  </div>
+                  {project.mobileImage && (
+                    <div
+                      className="absolute bottom-3 right-3 w-[64px] sm:w-[88px] rounded-[14px] overflow-hidden shadow-xl"
+                      style={{ border: "3px solid var(--text-primary)", background: "#000" }}
+                    >
+                      <img
+                        src={project.mobileImage}
+                        alt={`${project.title} mobile screenshot`}
+                        loading="lazy"
+                        className="w-full h-auto block"
+                        onError={(e) => { e.target.parentElement.style.display = "none"; }}
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
               <p className="text-[var(--text-secondary)] leading-relaxed">{project.description}</p>
 
               {project.highlights && (
@@ -92,7 +119,7 @@ const Row = ({ project, open, onToggle }) => {
                 {project.private && !hasLinks && (
                   <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full border text-[var(--text-secondary)]"
                         style={{ borderColor: "var(--border)" }}>
-                    <FiLock size={12} /> Private · NDA — walkthrough on request
+                    <FiLock size={12} /> Private · internal NDA project
                   </span>
                 )}
               </div>

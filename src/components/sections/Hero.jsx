@@ -17,20 +17,24 @@ export const Hero = () => {
 
   return (
     <header className="pt-28 md:pt-32">
-      {/* Monogram box */}
+      {/* Banner box */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="rounded-2xl border bg-grid h-28 md:h-36 flex items-center justify-center"
-        style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}
+        className="rounded-2xl border overflow-hidden h-28 md:h-40 flex items-center justify-center bg-grid"
+        style={{ background: "#000", borderColor: "var(--border)" }}
       >
-        <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-lg"
-          style={{ background: "var(--contrast-panel)", color: "var(--contrast-text)" }}
-        >
-          FO
-        </div>
+        <img
+          src={profile.banner}
+          alt={`${profile.name} banner`}
+          className="w-full h-full object-contain"
+          onError={(e) => {
+            e.target.style.display = "none";
+            e.target.parentElement.innerHTML =
+              '<div class="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-lg" style="background:var(--contrast-panel);color:var(--contrast-text)">FO</div>';
+          }}
+        />
       </motion.div>
 
       {/* Profile row */}
