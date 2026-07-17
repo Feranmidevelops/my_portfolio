@@ -1,184 +1,127 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FadeIn } from "../animations/FadeIn";
-import "./Resume.css";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiBriefcase, FiBook, FiAward, FiChevronDown, FiChevronUp, FiDownload } from "react-icons/fi";
+import { SectionHeading } from "./About";
+import { useRole } from "../../context/RoleContext";
+import { roleContent, experience, education, certifications } from "../../data/content";
 
 export const Resume = () => {
+  const { role } = useRole();
+  const c = roleContent[role];
   const [expanded, setExpanded] = useState(false);
 
-  const resumeData = {
-    experience: [
-      {
-        title: "Full-Stack Developer",
-        company: "University of Ilorin",
-        period: "2023 – 2024",
-        description:
-          "Built an educational resource-sharing platform that allows lecturers to upload and manage materials, while students can view and comment in real time.",
-        achievements: [
-          "Developed CRUD-based lecturer admin interface for managing resources.",
-          "Integrated role-based access control for lecturer and student permissions.",
-          "Implemented real-time updates and responsive UI for seamless collaboration.",
-        ],
-      },
-      {
-        title: "Software Engineering Intern",
-        company: "Drevad Ltd (UK)",
-        period: "Jan 2025 – Mar 2025",
-        description:
-          "Assisted in backend and frontend development for live client projects in an agile environment.",
-        achievements: [
-          "Contributed to scalable full-stack features using React and Node.js.",
-          "Enhanced API performance through testing and optimization.",
-          "Collaborated with a remote international engineering team.",
-        ],
-      },
-      {
-        title: "Freelance Software Developer",
-        company: "Selar.co",
-        period: "2024",
-        description:
-          "Developed a Python-based web scraper that automated analytics and user segmentation using real-time data.",
-        achievements: [
-          "Built automation with Flask and Selenium to scrape social media follower data.",
-          "Designed dynamic user classification logic based on engagement metrics.",
-          "Optimized scraping performance and data integrity with smart error handling.",
-        ],
-      },
-      {
-        title: "Software Engineering Intern",
-        company: "Flance",
-        period: "Jul 2024 – Oct 2024",
-        description:
-          "Supported web app development and feature testing in a fast-paced startup environment.",
-        achievements: [
-          "Developed reusable UI components in React.",
-          "Improved UX and component performance through debugging and code reviews.",
-        ],
-      },
-      {
-        title: "Web Developer",
-        company: "BigMik Gadget Hub",
-        period: "Feb 2024",
-        description:
-          "Designed and maintained a responsive e-commerce prototype for gadget sales.",
-        achievements: [
-          "Implemented dynamic product listings using React and Node.js.",
-          "Built basic cart functionality and improved mobile responsiveness.",
-        ],
-      },
-    ],
-    education: [
-      {
-        degree: "B.Sc. Educational Technology",
-        institution: "University of Ilorin, Kwara State",
-        period: "2019 – 2024",
-        gpa: "4.0 / 5.0",
-      },
-    ],
-    certifications: [
-      "CS50 Web Development with Python & JavaScript – Harvard University",
-      "Responsive Web Design & OOP with Python – FreeCodeCamp",
-      "Backend Web Development with Django – FreeCodeCamp",
-      "Web Scraping with Python (BeautifulSoup, Selenium)",
-      "React Full Course – Eudereka",
-      "React Full Course - Udemy ",
-      "HNG Internship – Backend Development (Stage 3)",
-      "Microsoft Azure Fundamentals",
-      "Cloud Security Fundamentals – Simplilearn",
-    ],
+  const download = () => {
+    const link = document.createElement("a");
+    link.href = c.resume;
+    link.download = c.resume.split("/").pop();
+    link.click();
   };
 
-  const visibleExperiences = expanded
-    ? resumeData.experience
-    : resumeData.experience.slice(0, 2);
-
   return (
-    <section id="resume" className="resume-section">
-      <div className="container">
-        <FadeIn>
-          <div className="resume-header">
-            <h2 className="section-title">Resume</h2>
-            <p className="section-subtitle">
-              Professional Experience, Education, and Certifications
-            </p>
-          </div>
-        </FadeIn>
+    <section id="resume" className="py-24" style={{ background: "var(--bg-primary)" }}>
+      <div className="max-w-3xl mx-auto px-6">
+        <SectionHeading
+          eyebrow="Résumé"
+          title={`${c.roleLabel} Résumé`}
+          subtitle="Summary, experience, education & certifications — tailored to the selected track."
+        />
 
-        <div className="resume-content-wrapper">
-          <div className="resume-doc">
-            {/* Experience */}
-            {visibleExperiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                className="resume-entry"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+        <div className="space-y-6">
+          {/* Summary */}
+          <div className="rounded-2xl p-6 border" style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}>
+            <h3 className="text-lg font-display font-bold text-[var(--text-primary)] flex items-center gap-2 mb-3">
+              <FiBriefcase className="text-gold" /> Professional Summary
+            </h3>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={role}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="text-[var(--text-secondary)] leading-relaxed"
               >
-                <h3>{exp.title}</h3>
-                <h4>{exp.company}</h4>
-                <span className="period">{exp.period}</span>
-                <p>{exp.description}</p>
-                <ul>
-                  {exp.achievements.map((ach, i) => (
-                    <li key={i}>{ach}</li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-
-            {/* Education */}
-            <div className="resume-entry">
-              <h3>Education</h3>
-              {resumeData.education.map((edu, i) => (
-                <div key={i}>
-                  <h4>{edu.degree}</h4>
-                  <p>{edu.institution}</p>
-                  <span className="period">{edu.period}</span>
-                  <p>CGPA: {edu.gpa}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Certifications (only visible when expanded) */}
-            {expanded && (
-              <div className="resume-entry">
-                <h3>Certifications</h3>
-                <ul>
-                  {resumeData.certifications.map((cert, i) => (
-                    <li key={i}>{cert}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+                {c.summary}
+              </motion.p>
+            </AnimatePresence>
           </div>
 
-          {/* Buttons */}
-          <div className="toggle-wrapper">
-            <motion.button
-              className="toggle-btn"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setExpanded(!expanded)}
-            >
-              {expanded ? "View Less" : "View More"}
-            </motion.button>
+          <AnimatePresence>
+            {expanded && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="space-y-6 overflow-hidden"
+              >
+                {/* Experience */}
+                <div className="rounded-2xl p-6 border" style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}>
+                  <h3 className="text-lg font-display font-bold text-[var(--text-primary)] flex items-center gap-2 mb-5">
+                    <FiBriefcase className="text-gold" /> Experience
+                  </h3>
+                  <div className="space-y-6">
+                    {experience.map((exp) => {
+                      const r = exp[role];
+                      return (
+                        <div key={exp.company} className="pl-5 border-l-2" style={{ borderColor: "var(--accent)" }}>
+                          <h4 className="font-bold text-[var(--text-primary)]">{r.title}</h4>
+                          <p className="text-[var(--accent)] text-sm font-medium">{exp.company}</p>
+                          <p className="text-xs text-[var(--text-secondary)] mb-2">{exp.period}</p>
+                          <ul className="space-y-1">
+                            {r.points.map((p) => (
+                              <li key={p} className="text-sm text-[var(--text-secondary)] flex gap-2">
+                                <span className="text-gold">•</span> {p}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
 
-            <motion.button
-              className="download-btn"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                // Force download
-                const link = document.createElement("a");
-                link.href = "/My_Resume.pdf";
-                link.download = "Feranmi_Oyetunde_Resume.pdf"; // Custom filename
-                link.click();
-              }}
+                {/* Education */}
+                <div className="rounded-2xl p-6 border" style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}>
+                  <h3 className="text-lg font-display font-bold text-[var(--text-primary)] flex items-center gap-2 mb-3">
+                    <FiBook className="text-gold" /> Education
+                  </h3>
+                  <h4 className="font-semibold text-[var(--text-primary)]">{education.degree}</h4>
+                  <p className="text-[var(--text-secondary)] text-sm">{education.institution} • {education.year}</p>
+                  <p className="text-sm text-gold">CGPA: {education.gpa}</p>
+                </div>
+
+                {/* Certifications */}
+                <div className="rounded-2xl p-6 border" style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}>
+                  <h3 className="text-lg font-display font-bold text-[var(--text-primary)] flex items-center gap-2 mb-3">
+                    <FiAward className="text-gold" /> Certifications
+                  </h3>
+                  <ul className="grid sm:grid-cols-2 gap-1.5">
+                    {certifications.map((cert) => (
+                      <li key={cert} className="text-sm text-[var(--text-secondary)] flex gap-2">
+                        <span className="text-gold">•</span> {cert}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div className="flex flex-wrap justify-center gap-4 pt-2">
+            <button
+              onClick={() => setExpanded((e) => !e)}
+              className="flex items-center gap-2 px-6 py-3 rounded-full font-semibold border transition-all hover:-translate-y-0.5"
+              style={{ borderColor: "var(--border)", color: "var(--text-primary)", background: "var(--bg-elevated)" }}
             >
-              📄 Download PDF Format
-            </motion.button>
+              {expanded ? <FiChevronUp /> : <FiChevronDown />}
+              {expanded ? "Show Less" : "View Full Résumé"}
+            </button>
+            <button
+              onClick={download}
+              className="flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white shadow-md transition-all hover:-translate-y-0.5"
+              style={{ background: "linear-gradient(120deg, var(--accent), var(--accent-2))" }}
+            >
+              <FiDownload /> Download PDF
+            </button>
           </div>
         </div>
       </div>

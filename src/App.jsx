@@ -1,9 +1,15 @@
 import React from "react";
 import { ThemeProvider } from "./context/ThemeContext";
+import { RoleProvider } from "./context/RoleContext";
 import { Navbar } from "./components/common/Navbar";
+import { Footer } from "./components/common/Footer";
+import { ScrollToTop } from "./components/common/ScrollToTop";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
+import { Skills } from "./components/sections/Skills";
 import { Projects } from "./components/sections/Projects";
+import { Experience } from "./components/sections/Experience";
+import { Testimonials } from "./components/sections/Testimonials";
 import { Resume } from "./components/sections/Resume";
 import { Contact } from "./components/sections/Contact";
 import "./styles/globals.css";
@@ -12,30 +18,23 @@ import "./App.css";
 function App() {
   return (
     <ThemeProvider>
-      <div className="App">
-        <Navbar />
-        <main>
-          <div id="home">
+      <RoleProvider>
+        <div className="App">
+          <Navbar />
+          <main>
             <Hero />
-          </div>
-
-          <div id="about">
             <About />
-          </div>
-
-          <div id="projects">
+            <Skills />
             <Projects />
-          </div>
-
-          <div id="resume">
+            <Experience />
+            <Testimonials />
             <Resume />
-          </div>
-
-          <div id="contact">
             <Contact />
-          </div>
-        </main>
-      </div>
+          </main>
+          <Footer />
+          <ScrollToTop />
+        </div>
+      </RoleProvider>
     </ThemeProvider>
   );
 }
