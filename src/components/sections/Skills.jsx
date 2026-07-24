@@ -4,9 +4,9 @@ import {
   SiReact, SiTypescript, SiJavascript, SiNextdotjs, SiNodedotjs, SiExpress,
   SiTailwindcss, SiVite, SiPostgresql, SiMongodb, SiSupabase, SiPython,
   SiJsonwebtokens, SiVitest, SiGit, SiGithub, SiPostman, SiSwagger,
-  SiVercel, SiNetlify, SiExpo, SiAppwrite, SiWordpress, SiSelenium,
+  SiVercel, SiNetlify, SiExpo, SiAppwrite, SiWordpress, SiSelenium, SiDotnet,
 } from "react-icons/si";
-import { FiCloud, FiUsers, FiMail, FiWifi, FiShield, FiHardDrive, FiActivity, FiServer } from "react-icons/fi";
+import { FiCloud, FiUsers, FiMail, FiWifi, FiShield, FiHardDrive, FiActivity, FiServer, FiRadio, FiDatabase } from "react-icons/fi";
 import { SectionHeading } from "./About";
 import { FadeIn } from "../animations/FadeIn";
 import { useRole } from "../../context/RoleContext";
@@ -20,6 +20,10 @@ const stacks = {
     { label: "React Native / Expo", Icon: SiExpo },
     { label: "Node.js", Icon: SiNodedotjs, c: "#5FA04E" },
     { label: "Express", Icon: SiExpress },
+    { label: ".NET", Icon: SiDotnet, c: "#512BD4" },
+    { label: "C#", text: "C#", c: "#512BD4" },
+    { label: "SignalR", Icon: FiRadio, c: "#0078D4" },
+    { label: "EF Core", Icon: FiDatabase, c: "#512BD4" },
     { label: "Tailwind CSS", Icon: SiTailwindcss, c: "#06B6D4" },
     { label: "Vite", Icon: SiVite, c: "#646CFF" },
     { label: "PostgreSQL", Icon: SiPostgresql, c: "#4169E1" },
@@ -62,7 +66,13 @@ const Box = ({ item }) => (
     className="shrink-0 w-16 h-16 rounded-xl border flex items-center justify-center transition-transform hover:-translate-y-0.5"
     style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}
   >
-    <item.Icon size={26} style={{ color: item.c || "var(--text-secondary)" }} />
+    {item.Icon ? (
+      <item.Icon size={26} style={{ color: item.c || "var(--text-secondary)" }} />
+    ) : (
+      <span className="font-display font-bold text-lg" style={{ color: item.c || "var(--text-primary)" }}>
+        {item.text}
+      </span>
+    )}
   </div>
 );
 

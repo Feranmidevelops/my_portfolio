@@ -171,6 +171,27 @@ export const experience = [
 /* ---- Featured projects (shared across roles) ----------------------------- */
 export const projects = [
   {
+    id: "tickety",
+    title: "Tickety",
+    category: "Real-Time · Full-Stack",
+    year: "2026",
+    description:
+      "A scoped-down, real-time IT support ticketing system (a \"mini Zendesk\"): invite-only auth, role-based access, a proper ticket lifecycle enforced by a server-side state machine, and live updates pushed over WebSockets with SignalR.",
+    highlights: [
+      "Ticket lifecycle enforced by a domain state machine (invalid moves rejected server-side)",
+      "Live queue + ticket updates over two SignalR hubs (JWT on the WebSocket handshake)",
+      "Invite-only sign-up with RBAC (Requester / Agent / Admin)",
+      "Full audit timeline of every create, assign, and status change",
+    ],
+    tech: [".NET 10", "ASP.NET Core", "C#", "SignalR", "EF Core", "PostgreSQL", "React", "TypeScript"],
+    accent: "indigo",
+    image: "/projects/tickety.png",
+    mobileImage: "/projects/tickety-mobile.jpeg",
+    liveUrl: "",
+    githubUrl: "",
+    featured: true,
+  },
+  {
     id: "interim-expense",
     title: "Interim Expense Tracker",
     category: "Enterprise · Full-Stack",
