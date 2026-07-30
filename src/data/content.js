@@ -171,6 +171,28 @@ export const experience = [
 /* ---- Featured projects (shared across roles) ----------------------------- */
 export const projects = [
   {
+    id: "spinmedical",
+    title: "Spinmedical",
+    category: "Full-Stack · HealthTech",
+    year: "2026",
+    description:
+      "A full-stack platform that reimagines medical crowdfunding for Nigeria. Instead of individual campaigns competing for attention, donors give to a shared pool and verified patients wait in a public queue. On a schedule, a weighted, auditable selection pays one patient's bill in full, routed to the patient or directly to the hospital.",
+    highlights: [
+      "Shared donation pool + public patient queue, replacing the crowdfunding popularity contest",
+      "Weighted, fully-auditable scheduled selection (randomness tunable down to a pure needs-based queue)",
+      "Four role-based consoles: patient, helper, verifier, and admin",
+      "Fail-closed cron automation via GitHub Actions, with an append-only audit trail on every decision and payout",
+      "Architected around Nigerian fintech & NDPA data-protection law (never custodian of funds; consent-based handling of health documents)",
+    ],
+    tech: ["Next.js 16", "TypeScript", "React Server Components", "Prisma 6", "PostgreSQL (Neon)", "Auth.js v5", "Tailwind v4", "Vercel", "GitHub Actions"],
+    accent: "purple",
+    image: "/projects/spinmedical.png",
+    mobileImage: "/projects/spinmedical-mobile.jpg",
+    liveUrl: "",
+    githubUrl: "",
+    featured: true,
+  },
+  {
     id: "tickety",
     title: "Tickety",
     category: "Real-Time · Full-Stack",

@@ -5,6 +5,7 @@ import {
   SiTailwindcss, SiVite, SiPostgresql, SiMongodb, SiSupabase, SiPython,
   SiJsonwebtokens, SiVitest, SiGit, SiGithub, SiPostman, SiSwagger,
   SiVercel, SiNetlify, SiExpo, SiAppwrite, SiWordpress, SiSelenium, SiDotnet,
+  SiPrisma, SiGithubactions,
 } from "react-icons/si";
 import { FiCloud, FiUsers, FiMail, FiWifi, FiShield, FiHardDrive, FiActivity, FiServer, FiRadio, FiDatabase } from "react-icons/fi";
 import { SectionHeading } from "./About";
@@ -20,6 +21,8 @@ const stacks = {
     { label: "React Native / Expo", Icon: SiExpo },
     { label: "Node.js", Icon: SiNodedotjs, c: "#5FA04E" },
     { label: "Express", Icon: SiExpress },
+    { label: "Prisma", Icon: SiPrisma },
+    { label: "GitHub Actions", Icon: SiGithubactions, c: "#2088FF" },
     { label: ".NET", Icon: SiDotnet, c: "#512BD4" },
     { label: "C#", text: "C#", c: "#512BD4" },
     { label: "SignalR", Icon: FiRadio, c: "#0078D4" },

@@ -22,3 +22,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Stray embedded project (keep out of the portfolio)
+src/hooks/Tickety/
