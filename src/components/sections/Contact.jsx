@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FiSend, FiCopy, FiCheck } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
 import { FadeIn } from "../animations/FadeIn";
 import { profile } from "../../data/content";
+
+// Anti-spam tuning: min seconds between sends, and min seconds a human
+// plausibly needs to fill the form.
+const COOLDOWN_MS = 60_000;
+const MIN_FILL_MS = 3_000;
 
 export const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle");
   const [copied, setCopied] = useState(false);
+  const [notice, setNotice] = useState("");
+
+  // Bots fill every field, including ones humans can't see.
+  const honeypotRef = useRef("");
+  const mountedAt = useRef(Date.now());
+  const lastSentAt = useRef(0);
 
   const validate = () => {
     const e = {};
@@ -16,12 +27,36 @@ export const Contact = () => {
     if (!formData.email.trim()) e.email = "Email required";
     else if (!/\S+@\S+\.\S+/.test(formData.email)) e.email = "Invalid email";
     if (!formData.message.trim()) e.message = "Message required";
+    else if (formData.message.trim().length < 10) e.message = "Please add a little more detail";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
+    setNotice("");
+
+    // 1. Honeypot: hidden field filled => almost certainly a bot. Fail silently.
+    if (honeypotRef.current) {
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+      return;
+    }
+
+    // 2. Too-fast submit => scripted.
+    if (Date.now() - mountedAt.current < MIN_FILL_MS) {
+      setNotice("Please take a moment to complete the form.");
+      return;
+    }
+
+    // 3. Client-side cooldown to blunt repeat submits.
+    const sinceLast = Date.now() - lastSentAt.current;
+    if (lastSentAt.current && sinceLast < COOLDOWN_MS) {
+      setNotice(`Message already sent. Please wait ${Math.ceil((COOLDOWN_MS - sinceLast) / 1000)}s before sending another.`);
+      return;
+    }
+
     if (!validate()) return;
     setStatus("loading");
     try {
@@ -41,6 +76,7 @@ export const Contact = () => {
         },
         publicKey
       );
+      lastSentAt.current = Date.now();
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
@@ -98,6 +134,19 @@ export const Contact = () => {
           className="mt-4 rounded-2xl border p-6 md:p-8 space-y-4"
           style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}
         >
+          {/* Honeypot: hidden from humans (and screen readers), visible to bots. */}
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+            <label htmlFor="company-website">Company website (leave blank)</label>
+            <input
+              id="company-website"
+              type="text"
+              name="company_website"
+              tabIndex={-1}
+              autoComplete="off"
+              onChange={(e) => { honeypotRef.current = e.target.value; }}
+            />
+          </div>
+
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">Name</label>
@@ -130,6 +179,7 @@ export const Contact = () => {
               <>Send message <FiSend size={15} /></>
             )}
           </button>
+          {notice && <p className="text-sm text-[var(--text-secondary)]">{notice}</p>}
           {status === "success" && <p className="text-sm" style={{ color: "var(--ok)" }}>✓ Message sent! I'll reply soon.</p>}
           {status === "error" && <p className="text-red-500 text-sm">✗ Failed. Please email me directly.</p>}
         </form>

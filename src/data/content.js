@@ -13,7 +13,6 @@ export const profile = {
   name: "Feranmi Oyetunde",
   location: "Lagos, Nigeria",
   email: "feranmioyetunde@gmail.com",
-  phone: "+234 903 616 1857",
   github: "https://github.com/feranmidevelops",
   githubHandle: "Feranmidevelops",
   linkedin: "https://www.linkedin.com/in/oyetunde-feranmi-1ab00a264",

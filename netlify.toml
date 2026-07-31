@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  # Keep CRA from inlining its runtime chunk into index.html.
+  # An inline <script> would be blocked by our `script-src 'self'` CSP
+  # (see public/_headers), so this keeps the CSP strict and the site working.
+  INLINE_RUNTIME_CHUNK = "false"
