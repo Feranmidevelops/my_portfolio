@@ -60,9 +60,10 @@ export const Contact = () => {
     if (!validate()) return;
     setStatus("loading");
     try {
-      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+      const env = import.meta.env;
+      const serviceId = env.VITE_EMAILJS_SERVICE_ID || env.REACT_APP_EMAILJS_SERVICE_ID;
+      const templateId = env.VITE_EMAILJS_TEMPLATE_ID || env.REACT_APP_EMAILJS_TEMPLATE_ID;
+      const publicKey = env.VITE_EMAILJS_PUBLIC_KEY || env.REACT_APP_EMAILJS_PUBLIC_KEY;
       if (!serviceId || !templateId || !publicKey) throw new Error("EmailJS config missing");
       await emailjs.send(
         serviceId, templateId,
