@@ -122,7 +122,7 @@ export const experience = [
     company: "Atlantic City Savings and Credit Cooperative Society Limited",
     period: "Jan 2026 – Present",
     swe: {
-      title: "Frontend Developer",
+      title: "Web Systems Administrator",
       points: [
         "Architected a multi-role admin platform with role-based access control.",
         "Developed real-time analytics dashboards for business transaction metrics.",
