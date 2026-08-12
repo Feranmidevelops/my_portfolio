@@ -36,7 +36,7 @@ export const roleContent = {
     summary:
       "I'm a software engineer with hands-on experience building production grade web and mobile applications across cooperative finance, e-commerce, analytics, and workflow automation. I care about interfaces that feel clear on the surface and stay reliable underneath, with a strong focus on performance, security, and consistency as products grow.",
     about2:
-      "My work spans admin platforms, financial calculators, analytics dashboards, secure payment and settlement systems, and Python pipelines that have processed over 300,000 records. I enjoy turning complex Figma designs and messy business problems into experiences that feel simple and finished. Right now I'm building internal tools at TEHC and ACUOP, and before that I shipped a full-stack e-commerce platform during a remote UK internship at Drevad.",
+      "My work spans admin platforms, financial calculators, analytics dashboards, secure payment and settlement systems, and Python pipelines that have processed over 300,000 records. I enjoy turning complex Figma designs and messy business problems into experiences that feel simple and finished. Right now I'm building internal tools at TEHC and Atlantic City Cooperative, and before that I shipped a full-stack e-commerce platform during a remote UK internship at Drevad.",
     focus: [
       { icon: FiZap, title: "Performance", text: "Fast, responsive interfaces tuned for real devices and real networks." },
       { icon: FiLayers, title: "Scalable Frontends", text: "Reusable component systems that accelerate delivery across modules." },
@@ -70,7 +70,7 @@ export const roleContent = {
     summary:
       "I'm an IT systems engineer administering Microsoft 365 for 60+ staff, driving digital transformation through SharePoint and Power Automate, and managing enterprise IT infrastructure like networking, hardware provisioning, backups, and cybersecurity awareness. I care about systems that stay dependable, and about removing manual work wherever a workflow can do it instead.",
     about2:
-      "My real edge is software development. Where standard M365 capabilities stop, I can build the bespoke tool that fills the gap, from automated financial calculators to data pipelines that process over 300,000 records. I currently run IT for TEHC and manage web systems for ACUOP, and before that I shipped a full-stack platform during a remote UK internship at Drevad.",
+      "My real edge is software development. Where standard M365 capabilities stop, I can build the bespoke tool that fills the gap, from automated financial calculators to data pipelines that process over 300,000 records. I currently run IT for TEHC and administer web systems for Atlantic City Cooperative, and before that I shipped a full-stack platform during a remote UK internship at Drevad.",
     focus: [
       { icon: FiCloud, title: "M365 Administration", text: "Teams, SharePoint, OneDrive, Exchange, and user access provisioning for 60+ staff." },
       { icon: FiActivity, title: "Workflow Automation", text: "Power Automate & SharePoint flows that replace manual tracking end-to-end." },
@@ -95,7 +95,7 @@ export const roleContent = {
 /* ---- Experience (role-aware titles/bullets, shared timeline) ------------- */
 export const experience = [
   {
-    company: "TEHC — Total Energies Housing Cooperative",
+    company: "TotalEnergies Staff Housing Cooperative Multipurpose Society Limited (TEHC)",
     period: "Oct 2025 – Present",
     swe: {
       title: "Frontend Software Engineer & IT Systems Associate",
@@ -119,7 +119,7 @@ export const experience = [
     },
   },
   {
-    company: "ACUOP.com",
+    company: "Atlantic City Savings and Credit Cooperative Society Limited",
     period: "Jan 2026 – Present",
     swe: {
       title: "Frontend Developer",
@@ -218,7 +218,7 @@ export const projects = [
     category: "Enterprise · Full-Stack",
     year: "2026",
     description:
-      "Enterprise expense-management system for TEHC & ACUOP (50 staff): multi-level, level-based approval chains, AI receipt OCR, in app notifications, budgets, and a full audit log, all enforced with Postgres Row-Level Security.",
+      "Enterprise expense-management system for TEHC and Atlantic City Cooperative (50 staff): multi-level, level-based approval chains, AI receipt OCR, in app notifications, budgets, and a full audit log, all enforced with Postgres Row-Level Security.",
     highlights: ["Level-based parallel approval routing", "Gemini 2.5 Flash receipt OCR", "RLS-first authorization", "Analytics with Recharts"],
     tech: ["Next.js 16", "TypeScript", "Supabase", "PostgreSQL", "Gemini AI", "Tailwind"],
     accent: "indigo",
@@ -320,13 +320,13 @@ export const testimonials = [
     quote:
       "Feranmi turns complex requirements into clean, working software fast. He shipped our admin dashboards ahead of schedule and the code was a pleasure to build on.",
     name: "Team Lead",
-    role: "TEHC — Total Energies Housing Cooperative",
+    role: "TotalEnergies Staff Housing Cooperative Multipurpose Society Limited (TEHC)",
   },
   {
     quote:
       "Rare combination: he can administer our Microsoft 365 stack and automate the workflows around it, then build a custom tool when M365 falls short.",
     name: "Operations Lead",
-    role: "ACUOP.com",
+    role: "Atlantic City Savings and Credit Cooperative Society Limited",
   },
   {
     quote:

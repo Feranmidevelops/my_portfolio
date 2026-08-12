@@ -2,6 +2,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiDownload, FiArrowUpRight } from "react-icons/fi";
 import { useRole } from "../../context/RoleContext";
+import { TiltBanner } from "../common/TiltBanner";
 import { profile, roleContent } from "../../data/content";
 
 export const Hero = () => {
@@ -17,25 +18,8 @@ export const Hero = () => {
 
   return (
     <header className="pt-28 md:pt-32">
-      {/* Banner box */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="rounded-2xl border overflow-hidden h-28 md:h-40 flex items-center justify-center bg-grid"
-        style={{ background: "#000", borderColor: "var(--border)" }}
-      >
-        <img
-          src={profile.banner}
-          alt={`${profile.name} banner`}
-          className="w-full h-full object-contain"
-          onError={(e) => {
-            e.target.style.display = "none";
-            e.target.parentElement.innerHTML =
-              '<div class="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-lg" style="background:var(--contrast-panel);color:var(--contrast-text)">FO</div>';
-          }}
-        />
-      </motion.div>
+      {/* Banner box — tilts in 3D with the device gyroscope / pointer */}
+      <TiltBanner src={profile.banner} alt={`${profile.name} banner`} name="FO" />
 
       {/* Profile row */}
       <motion.div
