@@ -9,7 +9,7 @@ import { About } from "./components/sections/About";
 import { Projects } from "./components/sections/Projects";
 import { Experience } from "./components/sections/Experience";
 import { Skills } from "./components/sections/Skills";
-import { Testimonials } from "./components/sections/Testimonials";
+import { Credentials } from "./components/sections/Credentials";
 import { Connect } from "./components/sections/Connect";
 import { Contact } from "./components/sections/Contact";
 import "./styles/globals.css";
@@ -26,8 +26,8 @@ function App() {
             <About />
             <Projects />
             <Experience />
+            <Credentials />
             <Skills />
-            <Testimonials />
             <Connect />
             <Contact />
           </main>

@@ -115,10 +115,10 @@ export const Contact = () => {
         >
           <p className="text-xs font-semibold tracking-[0.22em] uppercase opacity-60">Contact</p>
           <h2 className="text-3xl md:text-4xl font-bold mt-2" style={{ color: "var(--contrast-text)" }}>
-            Let's build something.
+            Say hello.
           </h2>
           <p className="mt-3 opacity-70 max-w-md">
-            Have a role or a project in mind — software or IT? I reply within 24 hours.
+            A role, a project, or a question about something on this page. I usually reply the same day.
           </p>
           <button
             onClick={copyEmail}
