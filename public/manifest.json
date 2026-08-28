@@ -1,15 +1,15 @@
 {
-  "short_name": "Feranmi.Dev",
-  "name": "Feranmi Oyetunde - Full-Stack Developer",
+  "short_name": "Feranmi O.",
+  "name": "Feranmi Oyetunde, Software and IT Systems Engineer",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "feranmi.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#667eea",
-  "background_color": "#ffffff"
+  "theme_color": "#f5f4f1",
+  "background_color": "#f5f4f1"
 }
