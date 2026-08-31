@@ -67,6 +67,9 @@ const Row = ({ project, open, onToggle }) => {
                       src={project.image}
                       alt={`${project.title} desktop screenshot`}
                       loading="lazy"
+                      decoding="async"
+                      width={1400}
+                      height={740}
                       className="w-full h-auto block"
                       onError={(e) => { const w = e.target.closest("[data-proj-img]"); if (w) w.style.display = "none"; }}
                     />
@@ -80,6 +83,7 @@ const Row = ({ project, open, onToggle }) => {
                         src={project.mobileImage}
                         alt={`${project.title} mobile screenshot`}
                         loading="lazy"
+                        decoding="async"
                         className="w-full h-auto block"
                         onError={(e) => { e.target.parentElement.style.display = "none"; }}
                       />

@@ -102,7 +102,9 @@ export const TiltBanner = ({ src, alt, name = "FO" }) => {
         style={{ background: "#000", borderColor: "var(--border)" }}
       >
         {failed ? monogram : (
-          <img src={src} alt={alt} className="w-full h-full object-contain" onError={() => setFailed(true)} />
+          <img src={src} alt={alt} width={1600} height={400} fetchPriority="high"
+               decoding="async" className="w-full h-full object-contain"
+               onError={() => setFailed(true)} />
         )}
       </div>
     );
@@ -136,6 +138,10 @@ export const TiltBanner = ({ src, alt, name = "FO" }) => {
               src={src}
               alt={alt}
               onError={() => setFailed(true)}
+              width={1600}
+              height={400}
+              fetchPriority="high"
+              decoding="async"
               className="relative w-full h-full object-contain"
               style={{ x: imageShiftX, y: imageShiftY, scale: 1.04, translateZ: 40 }}
               draggable={false}
