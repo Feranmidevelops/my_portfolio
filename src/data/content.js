@@ -25,23 +25,23 @@ export const profile = {
 /* ---- Role-specific content ---------------------------------------------- */
 export const roleContent = {
   swe: {
-    badge: "Software Engineer",
-    roleLabel: "Software Engineer",
+    badge: "Full Stack Software Engineer",
+    roleLabel: "Full Stack Software Engineer",
     stack: "React · Next.js · TypeScript · Node.js · Python · .NET · PostgreSQL",
-    tagline: "I build the web and mobile apps businesses run on every day.",
-    taglineAccent: "React and TypeScript up front, Node and Postgres behind.",
+    tagline: "I work across the whole request, browser to database.",
+    taglineAccent: "Most of what I build moves money or decides who sees what, so I put the rules first.",
     intro:
-      "Most of my work sits close to money and approvals, where being roughly right is not good enough. Payments, admin platforms, dashboards, and one photo game that uses AI to judge your snapshots.",
+      "Loan pricing, expense approvals, payments, and a real time game server. React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core behind them, PostgreSQL underneath.",
     resume: "/Feranmi_Oyetunde_Resume_SoftwareDeveloper.pdf",
     summary:
-      "I have spent the last year and a half building web and mobile apps for two Lagos cooperatives and a UK startup. Most of it is the unglamorous kind of software that simply has to be correct: money moving without double charges, approvals reaching the right person, dashboards that agree with the database.",
+      "I am a full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, deployed on Azure, Vercel and Render.",
     about2:
-      "Along the way I have built admin platforms, financial calculators, analytics dashboards, a Paystack payment and settlement flow, and a Python scraper that worked through more than 300,000 profiles. What I enjoy most is taking a messy manual process and turning it into something a non-technical person can use without being trained first.",
+      "Right now that means a loan pricing engine in FastAPI, kept honest by 1,645 tests behind a 90% coverage gate, and an expense system where the approval rules live in Postgres rather than the interface, so a check skipped in the UI still fails in the database. Before that I built an online store end to end during a remote UK internship, including the Paystack settlement flow that makes charging a customer twice impossible.",
     focus: [
-      { icon: FiZap, title: "Speed", text: "Pages that stay quick on mid-range Android phones and patchy networks, because that is what people actually use." },
-      { icon: FiLayers, title: "Reusable UI", text: "Component libraries that make the next feature faster to build than the last one was." },
-      { icon: FiCpu, title: "APIs and AI", text: "REST APIs, receipt OCR, and vision models, joined up so the user never sees the seams." },
-      { icon: FiShield, title: "The small things", text: "Keyboard access, sensible empty states, and the details people notice without being able to name them." },
+      { icon: FiShield, title: "Rules in the database", text: "Row level security and functions that reject illegal changes, so a check skipped in the interface still fails underneath." },
+      { icon: FiZap, title: "Tested where it counts", text: "1,645 tests behind a 90% coverage floor on the loan engine, held to the finance team's own spreadsheets by golden files." },
+      { icon: FiLayers, title: "The whole request", text: "React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath." },
+      { icon: FiCpu, title: "Real time and AI", text: "WebSockets and SignalR for live state, plus vision and voice models kept server side where the keys belong." },
     ],
     skills: [
       { group: "Languages", items: ["TypeScript", "JavaScript", "Python", "C#", "SQL"] },
@@ -55,7 +55,7 @@ export const roleContent = {
     ],
     stats: [
       { value: "300K+", label: "Records processed", icon: FiZap },
-      { value: "7", label: "Products shipped", icon: FiTrendingUp },
+      { value: "13", label: "Products shipped", icon: FiTrendingUp },
       { value: "50+", label: "Screens built from Figma", icon: FiGrid },
     ],
   },
