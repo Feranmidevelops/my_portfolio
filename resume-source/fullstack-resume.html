@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feranmi Oyetunde, Full Stack Software Engineer</title>
+<style>
+  @page { size: Letter; margin: 0.55in 0.68in 0.5in 0.68in; }
+  * { box-sizing: border-box; }
+  body { font-family: "Carlito", "Calibri", sans-serif; color: #262626; font-size: 10.2pt; line-height: 1.3; margin: 0; }
+  a { color: #1f5fb4; text-decoration: none; }
+  header { text-align: center; }
+  h1 { font-size: 20pt; color: #1f3a5f; margin: 0 0 2pt; font-weight: 700; letter-spacing: .1pt; }
+  .tagline { font-size: 10.4pt; color: #1a1a1a; margin-bottom: 2pt; }
+  .contact { font-size: 9.3pt; color: #555; line-height: 1.5; }
+  .sep { color: #888; padding: 0 6pt; }
+  h2 { font-size: 10.4pt; font-weight: 700; color: #1f3a5f; letter-spacing: 1pt; text-transform: uppercase;
+       margin: 9.5pt 0 4.5pt; padding-bottom: 2.5pt; border-bottom: 0.8pt solid #a9b4c2; }
+  p { margin: 0; }
+  .skills div { font-size: 9.6pt; margin-bottom: 1.6pt; }
+  .skills b { color: #1a1a1a; }
+  .job { margin-bottom: 6pt; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; }
+  .head b { color: #1a1a1a; }
+  .date { font-style: italic; color: #555; font-size: 9.6pt; white-space: nowrap; padding-right: 30pt; }
+  .stack { font-style: italic; color: #555; font-size: 9.2pt; margin-top: .5pt; }
+  ul { margin: 2pt 0 0; padding-left: 15pt; list-style: none; }
+  li { position: relative; margin-bottom: 2.2pt; }
+  li::before { content: "\2022"; color: #1f5fb4; position: absolute; left: -11pt; }
+  .proj { margin-bottom: 5pt; break-inside: avoid; }
+  .job { break-inside: auto; }
+  .certs li { font-size: 9.6pt; margin-bottom: 1.5pt; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Feranmi Favour Oyetunde</h1>
+<div class="tagline">Full Stack Software Engineer <span class="sep">|</span>React, Next.js, TypeScript, Node.js, Python, .NET, PostgreSQL</div>
+<div class="contact">
+  Lagos, Nigeria<span class="sep">·</span><a href="tel:+2349036161857" style="color:#555">+234 903 616 1857</a><span class="sep">·</span><a href="mailto:feranmioyetunde@gmail.com">feranmioyetunde@gmail.com</a><br />
+  <a href="https://github.com/Feranmidevelops">github.com/Feranmidevelops</a><span class="sep">·</span><a href="https://www.linkedin.com/in/oyetunde-feranmi-1ab00a264">linkedin.com/in/feranmi-oyetunde</a><span class="sep">·</span><a href="https://feranmioyetunde.com.ng/">feranmioyetunde.com.ng</a>
+</div>
+</header>
+
+<h2>Summary</h2>
+<p>Full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, Vercel and Render. Most of what I build moves money or decides who sees what, so I put the rules first.</p>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <div><b>Languages:</b>&nbsp; TypeScript, JavaScript, Python, C#, SQL</div>
+  <div><b>Frontend:</b>&nbsp; React, Next.js (App Router, Server Actions), React Native (Expo), TanStack Query, Zustand, React Hook Form, Zod, Tailwind CSS</div>
+  <div><b>Backend:</b>&nbsp; Node.js, Express, FastAPI, ASP.NET Core, SignalR, WebSockets, REST, OpenAPI</div>
+  <div><b>Databases:</b>&nbsp; PostgreSQL, Supabase (RLS, RPCs, Edge Functions), Prisma, Alembic, EF Core, MongoDB</div>
+  <div><b>Auth &amp; Security:</b>&nbsp; JWT with rotating refresh tokens, CSRF protection, OTP sign in, role based access, API keys, rate limiting, audit logs</div>
+  <div><b>Testing:</b>&nbsp; Vitest, pytest, xUnit, Supertest, React Testing Library, mypy, Ruff</div>
+  <div><b>Integrations:</b>&nbsp; Paystack, Dynamics 365 Business Central, Gemini, OpenAI Vision, Claude API, Deepgram, ElevenLabs, Power Automate, Microsoft 365</div>
+</div>
+
+<h2>Experience</h2>
+
+<div class="job">
+  <div class="head"><span><b>Web Systems Administrator &amp; Software Developer</b>, ACUOP</span><span class="date">Jan 2026 to Present</span></div>
+  <ul>
+    <li>Backend engineer on the ACUOP Loan Platform, a FastAPI and PostgreSQL service that prices loans and mortgages for ACUOP and the property developments it finances.</li>
+    <li>Built the calculation engine as pure Python with Decimal money and no database, clock or network access, so the same inputs always return the same schedule. Golden file tests hold it to the finance team's spreadsheets.</li>
+    <li>Designed the three tier tenancy (system, financier, project) with invite only onboarding, a two signature approval bound to a content hash so an approved rate cannot quietly change, per project API keys, idempotent writes and an append only audit trail across 90 endpoints.</li>
+    <li>Shipped behind a strict CI gate: 1,645 tests with a 90% coverage floor, mypy, an import linter that keeps the engine isolated, an OpenAPI snapshot check and a generated TypeScript client. Merges to main run Alembic migrations, then deploy to Azure App Service.</li>
+    <li>Built the Relationship Manager dashboard and the projects, products and transactions screens in the ACUOP member portal (React 19, TypeScript, TanStack Query, Zustand).</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="head"><span><b>Software Engineer &amp; IT Systems Administrator</b>, TEHC (Total Energies Housing Cooperative)</span><span class="date">Oct 2025 to Present</span></div>
+  <ul>
+    <li>Built the TEHC and ACUOP Expense Tracker (Next.js 16, Supabase) for about 50 staff: claims route through an approval chain derived from department and level, Accounts checks VAT and withholding tax, Treasury pays, and paid claims post to Dynamics 365 Business Central.</li>
+    <li>Authorization lives in Postgres through row level security and RPCs that reject illegal state changes, so a check skipped in the UI still fails in the database. Integrations run as Edge Functions: OAuth2 vendor sync with Business Central every six hours, ZeptoMail email, and Gemini receipt OCR so staff no longer type figures by hand.</li>
+    <li>Turn Figma designs into responsive React and TypeScript screens, and test each REST endpoint in Swagger and Postman before it ships.</li>
+    <li>Automated inventory renewal alerts and boardroom booking with Power Automate and SharePoint, and administer Microsoft 365 (Teams, SharePoint, Exchange) and devices for more than 60 staff.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="head"><span><b>Software Engineering Intern</b>, Drevad Ltd. (UK), Remote</span><span class="date">Jan 2025 to Mar 2025</span></div>
+  <ul>
+    <li>Built an online store end to end on my own: catalog, cart, coupons, reviews, wishlist, checkout, order management and an admin dashboard. React and Vite on the front, Node.js and Express over PostgreSQL behind it.</li>
+    <li>Integrated Paystack with a settlement flow that confirms each payment through both the webhook and the client, checks the amount on the server, and ignores repeats, so no customer is charged or fulfilled twice.</li>
+    <li>Replaced long lived tokens with short JWTs, rotating httpOnly refresh cookies and CSRF protection, so logging out really ends the session; gave super, sales and finance admins their own permissions.</li>
+    <li>Added CSV bulk import with per row validation, Helmet, rate limiting and Sentry, plus Vitest and Supertest suites around payments, coupons and auth.</li>
+  </ul>
+</div>
+
+<h2>Selected Projects</h2>
+
+<div class="proj">
+  <div><b><a href="https://github.com/Feranmidevelops/HOCKS" style="color:#1a1a1a">HOCKS</a></b>, real time multiplayer air hockey</div>
+  <div class="stack">TypeScript, Node.js, WebSockets, Vite, Vitest, Docker, Render, Fly.io</div>
+  <ul>
+    <li>Authoritative 60Hz server with a deterministic fixed timestep simulation, snapshot interpolation, client side prediction and server reconciliation, so your own paddle responds instantly at a 240ms round trip.</li>
+    <li>A self sizing interpolation buffer cut opponent lag from Lagos to Frankfurt from about 220ms to 155ms. Deployed to two regions and measured through a live overlay of RTT, jitter and replayed ticks.</li>
+  </ul>
+</div>
+
+<div class="proj">
+  <div><b><a href="https://github.com/Feranmidevelops/Tickety" style="color:#1a1a1a">Tickety</a></b>, real time IT support desk</div>
+  <div class="stack">ASP.NET Core (.NET 10), SignalR, EF Core, PostgreSQL, React, TypeScript, xUnit, Docker</div>
+  <ul>
+    <li>Ticket lifecycle enforced by a unit tested domain state machine on the server, so invalid transitions are rejected whatever the client sends. Invite only sign up, three roles, full event history.</li>
+    <li>Two SignalR hubs push new tickets to agents and status changes to anyone viewing, with the JWT verified on the WebSocket handshake. The API ships as a Docker container on Render.</li>
+  </ul>
+</div>
+
+<div class="proj">
+  <div><b>Mr Feranmi</b>, voice based mock interviewer</div>
+  <div class="stack">Next.js 16, TypeScript, Supabase, Claude API, Deepgram, ElevenLabs</div>
+  <ul>
+    <li>Candidates speak their answers and hear the interviewer reply. One model runs live turns through a strict tool schema; a second scores at the end and must quote the transcript for every score.</li>
+    <li>Model and speech calls stay on the server and the marking scheme never reaches the browser. Sessions persist under RLS and survive a refresh or restart.</li>
+  </ul>
+</div>
+
+<div class="proj">
+  <div><b>Spinmedical</b>, medical crowdfunding platform</div>
+  <div class="stack">Next.js, TypeScript, Prisma, PostgreSQL, Auth.js</div>
+  <ul>
+    <li>Donors pay into one shared pool and a weighted draw, based on urgency and time waiting, pays a verified patient's bill in full. Each draw stores its seed and candidate list, so any past result can be recomputed and audited.</li>
+    <li>Pool balance is derived from the ledger rather than a cached counter, money is stored in kobo, and five roles cover patients, helpers, donors, verifiers and admins. Built around Nigeria's NDPA.</li>
+  </ul>
+</div>
+
+<div class="proj">
+  <div><b><a href="https://github.com/Feranmidevelops/SNAPAROUND" style="color:#1a1a1a">SNAPAROUND</a></b>, mobile photo challenge game, in development</div>
+  <div class="stack">React Native, Expo, TypeScript, Supabase, OpenAI Vision</div>
+  <ul>
+    <li>A daily challenge you complete by taking a photo, checked by a vision model in an Edge Function. Attempt limits and streaks are enforced in Postgres functions rather than the app, with a leaderboard for each Nigerian state.</li>
+  </ul>
+</div>
+
+<div class="proj">
+  <div><b>Also built</b></div>
+  <ul>
+    <li><a href="https://jadafinds.netlify.app/">Jada Finds</a>, a live client site with a tested fee and invoice builder; <a href="https://feranmidevelops.github.io/feranmi-burger-repo/">Feranmi Restaurant</a>, a React ordering app with 165 tests; and a Python and Selenium scraper that cleaned over 300,000 profiles.</li>
+  </ul>
+</div>
+
+<h2>Education</h2>
+<p><b>B.Sc. Educational Technology</b>, University of Ilorin, Nigeria<span class="sep">·</span>2024<span class="sep">·</span>CGPA 4.0 / 5.0</p>
+
+<h2>Certifications</h2>
+<p style="font-size:9.8pt">CS50 Web Programming with Python and JavaScript, Harvard University<span class="sep">·</span>Microsoft Azure Fundamentals<span class="sep">·</span>Backend Development with Django<span class="sep">·</span>Web Scraping with Python<span class="sep">·</span>Cloud Security Fundamentals</p>
+
+</body>
+</html>
