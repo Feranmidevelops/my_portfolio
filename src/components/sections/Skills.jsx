@@ -4,8 +4,8 @@ import {
   SiReact, SiTypescript, SiJavascript, SiNextdotjs, SiNodedotjs, SiExpress,
   SiTailwindcss, SiVite, SiPostgresql, SiMongodb, SiSupabase, SiPython,
   SiJsonwebtokens, SiVitest, SiGit, SiGithub, SiPostman, SiSwagger,
-  SiVercel, SiNetlify, SiExpo, SiAppwrite, SiWordpress, SiSelenium, SiDotnet,
-  SiPrisma, SiGithubactions,
+  SiVercel, SiNetlify, SiExpo, SiWordpress, SiSelenium, SiDotnet,
+  SiPrisma, SiGithubactions, SiFastapi, SiDocker, SiPytest, SiRender,
 } from "react-icons/si";
 import { FiCloud, FiUsers, FiMail, FiWifi, FiShield, FiHardDrive, FiActivity, FiServer, FiRadio, FiDatabase } from "react-icons/fi";
 import { SectionHeading } from "./About";
@@ -21,6 +21,7 @@ const stacks = {
     { label: "React Native / Expo", Icon: SiExpo },
     { label: "Node.js", Icon: SiNodedotjs, c: "#5FA04E" },
     { label: "Express", Icon: SiExpress },
+    { label: "FastAPI", Icon: SiFastapi, c: "#009688" },
     { label: "Prisma", Icon: SiPrisma },
     { label: "GitHub Actions", Icon: SiGithubactions, c: "#2088FF" },
     { label: ".NET", Icon: SiDotnet, c: "#512BD4" },
@@ -35,13 +36,16 @@ const stacks = {
     { label: "Python", Icon: SiPython, c: "#3776AB" },
     { label: "JWT Auth", Icon: SiJsonwebtokens },
     { label: "Vitest", Icon: SiVitest, c: "#6E9F18" },
-    { label: "Appwrite", Icon: SiAppwrite, c: "#FD366E" },
+    { label: "pytest", Icon: SiPytest, c: "#0A9EDC" },
+    { label: "Docker", Icon: SiDocker, c: "#2496ED" },
+    { label: "Azure", Icon: FiCloud, c: "#0078D4" },
     { label: "Git", Icon: SiGit, c: "#F05032" },
     { label: "GitHub", Icon: SiGithub },
     { label: "Postman", Icon: SiPostman, c: "#FF6C37" },
     { label: "Swagger", Icon: SiSwagger, c: "#85EA2D" },
     { label: "Vercel", Icon: SiVercel },
     { label: "Netlify", Icon: SiNetlify, c: "#00C7B7" },
+    { label: "Render", Icon: SiRender },
   ],
   it: [
     { label: "Microsoft 365", Icon: FiCloud, c: "#0F6CBD" },
