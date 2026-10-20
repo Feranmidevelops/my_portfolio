@@ -1,13 +1,10 @@
 import React from "react";
-import { m, AnimatePresence } from "framer-motion";
 import { FiDownload, FiArrowUpRight } from "react-icons/fi";
-import { useRole } from "../../context/RoleContext";
 import { TiltBanner } from "../common/TiltBanner";
 import { profile, roleContent } from "../../data/content";
 
 export const Hero = () => {
-  const { role } = useRole();
-  const c = roleContent[role];
+  const c = roleContent.swe;
 
   const downloadResume = () => {
     const link = document.createElement("a");
@@ -48,37 +45,15 @@ export const Hero = () => {
 
         {/* Identity */}
         <div className="text-center sm:text-left flex-1 pt-1">
-          {/* initial={false}: these only animate when the role changes, so the
-              first render (and the prerendered HTML) shows them straight away. */}
-          <AnimatePresence mode="wait" initial={false}>
-            <m.p
-              key={role + "-eyebrow"}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="eyebrow"
-            >
-              {c.roleLabel}
-            </m.p>
-          </AnimatePresence>
+          <p className="eyebrow">{c.roleLabel}</p>
 
           <h1 className="text-3xl md:text-[2.75rem] font-bold text-[var(--text-primary)] mt-1.5">
             {profile.name}
           </h1>
 
-          <AnimatePresence mode="wait" initial={false}>
-            <m.p
-              key={role + "-tag"}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.3 }}
-              className="mt-2 text-lg text-[var(--text-secondary)] max-w-xl"
-            >
-              {c.tagline} {c.taglineAccent}
-            </m.p>
-          </AnimatePresence>
+          <p className="mt-2 text-lg text-[var(--text-secondary)] max-w-xl">
+            {c.tagline} {c.taglineAccent}
+          </p>
 
           {/* Status + actions */}
           <div className="mt-4 flex flex-wrap items-center justify-center sm:justify-start gap-x-5 gap-y-3">
