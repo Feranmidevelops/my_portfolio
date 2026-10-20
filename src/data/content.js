@@ -182,13 +182,10 @@ export const projects = [
     category: "Real Time · Multiplayer",
     year: "2026",
     description:
-      "Two player air hockey in the browser, built to learn the netcode real multiplayer games use. The server owns the game and runs it at 60Hz. Each client predicts its own paddle, draws the opponent from buffered snapshots, and corrects itself when the server disagrees, so the game still feels instant between Lagos and a server in Frankfurt.",
+      "Real time multiplayer air hockey. An authoritative 60Hz server with a deterministic fixed timestep simulation, snapshot interpolation, client side prediction and server reconciliation, so your own paddle responds instantly at a 240ms round trip.",
     highlights: [
-      "Deterministic fixed timestep physics shared by client and server, with a test that proves both produce the same result",
-      "Client side prediction and server reconciliation, so your paddle moves the moment you do at a 240ms round trip",
-      "An interpolation buffer that sizes itself from measured jitter, cutting opponent lag from about 220ms to 155ms",
-      "Only the server can score a goal, so a save the client had not seen yet never flashes a point on and off",
-      "Pause on disconnect, reconnect mid rally, rematches, and a live overlay showing RTT, jitter and replayed ticks",
+      "A self sizing interpolation buffer cut opponent lag from Lagos to Frankfurt from about 220ms to 155ms.",
+      "Deployed to two regions and measured through a live overlay of RTT, jitter and replayed ticks.",
     ],
     tech: ["TypeScript", "Node.js", "WebSockets", "Vite", "Vitest", "Docker", "Render", "Fly.io"],
     accent: "indigo",
