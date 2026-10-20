@@ -3,11 +3,6 @@
    Edit here to update the whole site.
    ========================================================================== */
 
-import {
-  FiZap, FiLayers, FiShield, FiCpu, FiTrendingUp, FiGrid,
-  FiCloud, FiTool, FiServer, FiActivity,
-} from "react-icons/fi";
-
 export const profile = {
   name: "Feranmi Oyetunde",
   location: "Lagos, Nigeria",
@@ -23,39 +18,14 @@ export const profile = {
 
 /* ---- Hero and About copy ---------------------------------------------- */
 export const intro = {
-  badge: "Full Stack Software Engineer",
   roleLabel: "Full Stack Software Engineer",
-  stack: "React · Next.js · TypeScript · Node.js · Python · .NET · PostgreSQL",
   tagline: "I work across the whole request, browser to database.",
   taglineAccent: "Most of what I build moves money or decides who sees what, so I put the rules first.",
-  intro:
-    "Loan pricing, expense approvals, payments, and a real time game server. React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core behind them, PostgreSQL underneath.",
   resume: "/Feranmi_Oyetunde_Resume_SoftwareDeveloper.pdf",
   summary:
     "I am a full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, deployed on Azure, Vercel and Render.",
   about2:
     "Right now that means a loan pricing engine in FastAPI, kept honest by 1,645 tests behind a 90% coverage gate, and an expense system where the approval rules live in Postgres rather than the interface, so a check skipped in the UI still fails in the database. Before that I built an online store end to end during a remote UK internship, including the Paystack settlement flow that makes charging a customer twice impossible.",
-  focus: [
-    { icon: FiShield, title: "Rules in the database", text: "Row level security and functions that reject illegal changes, so a check skipped in the interface still fails underneath." },
-    { icon: FiZap, title: "Tested where it counts", text: "1,645 tests behind a 90% coverage floor on the loan engine, held to the finance team's own spreadsheets by golden files." },
-    { icon: FiLayers, title: "The whole request", text: "React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath." },
-    { icon: FiCpu, title: "Real time and AI", text: "WebSockets and SignalR for live state, plus vision and voice models kept server side where the keys belong." },
-  ],
-  skills: [
-    { group: "Languages", items: ["TypeScript", "JavaScript", "Python", "C#", "SQL"] },
-    { group: "Frontend", items: ["React", "Next.js", "React Native (Expo)", "Three.js (React Three Fiber)", "TanStack Query", "Zustand", "React Hook Form", "Zod", "Tailwind CSS"] },
-    { group: "Backend", items: ["Node.js", "Express", "FastAPI", "ASP.NET Core", "SignalR", "WebSockets", "REST", "OpenAPI"] },
-    { group: "Databases", items: ["PostgreSQL", "Supabase", "Prisma", "Alembic", "EF Core", "MongoDB"] },
-    { group: "Auth and Security", items: ["JWT", "Refresh Token Rotation", "CSRF Protection", "OTP Sign In", "Role Based Access", "API Keys", "Rate Limiting", "Audit Logs"] },
-    { group: "Testing", items: ["Vitest", "Playwright", "pytest", "xUnit", "Supertest", "React Testing Library", "mypy", "Ruff"] },
-    { group: "Deployment", items: ["Docker", "GitHub Actions", "Azure App Service", "Vercel", "Render", "Netlify"] },
-    { group: "Integrations", items: ["Paystack", "Dynamics 365 Business Central", "Gemini", "OpenAI Vision", "Claude API", "Deepgram", "ElevenLabs", "Power Automate"] },
-  ],
-  stats: [
-    { value: "300K+", label: "Records processed", icon: FiZap },
-    { value: "13", label: "Products shipped", icon: FiTrendingUp },
-    { value: "50+", label: "Screens built from Figma", icon: FiGrid },
-  ],
 };
 
 /* ---- Experience ----------------------------------------------------------- */
