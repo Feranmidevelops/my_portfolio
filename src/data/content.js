@@ -32,18 +32,22 @@ export const intro = {
 /* ---- Experience ----------------------------------------------------------- */
 export const experience = [
   {
-    company: "TotalEnergies Staff Housing Cooperative Multipurpose Society Limited (TEHC)",
-    period: "Oct 2025 to now",
-    employment: "Full-time",
-    title: "Software Engineer and IT Systems Administrator",
-    points: [
-      "Built the TEHC and ACUOP Expense Tracker (Next.js 16, Supabase) for about 50 staff. Claims route through an approval chain based on department and level, Accounts checks VAT and withholding tax, Treasury pays, and paid claims post to Dynamics 365 Business Central.",
-      "Put authorization in Postgres with row level security and RPCs that reject illegal state changes, so a check skipped in the UI still fails in the database.",
-      "Wrote the integrations as Supabase Edge Functions: vendor sync with Business Central every six hours, ZeptoMail email, and Gemini receipt OCR so staff no longer type figures by hand.",
-      "Turn Figma designs into responsive React and TypeScript screens, and test each REST endpoint in Swagger and Postman before it ships.",
-      "Automated inventory renewal alerts and boardroom booking with Power Automate and SharePoint.",
+    company: "TotalEnergies Staff Housing Cooperative (TEHC)",
+    location: "Lagos",
+    period: "Oct 2025 to Present",
+    title: "Software Engineer & IT Systems Administrator",
+    team: "Technical and Innovation team, reporting to the COO",
+    work: [
+      {
+        name: "Expense Tracker",
+        tech: ["Next.js 16", "Supabase", "Dynamics 365 Business Central"],
+        points: [
+          "Handles about 80 claims a month, averaging 10 million naira in transaction volume. About 50 staff raise claims against the chart of accounts with a live budget check; approvals route by department and level, Accounts checks VAT and withholding tax, Treasury pays, the COO approves budgets, and every paid claim posts to Dynamics 365 Business Central.",
+          "Authorization lives in Postgres through row level security and RPCs that reject illegal state changes, so a check skipped in the UI still fails in the database. Edge Functions sync vendors from Business Central over OAuth2 every six hours, send ZeptoMail email and read receipts with Gemini OCR, so staff no longer type figures by hand.",
+          "Merged 22 pull requests in under two weeks for Finance and Treasury: beneficiary banks from a Paystack mirrored list, entity splits that Accounts can correct in review, a collated payment schedule emailed to Accounts and Treasury, Excel exports and a live status tracker for staff.",
+        ],
+      },
     ],
-    tags: ["Next.js", "Supabase", "PostgreSQL", "Dynamics 365", "React"],
   },
   {
     company: "Atlantic City Savings and Credit Cooperative Society Limited",
