@@ -1,7 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { ThemeProvider } from "./context/ThemeContext";
-import { RoleProvider } from "./context/RoleContext";
 import { Navbar } from "./components/common/Navbar";
 import { Footer } from "./components/common/Footer";
 import { ScrollToTop } from "./components/common/ScrollToTop";
@@ -45,23 +44,21 @@ function App() {
   return (
     <LazyMotion features={domAnimation} strict>
       <ThemeProvider>
-        <RoleProvider>
-          <div className="App">
-            <Navbar />
-            <main className="max-w-3xl mx-auto px-5">
-              <Hero />
-              <About />
-              <Projects />
-              <Experience />
-              <Credentials />
-              <StackSection />
-              <Connect />
-              <Contact />
-            </main>
-            <Footer />
-            <ScrollToTop />
-          </div>
-        </RoleProvider>
+        <div className="App">
+          <Navbar />
+          <main className="max-w-3xl mx-auto px-5">
+            <Hero />
+            <About />
+            <Projects />
+            <Experience />
+            <Credentials />
+            <StackSection />
+            <Connect />
+            <Contact />
+          </main>
+          <Footer />
+          <ScrollToTop />
+        </div>
       </ThemeProvider>
     </LazyMotion>
   );
