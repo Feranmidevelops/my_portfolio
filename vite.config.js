@@ -9,6 +9,10 @@ export default defineConfig({
   // migration off Create React App. VITE_* is also accepted going forward.
   envPrefix: ["VITE_", "REACT_APP_"],
 
+  // The year the site was built. The prerendered footer shows it, so the
+  // first client render has to start from the same value.
+  define: { __BUILD_YEAR__: JSON.stringify(new Date().getFullYear()) },
+
   build: {
     // Netlify publishes `build/` (see netlify.toml) — keep that contract
     // instead of Vite's default `dist/`.
