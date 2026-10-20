@@ -48,9 +48,17 @@ export const Navbar = () => {
         }
       }
     };
-    window.addEventListener("scroll", onScroll);
+    // Scroll events can fire many times a frame; measure at most once per frame.
+    let frame = 0;
+    const onScrollFrame = () => {
+      if (!frame) frame = requestAnimationFrame(() => { frame = 0; onScroll(); });
+    };
+    window.addEventListener("scroll", onScrollFrame, { passive: true });
     onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScrollFrame);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   const go = (e, id) => {
