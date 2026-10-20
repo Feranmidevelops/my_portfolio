@@ -64,12 +64,16 @@ export const Hero = () => {
               {profile.availability}
             </span>
 
-            <button
-              onClick={downloadResume}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
-            >
-              <FiDownload size={15} /> Résumé
-            </button>
+            {/* Only when a résumé is set in content.js, so there's never a
+                button that downloads a missing file. */}
+            {intro.resume && (
+              <button
+                onClick={downloadResume}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
+              >
+                <FiDownload size={15} /> Résumé
+              </button>
+            )}
 
             <a
               href="#contact"
