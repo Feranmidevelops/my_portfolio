@@ -68,8 +68,8 @@ const Row = ({ project, open, onToggle }) => {
                       alt={`${project.title} desktop screenshot`}
                       loading="lazy"
                       decoding="async"
-                      width={1400}
-                      height={740}
+                      width={project.imageSize[0]}
+                      height={project.imageSize[1]}
                       className="w-full h-auto block"
                       onError={(e) => { const w = e.target.closest("[data-proj-img]"); if (w) w.style.display = "none"; }}
                     />
