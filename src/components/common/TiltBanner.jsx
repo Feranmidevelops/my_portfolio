@@ -113,12 +113,9 @@ export const TiltBanner = ({ src, alt, name = "FO" }) => {
   }
 
   return (
-    <div style={{ perspective: 900 }}>
+    <div className="enter-up" style={{ perspective: 900 }}>
       <m.div
         ref={boxRef}
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
         onPointerMove={handlePointerMove}
         onPointerEnter={() => setHovering(true)}
         onPointerLeave={() => setHovering(false)}

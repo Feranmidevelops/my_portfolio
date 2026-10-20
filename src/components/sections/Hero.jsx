@@ -22,11 +22,9 @@ export const Hero = () => {
       <TiltBanner src={profile.banner} alt={`${profile.name} banner`} name="FO" />
 
       {/* Profile row */}
-      <m.div
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, delay: 0.1 }}
-        className="mt-6 flex flex-col sm:flex-row items-center sm:items-start gap-6"
+      <div
+        className="enter-up mt-6 flex flex-col sm:flex-row items-center sm:items-start gap-6"
+        style={{ "--enter-from": "14px", animationDuration: "0.55s", animationDelay: "0.1s" }}
       >
         {/* Avatar */}
         <div
@@ -50,7 +48,9 @@ export const Hero = () => {
 
         {/* Identity */}
         <div className="text-center sm:text-left flex-1 pt-1">
-          <AnimatePresence mode="wait">
+          {/* initial={false}: these only animate when the role changes, so the
+              first render (and the prerendered HTML) shows them straight away. */}
+          <AnimatePresence mode="wait" initial={false}>
             <m.p
               key={role + "-eyebrow"}
               initial={{ opacity: 0 }}
@@ -67,7 +67,7 @@ export const Hero = () => {
             {profile.name}
           </h1>
 
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <m.p
               key={role + "-tag"}
               initial={{ opacity: 0, y: 6 }}
@@ -106,7 +106,7 @@ export const Hero = () => {
             </a>
           </div>
         </div>
-      </m.div>
+      </div>
     </header>
   );
 };

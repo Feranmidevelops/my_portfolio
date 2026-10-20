@@ -69,12 +69,7 @@ export const Navbar = () => {
   };
 
   return (
-    <m.nav
-      initial={{ y: -70 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 inset-x-0 z-50"
-    >
+    <nav className="enter-nav fixed top-0 inset-x-0 z-50">
       <div className="max-w-3xl mx-auto px-4 pt-4">
         <div
           className={`flex items-center justify-between gap-3 rounded-full pl-4 pr-2 py-2 transition-all ${
@@ -173,6 +168,6 @@ export const Navbar = () => {
           )}
         </AnimatePresence>
       </div>
-    </m.nav>
+    </nav>
   );
 };
