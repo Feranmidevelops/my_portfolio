@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { ThemeProvider } from "./context/ThemeContext";
 import { RoleProvider } from "./context/RoleContext";
@@ -16,13 +16,27 @@ import "./styles/globals.css";
 import "./App.css";
 
 // The stack marquee draws about 30 brand logos four times over and sits far
-// down the page, so it comes in its own chunk, fetched right after the first
-// render. The placeholder keeps its id and its height (336px at every width)
-// so the nav link and the layout don't move when it arrives.
+// down the page, so it comes in its own chunk. The placeholder keeps its id
+// and its height (336px at every width) so the nav link and the layout don't
+// move when it arrives.
 const Skills = lazy(() =>
   import("./components/sections/Skills").then((mod) => ({ default: mod.Skills }))
 );
 const skillsPlaceholder = <section id="skills" className="scroll-mt-24 py-10" style={{ minHeight: 336 }} />;
+
+// The server and the first client render both give the placeholder, which
+// keeps about 150 kB of SVG out of the prerendered HTML and lets hydration
+// match. The chunk is requested once the page has mounted.
+const StackSection = () => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return skillsPlaceholder;
+  return (
+    <Suspense fallback={skillsPlaceholder}>
+      <Skills />
+    </Suspense>
+  );
+};
 
 // domAnimation is the animation subset the site uses, without drag or layout
 // animations: about 13 kB gzipped less JS. strict makes any leftover
@@ -40,9 +54,7 @@ function App() {
               <Projects />
               <Experience />
               <Credentials />
-              <Suspense fallback={skillsPlaceholder}>
-                <Skills />
-              </Suspense>
+              <StackSection />
               <Connect />
               <Contact />
             </main>
