@@ -33,6 +33,3 @@
 # Resumes get updated, so only an hour.
 /Feranmi_Oyetunde_Resume_SoftwareDeveloper.pdf
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
-
-/Feranmi_Oyetunde_Resume_ITEngineer.pdf
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
