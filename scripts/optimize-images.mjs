@@ -16,6 +16,8 @@ const kb = (n) => `${Math.round(n / 1024)} KB`;
 // [source, output, targetWidth]
 const toWebp = [
   ["image-source/feranmi-banner.png", "public/feranmi-banner.webp", 1600],
+  // The avatar shows at 160px at most; the JPEG below stays for the icons.
+  ["image-source/feranmi-headshot.jpeg", "public/feranmi.webp", 320],
   ["image-source/drevad.png", "public/projects/drevad.webp", 1400],
   ["image-source/spinmedical.png", "public/projects/spinmedical.webp", 1400],
   ["image-source/tickety.png", "public/projects/tickety.webp", 1400],
