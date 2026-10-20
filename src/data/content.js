@@ -59,39 +59,6 @@ export const roleContent = {
       { value: "50+", label: "Screens built from Figma", icon: FiGrid },
     ],
   },
-
-  it: {
-    badge: "IT Systems Engineer",
-    roleLabel: "IT Systems Engineer",
-    stack: "Microsoft 365 · SharePoint · Power Automate · Networking · Security",
-    tagline: "I keep Microsoft 365 running for a 60 person office.",
-    taglineAccent: "Then I automate the parts nobody should be doing by hand.",
-    intro:
-      "Day to day that means accounts, access, laptops, network points, backups, and the steady work of stopping small problems from becoming outages. When the tooling runs out, I write my own.",
-    resume: "/Feranmi_Oyetunde_Resume_ITEngineer.pdf",
-    summary:
-      "I run the Microsoft 365 environment for more than 60 staff, covering Teams, SharePoint, OneDrive, Exchange, and who is allowed to see what. Alongside that I look after the network, hardware, and backups, and I spend a fair amount of time making sure people know what a phishing email looks like.",
-    about2:
-      "The part that sets me apart is that I can also build. Where Microsoft 365 stops, I write the tool that fills the gap, from the financial calculators the team used to do by hand to data pipelines that handle over 300,000 records. Most IT problems I meet are really process problems, and a short workflow usually beats another spreadsheet.",
-    focus: [
-      { icon: FiCloud, title: "Microsoft 365", text: "Teams, SharePoint, OneDrive, and Exchange for 60+ staff, including who gets access to what and when it is taken away." },
-      { icon: FiActivity, title: "Automation", text: "Power Automate and SharePoint flows that replaced tracking renewals and bookings in spreadsheets." },
-      { icon: FiServer, title: "Infrastructure", text: "Network setup, hardware procurement, backups, and keeping the intranet on its feet." },
-      { icon: FiTool, title: "Building tools", text: "When Microsoft 365 cannot do the job, I can write the thing that can. Not many IT people can." },
-    ],
-    skills: [
-      { group: "Microsoft 365", items: ["SharePoint", "Power Automate", "Teams", "OneDrive", "Exchange", "User Provisioning"] },
-      { group: "Infrastructure and Security", items: ["Network Configuration", "Hardware Procurement", "Security Awareness", "Data Backups", "First-Line Support"] },
-      { group: "Web Management", items: ["WordPress", "Website Administration", "Digital Comms Platforms"] },
-      { group: "Automation and Scripting", items: ["Python", "Selenium", "Web Scraping", "Nodemailer", "Workflow Automation"] },
-      { group: "Software Development", items: ["React.js", "TypeScript", "Node.js", "Express.js", "REST APIs", "Tailwind CSS"] },
-    ],
-    stats: [
-      { value: "60+", label: "Staff supported", icon: FiCloud },
-      { value: "300K+", label: "Records automated", icon: FiZap },
-      { value: "2", label: "Organisations", icon: FiServer },
-    ],
-  },
 };
 
 /* ---- Experience (role-aware titles/bullets, shared timeline) ------------- */
@@ -111,16 +78,6 @@ export const experience = [
       ],
       tags: ["Next.js", "Supabase", "PostgreSQL", "Dynamics 365", "React"],
     },
-    it: {
-      title: "IT Systems Administrator and Software Engineer",
-      points: [
-        "Run Microsoft 365 for 60+ staff: Teams, OneDrive, SharePoint, Exchange, and access provisioning.",
-        "Replaced manual inventory tracking with a Power Automate flow that emails renewal alerts before things expire.",
-        "Handle procurement of smartboards, printers, and laptops, and set up network access for offices and conference rooms.",
-        "First line of support for hardware, software, and network faults. Run security awareness sessions and write the monthly IT report for management.",
-      ],
-      tags: ["Microsoft 365", "Power Automate", "SharePoint", "Networking"],
-    },
   },
   {
     company: "Atlantic City Savings and Credit Cooperative Society Limited",
@@ -137,16 +94,6 @@ export const experience = [
       ],
       tags: ["Python", "FastAPI", "PostgreSQL", "Azure", "React"],
     },
-    it: {
-      title: "Web Systems Administrator and SME Support",
-      points: [
-        "Run and maintain the company WordPress site and its digital channels.",
-        "Built a multi-role admin portal with role-based access control on top of the existing backend.",
-        "Automated the financial calculations the team used to work out by hand.",
-        "Built real-time dashboards so management can see transactions without asking anyone for a report.",
-      ],
-      tags: ["WordPress", "RBAC", "Analytics", "Web Management"],
-    },
   },
   {
     company: "Drevad Ltd. (UK), remote",
@@ -161,15 +108,6 @@ export const experience = [
         "Added CSV bulk import with per row validation, Helmet, rate limiting and Sentry, plus Vitest and Supertest suites around payments, coupons and auth.",
       ],
       tags: ["React", "Node.js", "Express", "Paystack", "PostgreSQL", "Vitest"],
-    },
-    it: {
-      title: "Software Engineering Intern",
-      points: [
-        "Built a full-stack e-commerce platform end to end: catalog, cart, checkout, order management, and an admin dashboard, using React with Node and Express over Postgres.",
-        "Added Paystack payments with an idempotent settlement flow, and secure sign-in using short-lived JWTs, rotating refresh cookies, and CSRF protection.",
-        "Built role-based access control, a validated CSV bulk import, and a test suite around the payment logic.",
-      ],
-      tags: ["React", "Node/Express", "Paystack", "JWT Auth", "PostgreSQL"],
     },
   },
 ];
