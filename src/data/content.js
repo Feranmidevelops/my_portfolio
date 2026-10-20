@@ -73,7 +73,7 @@ export const experience = [
   },
 ];
 
-/* ---- Featured projects (shared across roles) ----------------------------- */
+/* ---- Featured projects ---------------------------------------------------- */
 export const projects = [
   {
     id: "spinmedical",
