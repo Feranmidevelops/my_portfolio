@@ -29,3 +29,7 @@
 
 /og-image.jpg
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# The résumé gets updated, so only an hour.
+/Feranmi_Oyetunde_SWE.pdf
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
