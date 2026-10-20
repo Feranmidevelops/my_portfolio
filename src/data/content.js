@@ -243,14 +243,12 @@ export const projects = [
     category: "Real Time · Full Stack",
     year: "2026",
     description:
-      "A small IT support desk that updates live. Staff raise tickets, agents pick them up, and anyone watching a ticket sees the status change the moment it happens. Sign-up is invite only, so nobody wanders in.",
+      "A real time IT support desk. The ticket lifecycle is enforced by a unit tested domain state machine on the server, so invalid transitions are rejected whatever the client sends. Invite only sign up, three roles, full event history.",
     highlights: [
-      "The ticket lifecycle is enforced on the server, so an invalid status jump is rejected even if the UI allows it",
-      "Two SignalR channels push queue and ticket updates over WebSockets",
-      "Three roles, requester, agent, and admin, each seeing only what they should",
-      "Every assignment and status change is written to a timeline you can read back",
+      "Two SignalR hubs push new tickets to agents and status changes to anyone viewing, with the JWT verified on the WebSocket handshake.",
+      "The API ships as a Docker container on Render.",
     ],
-    tech: [".NET 10", "ASP.NET Core", "C#", "SignalR", "EF Core", "PostgreSQL", "React", "TypeScript"],
+    tech: ["ASP.NET Core (.NET 10)", "SignalR", "EF Core", "PostgreSQL", "React", "TypeScript", "xUnit", "Docker"],
     accent: "indigo",
     image: "/projects/tickety.webp",
     imageSize: [1400, 726],
