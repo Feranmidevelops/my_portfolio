@@ -156,7 +156,7 @@ export const projects = [
     image: "/projects/mr-feranmi.webp",
     imageSize: [1400, 875],
     mobileImage: "/projects/mr-feranmi-mobile.webp",
-    liveUrl: "",
+    liveUrl: "https://mr-feranmi.vercel.app/",
     githubUrl: "",
     featured: true,
   },
