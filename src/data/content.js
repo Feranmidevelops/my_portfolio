@@ -253,7 +253,7 @@ export const projects = [
     image: "/projects/tickety.webp",
     imageSize: [1400, 726],
     mobileImage: "/projects/tickety-mobile.webp",
-    liveUrl: "https://tickety-navy.vercel.app/",
+    liveUrl: "",
     githubUrl: "https://github.com/Feranmidevelops/Tickety",
     featured: true,
   },
