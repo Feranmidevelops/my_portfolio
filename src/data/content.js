@@ -202,15 +202,11 @@ export const projects = [
     year: "2026",
     status: "In Development",
     description:
-      "A virtual wardrobe that runs entirely in the browser. Photograph a shirt or trousers laid flat, and it cuts the garment out of the background and dresses a 3D mannequin you can turn all the way round. Clothes and outfits are saved on the device, so there is no account, no server and no paid AI behind it.",
+      "A 3D virtual wardrobe in the browser. It turns a photo of your own shirt or trousers into a garment on a 3D mannequin, with no account, backend or paid AI. A web worker cuts the garment from its background, and FFT autocorrelation finds the repeat in checks and plaids so the back and sleeves tile seamlessly.",
     highlights: [
-      "The mannequin and every garment are generated in code from the same body cross sections, so clothes refit when you switch between small, medium and large",
-      "A web worker separates the garment from its background, and a review step shows the cut out before anything is added",
-      "The photo is projected onto the front while the back and sleeves are tiled from a fabric sample, so it never invents a view the photo cannot show",
-      "Clothes, photos and outfits are kept in IndexedDB, and deleting a piece marks it missing in any saved outfit in the same transaction",
-      "Over 320 Vitest tests, plus Playwright runs of the full journey in a real browser: upload, dress, save, reload and wear it again",
+      "Took it from first commit to a working MVP in four days: 232 commits across 34 pull requests, 346 unit tests, and a Playwright journey that reads the rendered WebGL pixels and confirms no photo leaves the device.",
     ],
-    tech: ["React", "TypeScript", "Three.js", "React Three Fiber", "Zustand", "Dexie", "Tailwind v4", "Vitest", "Playwright"],
+    tech: ["React 19", "TypeScript", "Three.js (React Three Fiber)", "Web Workers", "IndexedDB (Dexie)", "Zustand", "Vitest", "Playwright"],
     accent: "gold",
     image: "/projects/mydrobe.webp",
     imageSize: [1400, 875],
