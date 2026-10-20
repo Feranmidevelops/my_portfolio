@@ -21,9 +21,8 @@ export const intro = {
   roleLabel: "Full Stack Software Engineer",
   tagline: "I work across the whole request, browser to database.",
   taglineAccent: "Most of what I build moves money or decides who sees what, so I put the rules first.",
-  // Path to the résumé PDF in public/, e.g. "/Feranmi_Oyetunde_Resume.pdf".
-  // Empty for now: the Résumé button stays hidden until one is added.
-  resume: "",
+  // The résumé PDF in public/. The Résumé button hides itself if this is empty.
+  resume: "/Feranmi_Oyetunde_SWE.pdf",
   summary:
     "I am a full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, deployed on Azure, Vercel and Render.",
   about2:
