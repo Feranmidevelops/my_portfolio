@@ -76,17 +76,21 @@ export const experience = [
     ],
   },
   {
-    company: "Drevad Ltd. (UK), remote",
+    company: "Drevad Ltd. (UK)",
+    location: "Remote",
     period: "Jan 2025 to Mar 2025",
-    employment: "Internship",
     title: "Software Engineering Intern",
-    points: [
-      "Built an online store end to end on my own: catalog, cart, coupons, reviews, wishlist, checkout, order management and an admin dashboard. React and Vite on the front, Node.js and Express over PostgreSQL behind it.",
-      "Integrated Paystack with a settlement flow that confirms each payment through both the webhook and the client, checks the amount on the server, and ignores repeats, so no customer is charged or fulfilled twice.",
-      "Replaced long lived tokens with short JWTs, rotating httpOnly refresh cookies and CSRF protection, so logging out really ends the session. Super, sales and finance admins each get their own permissions.",
-      "Added CSV bulk import with per row validation, Helmet, rate limiting and Sentry, plus Vitest and Supertest suites around payments, coupons and auth.",
+    work: [
+      {
+        name: "Online store",
+        tech: ["React", "Vite", "Node.js", "Express", "PostgreSQL", "Paystack"],
+        points: [
+          "Built the store end to end on my own: catalog, cart, coupons, reviews, wishlist, checkout, order management and an admin dashboard with separate super, sales and finance permissions.",
+          "Integrated Paystack with a settlement flow that confirms each payment through both the webhook and the client, checks the amount on the server and ignores repeats, so no customer is charged or fulfilled twice.",
+          "Replaced long lived tokens with short JWTs, rotating httpOnly refresh cookies and CSRF protection, so logging out really ends the session. Added CSV bulk import with per row validation, Helmet, rate limiting, Sentry, and Vitest and Supertest suites around payments, coupons and auth.",
+        ],
+      },
     ],
-    tags: ["React", "Node.js", "Express", "Paystack", "PostgreSQL", "Vitest"],
   },
 ];
 
