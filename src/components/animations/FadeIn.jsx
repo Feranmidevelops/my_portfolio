@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const directions = {
   up: { y: 40 },
@@ -11,7 +11,7 @@ const directions = {
 // Fades in once, the first time 15% of it scrolls into view. framer-motion
 // owns the IntersectionObserver and lets it go after the first reveal.
 export const FadeIn = ({ children, delay = 0, direction = 'up', className = '' }) => (
-  <motion.div
+  <m.div
     className={className}
     initial={{ opacity: 0, ...directions[direction] }}
     whileInView={{ opacity: 1, y: 0, x: 0 }}
@@ -19,5 +19,5 @@ export const FadeIn = ({ children, delay = 0, direction = 'up', className = '' }
     transition={{ duration: 0.6, delay, ease: [0.25, 0.4, 0.25, 1] }}
   >
     {children}
-  </motion.div>
+  </m.div>
 );

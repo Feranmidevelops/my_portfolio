@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { FiDownload, FiArrowUpRight } from "react-icons/fi";
 import { useRole } from "../../context/RoleContext";
 import { TiltBanner } from "../common/TiltBanner";
@@ -22,7 +22,7 @@ export const Hero = () => {
       <TiltBanner src={profile.banner} alt={`${profile.name} banner`} name="FO" />
 
       {/* Profile row */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, delay: 0.1 }}
@@ -51,7 +51,7 @@ export const Hero = () => {
         {/* Identity */}
         <div className="text-center sm:text-left flex-1 pt-1">
           <AnimatePresence mode="wait">
-            <motion.p
+            <m.p
               key={role + "-eyebrow"}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -60,7 +60,7 @@ export const Hero = () => {
               className="eyebrow"
             >
               {c.roleLabel}
-            </motion.p>
+            </m.p>
           </AnimatePresence>
 
           <h1 className="text-3xl md:text-[2.75rem] font-bold text-[var(--text-primary)] mt-1.5">
@@ -68,7 +68,7 @@ export const Hero = () => {
           </h1>
 
           <AnimatePresence mode="wait">
-            <motion.p
+            <m.p
               key={role + "-tag"}
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export const Hero = () => {
               className="mt-2 text-lg text-[var(--text-secondary)] max-w-xl"
             >
               {c.tagline} {c.taglineAccent}
-            </motion.p>
+            </m.p>
           </AnimatePresence>
 
           {/* Status + actions */}
@@ -106,7 +106,7 @@ export const Hero = () => {
             </a>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </header>
   );
 };

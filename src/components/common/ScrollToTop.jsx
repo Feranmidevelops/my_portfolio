@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { FiArrowUp } from "react-icons/fi";
 
 export const ScrollToTop = () => {
@@ -14,7 +14,7 @@ export const ScrollToTop = () => {
   return (
     <AnimatePresence>
       {visible && (
-        <motion.button
+        <m.button
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.6 }}
@@ -24,7 +24,7 @@ export const ScrollToTop = () => {
           style={{ background: "var(--contrast-panel)", color: "var(--contrast-text)", borderColor: "var(--border)" }}
         >
           <FiArrowUp size={20} />
-        </motion.button>
+        </m.button>
       )}
     </AnimatePresence>
   );

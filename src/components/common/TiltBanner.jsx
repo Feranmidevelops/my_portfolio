@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
+import { m, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import { FiSmartphone } from "react-icons/fi";
 import { useTilt } from "../../hooks/useTilt";
 
@@ -28,7 +28,7 @@ const GlowLayer = ({ px, py, config, visible }) => {
   const sx = useSpring(px, config.spring);
   const sy = useSpring(py, config.spring);
   return (
-    <motion.div
+    <m.div
       aria-hidden="true"
       className="absolute pointer-events-none rounded-full"
       style={{
@@ -112,7 +112,7 @@ export const TiltBanner = ({ src, alt, name = "FO" }) => {
 
   return (
     <div style={{ perspective: 900 }}>
-      <motion.div
+      <m.div
         ref={boxRef}
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -134,7 +134,7 @@ export const TiltBanner = ({ src, alt, name = "FO" }) => {
         ) : (
           <>
             {/* ---- the banner artwork ---- */}
-            <motion.img
+            <m.img
               src={src}
               alt={alt}
               onError={() => setFailed(true)}
@@ -148,7 +148,7 @@ export const TiltBanner = ({ src, alt, name = "FO" }) => {
             />
 
             {/* ---- specular sheen sweeping across, like light on a surface ---- */}
-            <motion.div
+            <m.div
               aria-hidden="true"
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -183,7 +183,7 @@ export const TiltBanner = ({ src, alt, name = "FO" }) => {
             <FiSmartphone size={11} /> Enable tilt
           </button>
         )}
-      </motion.div>
+      </m.div>
     </div>
   );
 };

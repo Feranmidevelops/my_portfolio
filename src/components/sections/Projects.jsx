@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { FiChevronDown, FiExternalLink, FiGithub, FiLock, FiSmartphone } from "react-icons/fi";
 import { SectionHeading } from "./About";
 import { FadeIn } from "../animations/FadeIn";
@@ -52,7 +52,7 @@ const Row = ({ project, open, onToggle }) => {
 
       <AnimatePresence initial={false}>
         {open && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -140,7 +140,7 @@ const Row = ({ project, open, onToggle }) => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

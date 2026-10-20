@@ -1,5 +1,5 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { FadeIn } from "../animations/FadeIn";
 import { useRole } from "../../context/RoleContext";
 import { roleContent } from "../../data/content";
@@ -33,7 +33,7 @@ export const About = () => {
         <SectionHeading title="About" />
         <Panel>
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key={role}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export const About = () => {
             >
               <p>{c.summary}</p>
               <p>{c.about2}</p>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </Panel>
       </FadeIn>

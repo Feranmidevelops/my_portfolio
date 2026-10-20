@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect, useRef, useContext } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
 import { ThemeContext } from "../../context/ThemeContext";
 import { RoleToggle } from "./RoleToggle";
@@ -61,7 +61,7 @@ export const Navbar = () => {
   };
 
   return (
-    <motion.nav
+    <m.nav
       initial={{ y: -70 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -132,7 +132,7 @@ export const Navbar = () => {
         {/* Mobile menu */}
         <AnimatePresence>
           {mobileOpen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
@@ -158,10 +158,10 @@ export const Navbar = () => {
                   <RoleToggle />
                 </li>
               </ul>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>
-    </motion.nav>
+    </m.nav>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { FiChevronDown, FiCode } from "react-icons/fi";
 import { SectionHeading } from "./About";
 import { FadeIn } from "../animations/FadeIn";
@@ -33,7 +33,7 @@ const Item = ({ exp, role, open, onToggle }) => {
           <FiCode className="shrink-0 text-[var(--text-tertiary)]" size={16} />
           <span className="flex-1 min-w-0">
             <AnimatePresence mode="wait">
-              <motion.span
+              <m.span
                 key={role + r.title}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -42,7 +42,7 @@ const Item = ({ exp, role, open, onToggle }) => {
                 className="block font-medium text-[var(--text-primary)]"
               >
                 {r.title}
-              </motion.span>
+              </m.span>
             </AnimatePresence>
             <span className="block text-xs text-[var(--text-tertiary)] mt-0.5">{exp.period}</span>
           </span>
@@ -52,7 +52,7 @@ const Item = ({ exp, role, open, onToggle }) => {
 
         <AnimatePresence initial={false}>
           {open && (
-            <motion.div
+            <m.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -61,7 +61,7 @@ const Item = ({ exp, role, open, onToggle }) => {
             >
               <div className="pt-3" style={{ paddingLeft: "1.75rem" }}>
                 <AnimatePresence mode="wait">
-                  <motion.ul
+                  <m.ul
                     key={role + exp.company}
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ const Item = ({ exp, role, open, onToggle }) => {
                         {p}
                       </li>
                     ))}
-                  </motion.ul>
+                  </m.ul>
                 </AnimatePresence>
                 <div className="flex flex-wrap gap-1.5 mt-3.5">
                   {r.tags.map((t) => (
@@ -86,7 +86,7 @@ const Item = ({ exp, role, open, onToggle }) => {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>

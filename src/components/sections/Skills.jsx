@@ -1,5 +1,5 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import {
   SiReact, SiTypescript, SiJavascript, SiNextdotjs, SiNodedotjs, SiExpress,
   SiTailwindcss, SiVite, SiPostgresql, SiMongodb, SiSupabase, SiPython,
@@ -106,7 +106,7 @@ export const Skills = () => {
       <FadeIn>
         <SectionHeading title="Stack" description="Tools I reach for, day to day." />
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={role}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -116,7 +116,7 @@ export const Skills = () => {
           >
             <Row items={[...rowA, ...rowB]} direction="left" />
             <Row items={[...rowB, ...rowA]} direction="right" />
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </FadeIn>
     </section>
