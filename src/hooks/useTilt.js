@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useMotionValue } from "framer-motion";
 
 /**
@@ -13,6 +13,10 @@ import { useMotionValue } from "framer-motion";
  * iOS 13+ gates `deviceorientation` behind a permission prompt that MUST be
  * requested from a real user gesture, so `needsPermission` is exposed and the
  * UI shows a tap target in that case.
+ *
+ * Pass `active: false` while the banner is off screen: input is ignored, so
+ * the springs reading x and y settle and stop instead of chasing the
+ * gyroscope (about 60 events a second) or the pointer all the way down the page.
  */
 
 const MAX_TILT_DEG = 22; // tilt beyond this is clamped to the extremes
@@ -22,9 +26,11 @@ const prefersReducedMotion = () =>
   typeof window !== "undefined" &&
   window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-export const useTilt = () => {
+export const useTilt = ({ active = true } = {}) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const activeRef = useRef(active);
+  activeRef.current = active;
 
   const [needsPermission, setNeedsPermission] = useState(false);
   const [enabled, setEnabled] = useState(false);
@@ -41,6 +47,7 @@ export const useTilt = () => {
     let origin = null;
 
     const onOrient = (e) => {
+      if (!activeRef.current) return;
       if (e.gamma == null && e.beta == null) return;
       if (!origin) origin = { beta: e.beta ?? 0, gamma: e.gamma ?? 0 };
 
@@ -89,6 +96,7 @@ export const useTilt = () => {
     if (window.matchMedia?.("(pointer: coarse)").matches) return;
 
     const onMove = (e) => {
+      if (!activeRef.current) return;
       x.set(clamp((e.clientX / window.innerWidth - 0.5) * 2, -1, 1));
       y.set(clamp((e.clientY / window.innerHeight - 0.5) * 2, -1, 1));
     };

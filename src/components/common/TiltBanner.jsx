@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { m, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
+import { m, useInView, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import { FiSmartphone } from "react-icons/fi";
 import { useTilt } from "../../hooks/useTilt";
 
@@ -53,7 +53,9 @@ export const TiltBanner = ({ src, alt, name = "FO" }) => {
   const [hovering, setHovering] = useState(false);
   const boxRef = useRef(null);
   const reduceMotion = useReducedMotion();
-  const { x, y, needsPermission, requestPermission } = useTilt();
+  // Only follow the gyroscope / pointer while the banner is on screen.
+  const inView = useInView(boxRef);
+  const { x, y, needsPermission, requestPermission } = useTilt({ active: inView });
 
   // Pointer position local to the banner, in px.
   const localX = useMotionValue(-500);
