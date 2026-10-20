@@ -41,15 +41,18 @@ const toWebp = [
   ["image-source/hocks.webp", "public/projects/hocks-720.webp", 720],
   ["image-source/jada.webp", "public/projects/jada-720.webp", 720],
   ["image-source/burger.webp", "public/projects/burger-720.webp", 720],
-  // Phone insets render about 80px wide, so they need almost nothing.
-  ["image-source/drevad-mobile.png", "public/projects/drevad-mobile.webp", 320],
-  ["image-source/expense-tracker-mobile.png", "public/projects/expense-tracker-mobile.webp", 320],
-  ["image-source/spinmedical-mobile.jpg", "public/projects/spinmedical-mobile.webp", 320],
-  ["image-source/tickety-mobile.jpeg", "public/projects/tickety-mobile.webp", 320],
-  ["image-source/mr-feranmi-mobile.png", "public/projects/mr-feranmi-mobile.webp", 320],
-  ["image-source/sofalia-mobile.png", "public/projects/sofalia-mobile.webp", 320],
-  ["image-source/audiophile-mobile.png", "public/projects/audiophile-mobile.webp", 320],
-  ["image-source/mydrobe-mobile.png", "public/projects/mydrobe-mobile.webp", 320],
+  // Phone insets render 64px wide on phones and 88px above that, so 180
+  // covers a 3x screen with room to spare.
+  ["image-source/drevad-mobile.png", "public/projects/drevad-mobile.webp", 180],
+  ["image-source/expense-tracker-mobile.png", "public/projects/expense-tracker-mobile.webp", 180],
+  ["image-source/spinmedical-mobile.jpg", "public/projects/spinmedical-mobile.webp", 180],
+  ["image-source/tickety-mobile.jpeg", "public/projects/tickety-mobile.webp", 180],
+  ["image-source/mr-feranmi-mobile.png", "public/projects/mr-feranmi-mobile.webp", 180],
+  ["image-source/sofalia-mobile.png", "public/projects/sofalia-mobile.webp", 180],
+  ["image-source/audiophile-mobile.png", "public/projects/audiophile-mobile.webp", 180],
+  ["image-source/mydrobe-mobile.png", "public/projects/mydrobe-mobile.webp", 180],
+  ["image-source/jada-mobile.webp", "public/projects/jada-mobile.webp", 180],
+  ["image-source/burger-mobile.webp", "public/projects/burger-mobile.webp", 180],
 ];
 
 let before = 0;
