@@ -19,8 +19,8 @@ const Chips = ({ items }) => (
 const Item = ({ exp, open, onToggle }) => {
   const current = /present/i.test(exp.period);
   // As on the résumé, a job's work is grouped by product: a name, its tech
-  // and the points. A job without groups is one unnamed group.
-  const work = exp.work || [{ points: exp.points, tech: exp.tags }];
+  // and the points.
+  const { work } = exp;
   return (
     <div className="border-b last:border-b-0" style={{ borderColor: "var(--border)" }}>
       <div className="py-4">
@@ -64,9 +64,9 @@ const Item = ({ exp, open, onToggle }) => {
               className="overflow-hidden"
             >
               <div className="pt-3 space-y-5" style={{ paddingLeft: "1.75rem" }}>
-                {work.map((w, i) => (
-                  <div key={w.name || i}>
-                    {w.name && <p className="text-sm font-semibold text-[var(--text-primary)] mb-2">{w.name}</p>}
+                {work.map((w) => (
+                  <div key={w.name}>
+                    <p className="text-sm font-semibold text-[var(--text-primary)] mb-2">{w.name}</p>
                     <ul className="space-y-2">
                       {w.points.map((p) => (
                         <li key={p} className="flex items-start gap-2 text-sm text-[var(--text-secondary)] leading-relaxed">
