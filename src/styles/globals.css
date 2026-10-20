@@ -119,6 +119,17 @@ h1, h2, h3, h4, h5, h6 {
 .enter-up { animation: enter-up 0.5s ease-out both; }
 .enter-nav { animation: enter-down 0.5s ease-out both; }
 
+/* Visitors who last picked the IT track: hidden until the app has drawn
+   it (public/theme-init.js adds the class, RoleProvider removes it). If the
+   JavaScript never runs, the page shows anyway after four seconds. */
+html.role-pending #root {
+  visibility: hidden;
+  animation: role-reveal 0s 4s forwards;
+}
+@keyframes role-reveal {
+  to { visibility: visible; }
+}
+
 /* ---- Moving stack marquee ---- */
 .marquee {
   display: flex;
