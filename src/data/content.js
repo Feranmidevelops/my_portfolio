@@ -45,7 +45,7 @@ export const roleContent = {
     ],
     skills: [
       { group: "Languages", items: ["TypeScript", "JavaScript", "Python", "C#", "SQL"] },
-      { group: "Frontend", items: ["React", "Next.js", "React Native (Expo)", "TanStack Query", "Zustand", "React Hook Form", "Zod", "Tailwind CSS"] },
+      { group: "Frontend", items: ["React", "Next.js", "React Native (Expo)", "Three.js (React Three Fiber)", "TanStack Query", "Zustand", "React Hook Form", "Zod", "Tailwind CSS"] },
       { group: "Backend", items: ["Node.js", "Express", "FastAPI", "ASP.NET Core", "SignalR", "WebSockets", "REST", "OpenAPI"] },
       { group: "Databases", items: ["PostgreSQL", "Supabase", "Prisma", "Alembic", "EF Core", "MongoDB"] },
       { group: "Auth and Security", items: ["JWT", "Refresh Token Rotation", "CSRF Protection", "OTP Sign In", "Role Based Access", "API Keys", "Rate Limiting", "Audit Logs"] },
