@@ -65,6 +65,8 @@ const Row = ({ project, open, onToggle }) => {
                   <div className="rounded-xl overflow-hidden border" style={{ borderColor: "var(--border)" }}>
                     <img
                       src={project.image}
+                      srcSet={`${project.image.replace(/\.webp$/, "-720.webp")} 720w, ${project.image} ${project.imageSize[0]}w`}
+                      sizes="(min-width: 768px) 620px, calc(100vw - 140px)"
                       alt={`${project.title} desktop screenshot`}
                       loading="lazy"
                       decoding="async"
