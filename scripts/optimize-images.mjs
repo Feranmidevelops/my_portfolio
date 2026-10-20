@@ -24,6 +24,7 @@ const toWebp = [
   ["image-source/mr-feranmi.png", "public/projects/mr-feranmi.webp", 1400],
   ["image-source/sofalia.png", "public/projects/sofalia.webp", 1400],
   ["image-source/audiophile.png", "public/projects/audiophile.webp", 1400],
+  ["image-source/mydrobe.png", "public/projects/mydrobe.webp", 1400],
   // Phone insets render about 80px wide, so they need almost nothing.
   ["image-source/drevad-mobile.png", "public/projects/drevad-mobile.webp", 320],
   ["image-source/expense-tracker-mobile.png", "public/projects/expense-tracker-mobile.webp", 320],
@@ -32,6 +33,7 @@ const toWebp = [
   ["image-source/mr-feranmi-mobile.png", "public/projects/mr-feranmi-mobile.webp", 320],
   ["image-source/sofalia-mobile.png", "public/projects/sofalia-mobile.webp", 320],
   ["image-source/audiophile-mobile.png", "public/projects/audiophile-mobile.webp", 320],
+  ["image-source/mydrobe-mobile.png", "public/projects/mydrobe-mobile.webp", 320],
 ];
 
 let before = 0;
