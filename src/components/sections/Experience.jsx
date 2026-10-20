@@ -5,8 +5,22 @@ import { SectionHeading } from "./About";
 import { FadeIn } from "../animations/FadeIn";
 import { experience } from "../../data/content";
 
+const Chips = ({ items }) => (
+  <div className="flex flex-wrap gap-1.5 mt-3">
+    {items.map((t) => (
+      <span key={t} className="text-[11px] px-2 py-1 rounded-md border text-[var(--text-secondary)]"
+            style={{ borderColor: "var(--border)", background: "var(--bg-secondary)" }}>
+        {t}
+      </span>
+    ))}
+  </div>
+);
+
 const Item = ({ exp, open, onToggle }) => {
   const current = /present/i.test(exp.period);
+  // As on the résumé, a job's work is grouped by product: a name, its tech
+  // and the points.
+  const { work } = exp;
   return (
     <div className="border-b last:border-b-0" style={{ borderColor: "var(--border)" }}>
       <div className="py-4">
@@ -31,7 +45,10 @@ const Item = ({ exp, open, onToggle }) => {
           <FiCode className="shrink-0 text-[var(--text-tertiary)]" size={16} />
           <span className="flex-1 min-w-0">
             <span className="block font-medium text-[var(--text-primary)]">{exp.title}</span>
-            <span className="block text-xs text-[var(--text-tertiary)] mt-0.5">{exp.period}</span>
+            <span className="block text-xs text-[var(--text-tertiary)] mt-0.5">
+              {exp.period}{exp.location && ` · ${exp.location}`}
+            </span>
+            {exp.team && <span className="block text-xs text-[var(--text-tertiary)] mt-0.5">{exp.team}</span>}
           </span>
           <FiChevronDown size={18} className="transition-transform text-[var(--text-tertiary)]"
                          style={{ transform: open ? "rotate(180deg)" : "none" }} />
@@ -46,23 +63,21 @@ const Item = ({ exp, open, onToggle }) => {
               transition={{ duration: 0.28 }}
               className="overflow-hidden"
             >
-              <div className="pt-3" style={{ paddingLeft: "1.75rem" }}>
-                <ul className="space-y-2">
-                    {exp.points.map((p) => (
-                      <li key={p} className="flex items-start gap-2 text-sm text-[var(--text-secondary)] leading-relaxed">
-                        <span className="mt-2 h-1 w-1 rounded-full shrink-0" style={{ background: "var(--text-tertiary)" }} />
-                        {p}
-                      </li>
-                    ))}
-                </ul>
-                <div className="flex flex-wrap gap-1.5 mt-3.5">
-                  {exp.tags.map((t) => (
-                    <span key={t} className="text-[11px] px-2 py-1 rounded-md border text-[var(--text-secondary)]"
-                          style={{ borderColor: "var(--border)", background: "var(--bg-secondary)" }}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              <div className="pt-3 space-y-5" style={{ paddingLeft: "1.75rem" }}>
+                {work.map((w) => (
+                  <div key={w.name}>
+                    <p className="text-sm font-semibold text-[var(--text-primary)] mb-2">{w.name}</p>
+                    <ul className="space-y-2">
+                      {w.points.map((p) => (
+                        <li key={p} className="flex items-start gap-2 text-sm text-[var(--text-secondary)] leading-relaxed">
+                          <span className="mt-2 h-1 w-1 rounded-full shrink-0" style={{ background: "var(--text-tertiary)" }} />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                    <Chips items={w.tech} />
+                  </div>
+                ))}
               </div>
             </m.div>
           )}

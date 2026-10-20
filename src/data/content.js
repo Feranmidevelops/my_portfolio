@@ -21,11 +21,10 @@ export const intro = {
   roleLabel: "Full Stack Software Engineer",
   tagline: "I work across the whole request, browser to database.",
   taglineAccent: "Most of what I build moves money or decides who sees what, so I put the rules first.",
-  // Path to the résumé PDF in public/, e.g. "/Feranmi_Oyetunde_Resume.pdf".
-  // Empty for now: the Résumé button stays hidden until one is added.
-  resume: "",
+  // The résumé PDF in public/. The Résumé button hides itself if this is empty.
+  resume: "/Feranmi_Oyetunde_SWE.pdf",
   summary:
-    "I am a full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, deployed on Azure, Vercel and Render.",
+    "I am a full stack engineer at TotalEnergies Staff Housing Cooperative (TEHC) and ACUOP in Lagos, building finance software: an expense system that handles about 80 claims a month, averaging 10 million naira in transaction volume, and a loan and mortgage calculator API live with six products for property developers. In 2026 I merged 205 pull requests across six repositories, including 18 production releases in three weeks.",
   about2:
     "Right now that means a loan pricing engine in FastAPI, kept honest by 1,645 tests behind a 90% coverage gate, and an expense system where the approval rules live in Postgres rather than the interface, so a check skipped in the UI still fails in the database. Before that I built an online store end to end during a remote UK internship, including the Paystack settlement flow that makes charging a customer twice impossible.",
 };
@@ -33,45 +32,65 @@ export const intro = {
 /* ---- Experience ----------------------------------------------------------- */
 export const experience = [
   {
-    company: "TotalEnergies Staff Housing Cooperative Multipurpose Society Limited (TEHC)",
-    period: "Oct 2025 to now",
-    employment: "Full-time",
-    title: "Software Engineer and IT Systems Administrator",
-    points: [
-      "Built the TEHC and ACUOP Expense Tracker (Next.js 16, Supabase) for about 50 staff. Claims route through an approval chain based on department and level, Accounts checks VAT and withholding tax, Treasury pays, and paid claims post to Dynamics 365 Business Central.",
-      "Put authorization in Postgres with row level security and RPCs that reject illegal state changes, so a check skipped in the UI still fails in the database.",
-      "Wrote the integrations as Supabase Edge Functions: vendor sync with Business Central every six hours, ZeptoMail email, and Gemini receipt OCR so staff no longer type figures by hand.",
-      "Turn Figma designs into responsive React and TypeScript screens, and test each REST endpoint in Swagger and Postman before it ships.",
-      "Automated inventory renewal alerts and boardroom booking with Power Automate and SharePoint.",
+    company: "TotalEnergies Staff Housing Cooperative (TEHC)",
+    location: "Lagos",
+    period: "Oct 2025 to Present",
+    title: "Software Engineer & IT Systems Administrator",
+    team: "Technical and Innovation team, reporting to the COO",
+    work: [
+      {
+        name: "Expense Tracker",
+        tech: ["Next.js 16", "Supabase", "Dynamics 365 Business Central"],
+        points: [
+          "Handles about 80 claims a month, averaging 10 million naira in transaction volume. About 50 staff raise claims against the chart of accounts with a live budget check; approvals route by department and level, Accounts checks VAT and withholding tax, Treasury pays, the COO approves budgets, and every paid claim posts to Dynamics 365 Business Central.",
+          "Authorization lives in Postgres through row level security and RPCs that reject illegal state changes, so a check skipped in the UI still fails in the database. Edge Functions sync vendors from Business Central over OAuth2 every six hours, send ZeptoMail email and read receipts with Gemini OCR, so staff no longer type figures by hand.",
+          "Merged 22 pull requests in under two weeks for Finance and Treasury: beneficiary banks from a Paystack mirrored list, entity splits that Accounts can correct in review, a collated payment schedule emailed to Accounts and Treasury, Excel exports and a live status tracker for staff.",
+        ],
+      },
     ],
-    tags: ["Next.js", "Supabase", "PostgreSQL", "Dynamics 365", "React"],
   },
   {
-    company: "Atlantic City Savings and Credit Cooperative Society Limited",
-    period: "Jan 2026 to now",
-    employment: "Part-time",
-    title: "Web Systems Administrator and Software Developer",
-    points: [
-      "Backend engineer on the ACUOP Loan Platform, a FastAPI and PostgreSQL service that prices loans and mortgages for ACUOP and the property developments it finances.",
-      "Built the calculation engine as pure Python with Decimal money and no database, clock or network access, so the same inputs always return the same schedule. Golden file tests hold it to the finance team's spreadsheets.",
-      "Designed the three tier tenancy (system, financier, project) with invite only onboarding, a two signature approval bound to a content hash, per project API keys, idempotent writes and an append only audit trail across 90 endpoints.",
-      "Shipped behind a CI gate of 1,645 tests with a 90% coverage floor. Merges to main run Alembic migrations, then deploy to Azure App Service.",
-      "Built the Relationship Manager dashboard and the projects, products and transactions screens in the member portal (React 19, TypeScript, TanStack Query, Zustand).",
+    company: "ACUOP",
+    location: "Lagos",
+    period: "Jan 2026 to Present",
+    title: "Web Systems Administrator & Software Developer",
+    work: [
+      {
+        name: "Loan Calculator Platform",
+        tech: ["FastAPI", "PostgreSQL", "Alembic", "Azure App Service"],
+        points: [
+          "Top contributor to the calculator API that prices ACUOP's loans and mortgages, live with ACUOP as its first financier and six loan products that property developers call with their own API keys. Merged 135 pull requests in six weeks and shipped 18 production releases in three.",
+          "Wrote the amortization engine in pure Python with Decimal money and no database, clock or network access. It handles staged drawdowns tied to construction milestones, a repayment that never drops below its peak, overpayments credited to the next milestone, moratoriums and an exact final payment, and golden file tests hold it to Finance's spreadsheets.",
+          "Designed the three tier tenancy (system, financier, project): invite only onboarding, a two signature approval bound to a content hash so an approved rate cannot quietly change, per project API keys, idempotent writes and an append only audit trail across 90 endpoints.",
+          "Kept it releasable with 1,645 tests behind a 90% coverage floor, mypy, an import linter that isolates the engine, an OpenAPI snapshot check and a generated TypeScript client that fails CI on drift. Merges to main migrate and deploy to Azure.",
+        ],
+      },
+      {
+        name: "Member Portal",
+        tech: ["React 19", "TypeScript", "TanStack Query", "Zustand"],
+        points: [
+          "Set up the codebase and built the multi step membership application (validation, joint owners, prefill for Louisville clients) that has onboarded 80 members, with BVN and NIN verified through Qore.id.",
+          "Merged 37 pull requests in all, including the member dashboard, shares and profile, the Relationship Manager module, and the admin projects, products, transactions and analytics screens.",
+        ],
+      },
     ],
-    tags: ["Python", "FastAPI", "PostgreSQL", "Azure", "React"],
   },
   {
-    company: "Drevad Ltd. (UK), remote",
+    company: "Drevad Ltd. (UK)",
+    location: "Remote",
     period: "Jan 2025 to Mar 2025",
-    employment: "Internship",
     title: "Software Engineering Intern",
-    points: [
-      "Built an online store end to end on my own: catalog, cart, coupons, reviews, wishlist, checkout, order management and an admin dashboard. React and Vite on the front, Node.js and Express over PostgreSQL behind it.",
-      "Integrated Paystack with a settlement flow that confirms each payment through both the webhook and the client, checks the amount on the server, and ignores repeats, so no customer is charged or fulfilled twice.",
-      "Replaced long lived tokens with short JWTs, rotating httpOnly refresh cookies and CSRF protection, so logging out really ends the session. Super, sales and finance admins each get their own permissions.",
-      "Added CSV bulk import with per row validation, Helmet, rate limiting and Sentry, plus Vitest and Supertest suites around payments, coupons and auth.",
+    work: [
+      {
+        name: "Online store",
+        tech: ["React", "Vite", "Node.js", "Express", "PostgreSQL", "Paystack"],
+        points: [
+          "Built the store end to end on my own: catalog, cart, coupons, reviews, wishlist, checkout, order management and an admin dashboard with separate super, sales and finance permissions.",
+          "Integrated Paystack with a settlement flow that confirms each payment through both the webhook and the client, checks the amount on the server and ignores repeats, so no customer is charged or fulfilled twice.",
+          "Replaced long lived tokens with short JWTs, rotating httpOnly refresh cookies and CSRF protection, so logging out really ends the session. Added CSV bulk import with per row validation, Helmet, rate limiting, Sentry, and Vitest and Supertest suites around payments, coupons and auth.",
+        ],
+      },
     ],
-    tags: ["React", "Node.js", "Express", "Paystack", "PostgreSQL", "Vitest"],
   },
 ];
 
@@ -83,20 +102,17 @@ export const projects = [
     category: "Full Stack · HealthTech",
     year: "2026",
     description:
-      "Medical crowdfunding for Nigeria, done differently. Instead of every patient running their own campaign and the loudest story winning, donors pay into one shared pool and verified patients join a public queue. On a set schedule the system picks one patient by weighted draw and pays their bill in full, either to them or straight to the hospital.",
+      "A medical crowdfunding platform. Donors pay into one shared pool and a weighted draw, based on urgency and time waiting, pays a verified patient's bill in full. Each draw stores its seed and candidate list, so any past result can be recomputed and audited.",
     highlights: [
-      "One shared pool and a public queue, so nobody has to out-market a stranger to get treated",
-      "Weighted draw with a full audit snapshot, and the random element can be turned down to zero",
-      "Four separate consoles for patients, helpers, verifiers, and admins",
-      "Scheduled payouts through GitHub Actions that refuse to run without the right secret",
-      "Built around Nigerian fintech and data protection rules, so the platform never holds donor money itself",
+      "Pool balance is derived from the ledger rather than a cached counter, money is stored in kobo, and five roles cover patients, helpers, donors, verifiers and admins.",
+      "Built around Nigeria's NDPA.",
     ],
-    tech: ["Next.js 16", "TypeScript", "React Server Components", "Prisma 6", "PostgreSQL (Neon)", "Auth.js v5", "Tailwind v4", "Vercel", "GitHub Actions"],
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Auth.js"],
     accent: "purple",
     image: "/projects/spinmedical.webp",
     imageSize: [1400, 694],
     mobileImage: "/projects/spinmedical-mobile.webp",
-    liveUrl: "",
+    liveUrl: "https://web-beige-eight-52.vercel.app/",
     githubUrl: "",
     featured: true,
   },
@@ -130,20 +146,17 @@ export const projects = [
     year: "2026",
     status: "Hackathon Build",
     description:
-      "A mock interviewer you talk to. Pick a track and a level, answer out loud, and it listens, asks follow up questions and speaks back. Like a real interview there is no feedback along the way. At the end you get a debrief with a score for each skill and reading chosen for your weak spots.",
+      "A voice based mock interviewer. Candidates speak their answers and hear the interviewer reply. One model runs live turns through a strict tool schema; a second scores at the end and must quote the transcript for every score.",
     highlights: [
-      "One model runs the live conversation through a strict tool schema and can probe at most twice per question",
-      "A second model scores once at the end and has to quote the transcript for every score it gives",
-      "Deepgram for speech to text and ElevenLabs for the voice, all called from the server so no key reaches the browser",
-      "The marking scheme never leaves the server, and study links come from a hand picked list rather than the model",
-      "Sessions are saved under row level security and pick up where they left off after a refresh or restart",
+      "Model and speech calls stay on the server and the marking scheme never reaches the browser.",
+      "Sessions persist under RLS and survive a refresh or restart.",
     ],
-    tech: ["Next.js 16", "TypeScript", "Supabase", "PostgreSQL", "Claude API", "Deepgram", "ElevenLabs", "Three.js"],
+    tech: ["Next.js 16", "TypeScript", "Supabase", "Claude API", "Deepgram", "ElevenLabs"],
     accent: "indigo",
     image: "/projects/mr-feranmi.webp",
     imageSize: [1400, 875],
     mobileImage: "/projects/mr-feranmi-mobile.webp",
-    liveUrl: "",
+    liveUrl: "https://mr-feranmi.vercel.app/",
     githubUrl: "",
     featured: true,
   },
@@ -153,14 +166,8 @@ export const projects = [
     category: "Client Site · Small Business",
     year: "2026",
     description:
-      "The website for a Lagos personal shopping and styling business, plus the quote, invoice and receipt builder the owner uses to bill clients. There is no framework and no build step, so it loads quickly on a phone and costs nothing to host.",
-    highlights: [
-      "The fee maths lives in one module shared by the site's estimator and the invoice builder, so the two can never quote different prices",
-      "That module is covered by tests on Node's built in test runner",
-      "Invoices download as PDFs, and bank details are entered at billing time instead of being stored in the code",
-      "CI checks that both pages still load and that no account number has been committed",
-    ],
-    tech: ["HTML", "CSS", "JavaScript", "Node Test Runner", "Netlify"],
+      "A live client site for a Lagos personal shopper. A tested fee calculator and invoice builder give clients a price before they commit. The request form takes up to five reference photos, budget and sizes, saves the enquiry, then opens WhatsApp with the details already filled in.",
+    tech: ["HTML", "CSS", "JavaScript", "Netlify Forms"],
     accent: "gold",
     image: "/projects/jada.webp",
     imageSize: [1400, 726],
@@ -175,13 +182,10 @@ export const projects = [
     category: "Real Time · Multiplayer",
     year: "2026",
     description:
-      "Two player air hockey in the browser, built to learn the netcode real multiplayer games use. The server owns the game and runs it at 60Hz. Each client predicts its own paddle, draws the opponent from buffered snapshots, and corrects itself when the server disagrees, so the game still feels instant between Lagos and a server in Frankfurt.",
+      "Real time multiplayer air hockey. An authoritative 60Hz server with a deterministic fixed timestep simulation, snapshot interpolation, client side prediction and server reconciliation, so your own paddle responds instantly at a 240ms round trip.",
     highlights: [
-      "Deterministic fixed timestep physics shared by client and server, with a test that proves both produce the same result",
-      "Client side prediction and server reconciliation, so your paddle moves the moment you do at a 240ms round trip",
-      "An interpolation buffer that sizes itself from measured jitter, cutting opponent lag from about 220ms to 155ms",
-      "Only the server can score a goal, so a save the client had not seen yet never flashes a point on and off",
-      "Pause on disconnect, reconnect mid rally, rematches, and a live overlay showing RTT, jitter and replayed ticks",
+      "A self sizing interpolation buffer cut opponent lag from Lagos to Frankfurt from about 220ms to 155ms.",
+      "Deployed to two regions and measured through a live overlay of RTT, jitter and replayed ticks.",
     ],
     tech: ["TypeScript", "Node.js", "WebSockets", "Vite", "Vitest", "Docker", "Render", "Fly.io"],
     accent: "indigo",
@@ -198,15 +202,11 @@ export const projects = [
     year: "2026",
     status: "In Development",
     description:
-      "A virtual wardrobe that runs entirely in the browser. Photograph a shirt or trousers laid flat, and it cuts the garment out of the background and dresses a 3D mannequin you can turn all the way round. Clothes and outfits are saved on the device, so there is no account, no server and no paid AI behind it.",
+      "A 3D virtual wardrobe in the browser. It turns a photo of your own shirt or trousers into a garment on a 3D mannequin, with no account, backend or paid AI. A web worker cuts the garment from its background, and FFT autocorrelation finds the repeat in checks and plaids so the back and sleeves tile seamlessly.",
     highlights: [
-      "The mannequin and every garment are generated in code from the same body cross sections, so clothes refit when you switch between small, medium and large",
-      "A web worker separates the garment from its background, and a review step shows the cut out before anything is added",
-      "The photo is projected onto the front while the back and sleeves are tiled from a fabric sample, so it never invents a view the photo cannot show",
-      "Clothes, photos and outfits are kept in IndexedDB, and deleting a piece marks it missing in any saved outfit in the same transaction",
-      "Over 320 Vitest tests, plus Playwright runs of the full journey in a real browser: upload, dress, save, reload and wear it again",
+      "Took it from first commit to a working MVP in four days: 232 commits across 34 pull requests, 346 unit tests, and a Playwright journey that reads the rendered WebGL pixels and confirms no photo leaves the device.",
     ],
-    tech: ["React", "TypeScript", "Three.js", "React Three Fiber", "Zustand", "Dexie", "Tailwind v4", "Vitest", "Playwright"],
+    tech: ["React 19", "TypeScript", "Three.js (React Three Fiber)", "Web Workers", "IndexedDB (Dexie)", "Zustand", "Vitest", "Playwright"],
     accent: "gold",
     image: "/projects/mydrobe.webp",
     imageSize: [1400, 875],
@@ -233,29 +233,8 @@ export const projects = [
     image: "/projects/drevad.webp",
     imageSize: [1400, 737],
     mobileImage: "/projects/drevad-mobile.webp",
-    liveUrl: "https://drevad.netlify.app/",
-    githubUrl: "https://github.com/Feranmidevelops/Drevad",
-    featured: true,
-  },
-  {
-    id: "acuop-loan-platform",
-    title: "ACUOP Loan Platform",
-    category: "Fintech · Backend",
-    year: "2026",
-    description:
-      "The pricing service behind ACUOP's loans and mortgages. A financier sets up lending products and grants them to the property developments it finances, and each development prices loans for its buyers through a console or its own software. Given a product's terms and a borrower's inputs, it returns the exact repayment schedule, every fee on its own line, and a fingerprint of the terms that produced it.",
-    highlights: [
-      "Calculation engine in pure Python with Decimal money and no database, clock or network access, checked against the finance team's spreadsheets",
-      "Three tiers of tenants (system, financier, project), each onboarded by invitation",
-      "Product approvals need two people and are tied to a content hash, so an approved rate cannot quietly change",
-      "Per project API keys, idempotent writes and an append only audit trail across 90 endpoints",
-      "1,645 tests with a 90% coverage floor, and every merge runs database migrations before deploying to Azure App Service",
-    ],
-    tech: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "pytest", "Docker", "GitHub Actions", "Azure App Service"],
-    accent: "purple",
     liveUrl: "",
-    githubUrl: "",
-    private: true,
+    githubUrl: "https://github.com/Feranmidevelops/Drevad",
     featured: true,
   },
   {
@@ -264,19 +243,17 @@ export const projects = [
     category: "Real Time · Full Stack",
     year: "2026",
     description:
-      "A small IT support desk that updates live. Staff raise tickets, agents pick them up, and anyone watching a ticket sees the status change the moment it happens. Sign-up is invite only, so nobody wanders in.",
+      "A real time IT support desk. The ticket lifecycle is enforced by a unit tested domain state machine on the server, so invalid transitions are rejected whatever the client sends. Invite only sign up, three roles, full event history.",
     highlights: [
-      "The ticket lifecycle is enforced on the server, so an invalid status jump is rejected even if the UI allows it",
-      "Two SignalR channels push queue and ticket updates over WebSockets",
-      "Three roles, requester, agent, and admin, each seeing only what they should",
-      "Every assignment and status change is written to a timeline you can read back",
+      "Two SignalR hubs push new tickets to agents and status changes to anyone viewing, with the JWT verified on the WebSocket handshake.",
+      "The API ships as a Docker container on Render.",
     ],
-    tech: [".NET 10", "ASP.NET Core", "C#", "SignalR", "EF Core", "PostgreSQL", "React", "TypeScript"],
+    tech: ["ASP.NET Core (.NET 10)", "SignalR", "EF Core", "PostgreSQL", "React", "TypeScript", "xUnit", "Docker"],
     accent: "indigo",
     image: "/projects/tickety.webp",
     imageSize: [1400, 726],
     mobileImage: "/projects/tickety-mobile.webp",
-    liveUrl: "https://tickety-navy.vercel.app/",
+    liveUrl: "",
     githubUrl: "https://github.com/Feranmidevelops/Tickety",
     featured: true,
   },
@@ -349,24 +326,6 @@ export const projects = [
     featured: true,
   },
   {
-    id: "audience-scraper",
-    title: "Audience Intelligence Scraper",
-    category: "Automation · Data",
-    year: "2025",
-    description:
-      "A Python pipeline that collected and cleaned more than 300,000 audience profiles. It had to keep going through timeouts and layout changes without losing its place, and hand back data that was actually usable.",
-    highlights: [
-      "Over 300,000 profiles processed",
-      "Crawling with Selenium that recovers instead of falling over",
-      "Structured, cleaned output ready for analysis",
-    ],
-    tech: ["Python", "Selenium", "Web Scraping", "Automation"],
-    accent: "purple",
-    liveUrl: "",
-    githubUrl: "",
-    featured: false,
-  },
-  {
     id: "audiophile",
     title: "Audiophile Commerce",
     category: "Ecommerce",
@@ -393,11 +352,9 @@ export const education = {
 };
 
 export const certifications = [
-  { name: "CS50 Web Development with Python and JavaScript", issuer: "Harvard University" },
-  { name: "Microsoft Azure Fundamentals", issuer: "Microsoft" },
-  { name: "Cloud Security Fundamentals", issuer: "" },
-  { name: "React, The Complete Guide", issuer: "" },
+  { name: "CS50 Web Programming with Python and JavaScript", issuer: "Harvard University" },
+  { name: "Microsoft Azure Fundamentals", issuer: "" },
   { name: "Backend Development with Django", issuer: "" },
   { name: "Web Scraping with Python", issuer: "" },
-  { name: "Responsive Web Design", issuer: "" },
+  { name: "Cloud Security Fundamentals", issuer: "" },
 ];
