@@ -1,15 +1,14 @@
 import React from "react";
 import { FiDownload, FiArrowUpRight } from "react-icons/fi";
 import { TiltBanner } from "../common/TiltBanner";
-import { profile, roleContent } from "../../data/content";
+import { profile, intro } from "../../data/content";
 
 export const Hero = () => {
-  const c = roleContent.swe;
 
   const downloadResume = () => {
     const link = document.createElement("a");
-    link.href = c.resume;
-    link.download = c.resume.split("/").pop();
+    link.href = intro.resume;
+    link.download = intro.resume.split("/").pop();
     link.click();
   };
 
@@ -45,14 +44,14 @@ export const Hero = () => {
 
         {/* Identity */}
         <div className="text-center sm:text-left flex-1 pt-1">
-          <p className="eyebrow">{c.roleLabel}</p>
+          <p className="eyebrow">{intro.roleLabel}</p>
 
           <h1 className="text-3xl md:text-[2.75rem] font-bold text-[var(--text-primary)] mt-1.5">
             {profile.name}
           </h1>
 
           <p className="mt-2 text-lg text-[var(--text-secondary)] max-w-xl">
-            {c.tagline} {c.taglineAccent}
+            {intro.tagline} {intro.taglineAccent}
           </p>
 
           {/* Status + actions */}

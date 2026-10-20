@@ -1,6 +1,6 @@
 import React from "react";
 import { FadeIn } from "../animations/FadeIn";
-import { roleContent } from "../../data/content";
+import { intro } from "../../data/content";
 
 /**
  * Shared minimalist section heading (saddine-style: left-aligned, bold, quiet).
@@ -23,15 +23,14 @@ export const Panel = ({ children, className = "" }) => (
 );
 
 export const About = () => {
-  const c = roleContent.swe;
   return (
     <section id="about" className="scroll-mt-24 py-10">
       <FadeIn>
         <SectionHeading title="About" />
         <Panel>
           <div className="space-y-4 text-[var(--text-secondary)] leading-relaxed">
-            <p>{c.summary}</p>
-            <p>{c.about2}</p>
+            <p>{intro.summary}</p>
+            <p>{intro.about2}</p>
           </div>
         </Panel>
       </FadeIn>

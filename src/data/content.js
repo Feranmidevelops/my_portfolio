@@ -1,6 +1,5 @@
 /* ==========================================================================
    Central content for the portfolio.
-   Role-aware copy (Software Engineer vs IT Systems Engineer) + shared data.
    Edit here to update the whole site.
    ========================================================================== */
 
@@ -22,93 +21,85 @@ export const profile = {
   availability: "Open to new opportunities",
 };
 
-/* ---- Role-specific content ---------------------------------------------- */
-export const roleContent = {
-  swe: {
-    badge: "Full Stack Software Engineer",
-    roleLabel: "Full Stack Software Engineer",
-    stack: "React · Next.js · TypeScript · Node.js · Python · .NET · PostgreSQL",
-    tagline: "I work across the whole request, browser to database.",
-    taglineAccent: "Most of what I build moves money or decides who sees what, so I put the rules first.",
-    intro:
-      "Loan pricing, expense approvals, payments, and a real time game server. React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core behind them, PostgreSQL underneath.",
-    resume: "/Feranmi_Oyetunde_Resume_SoftwareDeveloper.pdf",
-    summary:
-      "I am a full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, deployed on Azure, Vercel and Render.",
-    about2:
-      "Right now that means a loan pricing engine in FastAPI, kept honest by 1,645 tests behind a 90% coverage gate, and an expense system where the approval rules live in Postgres rather than the interface, so a check skipped in the UI still fails in the database. Before that I built an online store end to end during a remote UK internship, including the Paystack settlement flow that makes charging a customer twice impossible.",
-    focus: [
-      { icon: FiShield, title: "Rules in the database", text: "Row level security and functions that reject illegal changes, so a check skipped in the interface still fails underneath." },
-      { icon: FiZap, title: "Tested where it counts", text: "1,645 tests behind a 90% coverage floor on the loan engine, held to the finance team's own spreadsheets by golden files." },
-      { icon: FiLayers, title: "The whole request", text: "React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath." },
-      { icon: FiCpu, title: "Real time and AI", text: "WebSockets and SignalR for live state, plus vision and voice models kept server side where the keys belong." },
-    ],
-    skills: [
-      { group: "Languages", items: ["TypeScript", "JavaScript", "Python", "C#", "SQL"] },
-      { group: "Frontend", items: ["React", "Next.js", "React Native (Expo)", "Three.js (React Three Fiber)", "TanStack Query", "Zustand", "React Hook Form", "Zod", "Tailwind CSS"] },
-      { group: "Backend", items: ["Node.js", "Express", "FastAPI", "ASP.NET Core", "SignalR", "WebSockets", "REST", "OpenAPI"] },
-      { group: "Databases", items: ["PostgreSQL", "Supabase", "Prisma", "Alembic", "EF Core", "MongoDB"] },
-      { group: "Auth and Security", items: ["JWT", "Refresh Token Rotation", "CSRF Protection", "OTP Sign In", "Role Based Access", "API Keys", "Rate Limiting", "Audit Logs"] },
-      { group: "Testing", items: ["Vitest", "Playwright", "pytest", "xUnit", "Supertest", "React Testing Library", "mypy", "Ruff"] },
-      { group: "Deployment", items: ["Docker", "GitHub Actions", "Azure App Service", "Vercel", "Render", "Netlify"] },
-      { group: "Integrations", items: ["Paystack", "Dynamics 365 Business Central", "Gemini", "OpenAI Vision", "Claude API", "Deepgram", "ElevenLabs", "Power Automate"] },
-    ],
-    stats: [
-      { value: "300K+", label: "Records processed", icon: FiZap },
-      { value: "13", label: "Products shipped", icon: FiTrendingUp },
-      { value: "50+", label: "Screens built from Figma", icon: FiGrid },
-    ],
-  },
+/* ---- Hero and About copy ---------------------------------------------- */
+export const intro = {
+  badge: "Full Stack Software Engineer",
+  roleLabel: "Full Stack Software Engineer",
+  stack: "React · Next.js · TypeScript · Node.js · Python · .NET · PostgreSQL",
+  tagline: "I work across the whole request, browser to database.",
+  taglineAccent: "Most of what I build moves money or decides who sees what, so I put the rules first.",
+  intro:
+    "Loan pricing, expense approvals, payments, and a real time game server. React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core behind them, PostgreSQL underneath.",
+  resume: "/Feranmi_Oyetunde_Resume_SoftwareDeveloper.pdf",
+  summary:
+    "I am a full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, deployed on Azure, Vercel and Render.",
+  about2:
+    "Right now that means a loan pricing engine in FastAPI, kept honest by 1,645 tests behind a 90% coverage gate, and an expense system where the approval rules live in Postgres rather than the interface, so a check skipped in the UI still fails in the database. Before that I built an online store end to end during a remote UK internship, including the Paystack settlement flow that makes charging a customer twice impossible.",
+  focus: [
+    { icon: FiShield, title: "Rules in the database", text: "Row level security and functions that reject illegal changes, so a check skipped in the interface still fails underneath." },
+    { icon: FiZap, title: "Tested where it counts", text: "1,645 tests behind a 90% coverage floor on the loan engine, held to the finance team's own spreadsheets by golden files." },
+    { icon: FiLayers, title: "The whole request", text: "React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath." },
+    { icon: FiCpu, title: "Real time and AI", text: "WebSockets and SignalR for live state, plus vision and voice models kept server side where the keys belong." },
+  ],
+  skills: [
+    { group: "Languages", items: ["TypeScript", "JavaScript", "Python", "C#", "SQL"] },
+    { group: "Frontend", items: ["React", "Next.js", "React Native (Expo)", "Three.js (React Three Fiber)", "TanStack Query", "Zustand", "React Hook Form", "Zod", "Tailwind CSS"] },
+    { group: "Backend", items: ["Node.js", "Express", "FastAPI", "ASP.NET Core", "SignalR", "WebSockets", "REST", "OpenAPI"] },
+    { group: "Databases", items: ["PostgreSQL", "Supabase", "Prisma", "Alembic", "EF Core", "MongoDB"] },
+    { group: "Auth and Security", items: ["JWT", "Refresh Token Rotation", "CSRF Protection", "OTP Sign In", "Role Based Access", "API Keys", "Rate Limiting", "Audit Logs"] },
+    { group: "Testing", items: ["Vitest", "Playwright", "pytest", "xUnit", "Supertest", "React Testing Library", "mypy", "Ruff"] },
+    { group: "Deployment", items: ["Docker", "GitHub Actions", "Azure App Service", "Vercel", "Render", "Netlify"] },
+    { group: "Integrations", items: ["Paystack", "Dynamics 365 Business Central", "Gemini", "OpenAI Vision", "Claude API", "Deepgram", "ElevenLabs", "Power Automate"] },
+  ],
+  stats: [
+    { value: "300K+", label: "Records processed", icon: FiZap },
+    { value: "13", label: "Products shipped", icon: FiTrendingUp },
+    { value: "50+", label: "Screens built from Figma", icon: FiGrid },
+  ],
 };
 
-/* ---- Experience (role-aware titles/bullets, shared timeline) ------------- */
+/* ---- Experience ----------------------------------------------------------- */
 export const experience = [
   {
     company: "TotalEnergies Staff Housing Cooperative Multipurpose Society Limited (TEHC)",
     period: "Oct 2025 to now",
     employment: "Full-time",
-    swe: {
-      title: "Software Engineer and IT Systems Administrator",
-      points: [
-        "Built the TEHC and ACUOP Expense Tracker (Next.js 16, Supabase) for about 50 staff. Claims route through an approval chain based on department and level, Accounts checks VAT and withholding tax, Treasury pays, and paid claims post to Dynamics 365 Business Central.",
-        "Put authorization in Postgres with row level security and RPCs that reject illegal state changes, so a check skipped in the UI still fails in the database.",
-        "Wrote the integrations as Supabase Edge Functions: vendor sync with Business Central every six hours, ZeptoMail email, and Gemini receipt OCR so staff no longer type figures by hand.",
-        "Turn Figma designs into responsive React and TypeScript screens, and test each REST endpoint in Swagger and Postman before it ships.",
-        "Automated inventory renewal alerts and boardroom booking with Power Automate and SharePoint.",
-      ],
-      tags: ["Next.js", "Supabase", "PostgreSQL", "Dynamics 365", "React"],
-    },
+    title: "Software Engineer and IT Systems Administrator",
+    points: [
+      "Built the TEHC and ACUOP Expense Tracker (Next.js 16, Supabase) for about 50 staff. Claims route through an approval chain based on department and level, Accounts checks VAT and withholding tax, Treasury pays, and paid claims post to Dynamics 365 Business Central.",
+      "Put authorization in Postgres with row level security and RPCs that reject illegal state changes, so a check skipped in the UI still fails in the database.",
+      "Wrote the integrations as Supabase Edge Functions: vendor sync with Business Central every six hours, ZeptoMail email, and Gemini receipt OCR so staff no longer type figures by hand.",
+      "Turn Figma designs into responsive React and TypeScript screens, and test each REST endpoint in Swagger and Postman before it ships.",
+      "Automated inventory renewal alerts and boardroom booking with Power Automate and SharePoint.",
+    ],
+    tags: ["Next.js", "Supabase", "PostgreSQL", "Dynamics 365", "React"],
   },
   {
     company: "Atlantic City Savings and Credit Cooperative Society Limited",
     period: "Jan 2026 to now",
     employment: "Part-time",
-    swe: {
-      title: "Web Systems Administrator and Software Developer",
-      points: [
-        "Backend engineer on the ACUOP Loan Platform, a FastAPI and PostgreSQL service that prices loans and mortgages for ACUOP and the property developments it finances.",
-        "Built the calculation engine as pure Python with Decimal money and no database, clock or network access, so the same inputs always return the same schedule. Golden file tests hold it to the finance team's spreadsheets.",
-        "Designed the three tier tenancy (system, financier, project) with invite only onboarding, a two signature approval bound to a content hash, per project API keys, idempotent writes and an append only audit trail across 90 endpoints.",
-        "Shipped behind a CI gate of 1,645 tests with a 90% coverage floor. Merges to main run Alembic migrations, then deploy to Azure App Service.",
-        "Built the Relationship Manager dashboard and the projects, products and transactions screens in the member portal (React 19, TypeScript, TanStack Query, Zustand).",
-      ],
-      tags: ["Python", "FastAPI", "PostgreSQL", "Azure", "React"],
-    },
+    title: "Web Systems Administrator and Software Developer",
+    points: [
+      "Backend engineer on the ACUOP Loan Platform, a FastAPI and PostgreSQL service that prices loans and mortgages for ACUOP and the property developments it finances.",
+      "Built the calculation engine as pure Python with Decimal money and no database, clock or network access, so the same inputs always return the same schedule. Golden file tests hold it to the finance team's spreadsheets.",
+      "Designed the three tier tenancy (system, financier, project) with invite only onboarding, a two signature approval bound to a content hash, per project API keys, idempotent writes and an append only audit trail across 90 endpoints.",
+      "Shipped behind a CI gate of 1,645 tests with a 90% coverage floor. Merges to main run Alembic migrations, then deploy to Azure App Service.",
+      "Built the Relationship Manager dashboard and the projects, products and transactions screens in the member portal (React 19, TypeScript, TanStack Query, Zustand).",
+    ],
+    tags: ["Python", "FastAPI", "PostgreSQL", "Azure", "React"],
   },
   {
     company: "Drevad Ltd. (UK), remote",
     period: "Jan 2025 to Mar 2025",
     employment: "Internship",
-    swe: {
-      title: "Software Engineering Intern",
-      points: [
-        "Built an online store end to end on my own: catalog, cart, coupons, reviews, wishlist, checkout, order management and an admin dashboard. React and Vite on the front, Node.js and Express over PostgreSQL behind it.",
-        "Integrated Paystack with a settlement flow that confirms each payment through both the webhook and the client, checks the amount on the server, and ignores repeats, so no customer is charged or fulfilled twice.",
-        "Replaced long lived tokens with short JWTs, rotating httpOnly refresh cookies and CSRF protection, so logging out really ends the session. Super, sales and finance admins each get their own permissions.",
-        "Added CSV bulk import with per row validation, Helmet, rate limiting and Sentry, plus Vitest and Supertest suites around payments, coupons and auth.",
-      ],
-      tags: ["React", "Node.js", "Express", "Paystack", "PostgreSQL", "Vitest"],
-    },
+    title: "Software Engineering Intern",
+    points: [
+      "Built an online store end to end on my own: catalog, cart, coupons, reviews, wishlist, checkout, order management and an admin dashboard. React and Vite on the front, Node.js and Express over PostgreSQL behind it.",
+      "Integrated Paystack with a settlement flow that confirms each payment through both the webhook and the client, checks the amount on the server, and ignores repeats, so no customer is charged or fulfilled twice.",
+      "Replaced long lived tokens with short JWTs, rotating httpOnly refresh cookies and CSRF protection, so logging out really ends the session. Super, sales and finance admins each get their own permissions.",
+      "Added CSV bulk import with per row validation, Helmet, rate limiting and Sentry, plus Vitest and Supertest suites around payments, coupons and auth.",
+    ],
+    tags: ["React", "Node.js", "Express", "Paystack", "PostgreSQL", "Vitest"],
   },
 ];
 
