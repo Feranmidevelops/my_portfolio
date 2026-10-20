@@ -10,6 +10,7 @@
     <link rel="preload" as="image" href="/feranmi.webp" type="image/webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f5f4f1" />
+    <script src="/theme-init.js"></script>
 
     <title>Feranmi Oyetunde | Software and IT Systems Engineer</title>
     <meta
@@ -42,7 +43,11 @@
     <meta name="twitter:image" content="https://feranmioyetunde.com.ng/og-image.jpg" />
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- The page is prerendered, so it reads fine without JavaScript, but the
+         scroll fade-ins start hidden and need it to appear. Show them as-is. -->
+    <noscript>
+      <style>#root [style*="opacity:0"] { opacity: 1 !important; transform: none !important; }</style>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

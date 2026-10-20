@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import React, { createContext, useContext, useState, useLayoutEffect, useCallback } from "react";
 
 /**
  * Feranmi targets two career tracks:
@@ -14,12 +14,25 @@ export const ROLES = {
   it: { key: "it", label: "IT Systems Engineer", short: "IT / M365" },
 };
 
-export const RoleProvider = ({ children }) => {
-  const [role, setRole] = useState("swe");
+/** The track this visitor picked last time, or "swe" (also on the server). */
+export const readSavedRole = () => {
+  try {
+    return typeof window !== "undefined" && localStorage.getItem("role") === "it" ? "it" : "swe";
+  } catch {
+    return "swe";
+  }
+};
 
-  useEffect(() => {
-    const saved = localStorage.getItem("role");
-    if (saved === "swe" || saved === "it") setRole(saved);
+export const RoleProvider = ({ children }) => {
+  // The prerendered HTML is the Software track, and main.jsx only hydrates it
+  // for visitors whose saved track is "swe". Anyone who picked IT gets a fresh
+  // client render, so the saved track can be used from the first render.
+  const [role, setRole] = useState(readSavedRole);
+
+  // public/theme-init.js hides the page for IT visitors until this point, so
+  // they never see the Software track first. Before paint, hence layout effect.
+  useLayoutEffect(() => {
+    document.documentElement.classList.remove("role-pending");
   }, []);
 
   const changeRole = useCallback((next) => {
