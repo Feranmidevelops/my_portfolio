@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useLayoutEffect, useRef, useContext } from "react";
+import { m, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
 import { ThemeContext } from "../../context/ThemeContext";
 import { RoleToggle } from "./RoleToggle";
@@ -17,6 +17,22 @@ export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState("about");
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const linksRef = useRef(null);
+  const [pill, setPill] = useState(null);
+
+  // The highlight behind the active link is one span that slides between
+  // links, measured from the DOM. Re-measured on resize and once the fonts
+  // have loaded, since both change the link widths.
+  useLayoutEffect(() => {
+    const place = () => {
+      const link = linksRef.current?.querySelector(`[data-nav="${active}"]`);
+      if (link) setPill({ left: link.offsetLeft, width: link.offsetWidth });
+    };
+    place();
+    window.addEventListener("resize", place);
+    document.fonts?.ready.then(place);
+    return () => window.removeEventListener("resize", place);
+  }, [active]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -32,9 +48,17 @@ export const Navbar = () => {
         }
       }
     };
-    window.addEventListener("scroll", onScroll);
+    // Scroll events can fire many times a frame; measure at most once per frame.
+    let frame = 0;
+    const onScrollFrame = () => {
+      if (!frame) frame = requestAnimationFrame(() => { frame = 0; onScroll(); });
+    };
+    window.addEventListener("scroll", onScrollFrame, { passive: true });
     onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScrollFrame);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   const go = (e, id) => {
@@ -45,7 +69,7 @@ export const Navbar = () => {
   };
 
   return (
-    <motion.nav
+    <m.nav
       initial={{ y: -70 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -62,25 +86,25 @@ export const Navbar = () => {
           }}
         >
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-0.5">
+          <ul ref={linksRef} className="relative hidden md:flex items-center gap-0.5">
+            {pill && pill.width > 0 && (
+              <span
+                aria-hidden="true"
+                className="absolute top-0 bottom-0 left-0 rounded-full transition-[transform,width] duration-300 ease-out motion-reduce:transition-none"
+                style={{ width: pill.width, transform: `translateX(${pill.left}px)`, background: "var(--accent-soft)" }}
+              />
+            )}
             {navItems.map((item) => (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
+                  data-nav={item.id}
                   onClick={(e) => go(e, item.id)}
                   className={`relative px-3.5 py-1.5 text-sm font-medium rounded-full transition-colors ${
                     active === item.id ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   }`}
                 >
                   {item.label}
-                  {active === item.id && (
-                    <motion.span
-                      layoutId="navActive"
-                      className="absolute inset-0 rounded-full -z-10"
-                      style={{ background: "var(--accent-soft)" }}
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
                 </a>
               </li>
             ))}
@@ -116,7 +140,7 @@ export const Navbar = () => {
         {/* Mobile menu */}
         <AnimatePresence>
           {mobileOpen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
@@ -142,10 +166,10 @@ export const Navbar = () => {
                   <RoleToggle />
                 </li>
               </ul>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>
-    </motion.nav>
+    </m.nav>
   );
 };
