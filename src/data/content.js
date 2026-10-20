@@ -233,7 +233,7 @@ export const projects = [
     image: "/projects/drevad.webp",
     imageSize: [1400, 737],
     mobileImage: "/projects/drevad-mobile.webp",
-    liveUrl: "https://drevad.netlify.app/",
+    liveUrl: "",
     githubUrl: "https://github.com/Feranmidevelops/Drevad",
     featured: true,
   },
