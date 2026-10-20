@@ -17,7 +17,7 @@ export const profile = {
   githubHandle: "Feranmidevelops",
   linkedin: "https://www.linkedin.com/in/oyetunde-feranmi-1ab00a264",
   linkedinHandle: "oyetunde-feranmi-1ab00a264",
-  photo: "/feranmi.jpeg",
+  photo: "/feranmi.webp",
   banner: "/feranmi-banner.webp",
   availability: "Open to new opportunities",
 };

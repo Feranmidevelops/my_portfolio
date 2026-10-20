@@ -36,9 +36,8 @@ export const Hero = () => {
           <img
             src={profile.photo}
             alt={profile.name}
-            width={512}
-            height={512}
-            fetchPriority="high"
+            width={320}
+            height={320}
             decoding="async"
             className="w-full h-full object-cover"
             onError={(e) => {
