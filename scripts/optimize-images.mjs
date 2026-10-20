@@ -25,6 +25,22 @@ const toWebp = [
   ["image-source/sofalia.png", "public/projects/sofalia.webp", 1400],
   ["image-source/audiophile.png", "public/projects/audiophile.webp", 1400],
   ["image-source/mydrobe.png", "public/projects/mydrobe.webp", 1400],
+  // On a phone a project shot shows about 240px wide, so 720 covers a 3x
+  // screen. Projects.jsx picks between these and the 1400s with srcset.
+  ["image-source/drevad.png", "public/projects/drevad-720.webp", 720],
+  ["image-source/spinmedical.png", "public/projects/spinmedical-720.webp", 720],
+  ["image-source/tickety.png", "public/projects/tickety-720.webp", 720],
+  ["image-source/expense-tracker.png", "public/projects/expense-tracker-720.webp", 720],
+  ["image-source/snaparound.png", "public/projects/snaparound-720.webp", 720],
+  ["image-source/mr-feranmi.png", "public/projects/mr-feranmi-720.webp", 720],
+  ["image-source/sofalia.png", "public/projects/sofalia-720.webp", 720],
+  ["image-source/audiophile.png", "public/projects/audiophile-720.webp", 720],
+  ["image-source/mydrobe.png", "public/projects/mydrobe-720.webp", 720],
+  // These three only exist as the published WebP, so only the smaller
+  // size is made from them; their 1400s stay as they are.
+  ["image-source/hocks.webp", "public/projects/hocks-720.webp", 720],
+  ["image-source/jada.webp", "public/projects/jada-720.webp", 720],
+  ["image-source/burger.webp", "public/projects/burger-720.webp", 720],
   // Phone insets render about 80px wide, so they need almost nothing.
   ["image-source/drevad-mobile.png", "public/projects/drevad-mobile.webp", 320],
   ["image-source/expense-tracker-mobile.png", "public/projects/expense-tracker-mobile.webp", 320],
