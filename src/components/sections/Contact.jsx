@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { FiSend, FiCopy, FiCheck } from "react-icons/fi";
-import emailjs from "@emailjs/browser";
 import { FadeIn } from "../animations/FadeIn";
 import { profile } from "../../data/content";
 
@@ -8,6 +7,10 @@ import { profile } from "../../data/content";
 // plausibly needs to fill the form.
 const COOLDOWN_MS = 60_000;
 const MIN_FILL_MS = 3_000;
+
+// The EmailJS SDK is only needed to send, so it loads once someone focuses
+// the form rather than with the page. Repeat calls reuse the same module.
+const loadEmailJs = () => import("@emailjs/browser").then((mod) => mod.default);
 
 export const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -65,6 +68,7 @@ export const Contact = () => {
       const templateId = env.VITE_EMAILJS_TEMPLATE_ID || env.REACT_APP_EMAILJS_TEMPLATE_ID;
       const publicKey = env.VITE_EMAILJS_PUBLIC_KEY || env.REACT_APP_EMAILJS_PUBLIC_KEY;
       if (!serviceId || !templateId || !publicKey) throw new Error("EmailJS config missing");
+      const emailjs = await loadEmailJs();
       await emailjs.send(
         serviceId, templateId,
         {
@@ -132,6 +136,7 @@ export const Contact = () => {
         {/* Form */}
         <form
           onSubmit={handleSubmit}
+          onFocus={loadEmailJs}
           className="mt-4 rounded-2xl border p-6 md:p-8 space-y-4"
           style={{ background: "var(--bg-elevated)", borderColor: "var(--border)" }}
         >
