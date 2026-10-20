@@ -24,7 +24,7 @@ export const intro = {
   // The résumé PDF in public/. The Résumé button hides itself if this is empty.
   resume: "/Feranmi_Oyetunde_SWE.pdf",
   summary:
-    "I am a full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, deployed on Azure, Vercel and Render.",
+    "I am a full stack engineer at TotalEnergies Staff Housing Cooperative (TEHC) and ACUOP in Lagos, building finance software: an expense system that handles about 80 claims a month, averaging 10 million naira in transaction volume, and a loan and mortgage calculator API live with six products for property developers. In 2026 I merged 205 pull requests across six repositories, including 18 production releases in three weeks.",
   about2:
     "Right now that means a loan pricing engine in FastAPI, kept honest by 1,645 tests behind a 90% coverage gate, and an expense system where the approval rules live in Postgres rather than the interface, so a check skipped in the UI still fails in the database. Before that I built an online store end to end during a remote UK internship, including the Paystack settlement flow that makes charging a customer twice impossible.",
 };
