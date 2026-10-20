@@ -16,7 +16,7 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState("about");
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
   const linksRef = useRef(null);
   const [pill, setPill] = useState(null);
 
@@ -124,7 +124,10 @@ export const Navbar = () => {
               className="p-2.5 rounded-full border text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
               style={{ borderColor: "var(--border)", background: "var(--bg-elevated)" }}
             >
-              {theme === "dark" ? <FiSun size={15} /> : <FiMoon size={15} />}
+              {/* Both icons are in the markup and the theme attribute on <html>
+                  picks one, so the right icon shows before React has run. */}
+              <FiSun size={15} className="hidden dark:block" />
+              <FiMoon size={15} className="block dark:hidden" />
             </button>
             <button
               onClick={() => setMobileOpen((o) => !o)}
