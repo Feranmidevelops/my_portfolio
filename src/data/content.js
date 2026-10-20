@@ -112,7 +112,7 @@ export const projects = [
     image: "/projects/spinmedical.webp",
     imageSize: [1400, 694],
     mobileImage: "/projects/spinmedical-mobile.webp",
-    liveUrl: "",
+    liveUrl: "https://web-beige-eight-52.vercel.app/",
     githubUrl: "",
     featured: true,
   },
