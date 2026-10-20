@@ -4,9 +4,9 @@ import {
   SiTailwindcss, SiVite, SiPostgresql, SiMongodb, SiSupabase, SiPython,
   SiJsonwebtokens, SiVitest, SiGit, SiGithub, SiPostman, SiSwagger,
   SiVercel, SiNetlify, SiExpo, SiDotnet,
-  SiPrisma, SiGithubactions, SiFastapi, SiDocker, SiPytest, SiRender,
+  SiPrisma, SiGithubactions, SiFastapi, SiDocker, SiPytest, SiRender, SiThreedotjs,
 } from "react-icons/si";
-import { FiCloud, FiRadio, FiDatabase } from "react-icons/fi";
+import { FiCloud, FiRadio, FiDatabase, FiPlayCircle } from "react-icons/fi";
 import { SectionHeading } from "./About";
 import { FadeIn } from "../animations/FadeIn";
 
@@ -16,6 +16,7 @@ const stack = [
   { label: "JavaScript", Icon: SiJavascript, c: "#F7DF1E" },
   { label: "Next.js", Icon: SiNextdotjs },
   { label: "React Native / Expo", Icon: SiExpo },
+  { label: "Three.js / React Three Fiber", Icon: SiThreedotjs },
   { label: "Node.js", Icon: SiNodedotjs, c: "#5FA04E" },
   { label: "Express", Icon: SiExpress },
   { label: "FastAPI", Icon: SiFastapi, c: "#009688" },
@@ -34,6 +35,8 @@ const stack = [
   { label: "JWT Auth", Icon: SiJsonwebtokens },
   { label: "Vitest", Icon: SiVitest, c: "#6E9F18" },
   { label: "pytest", Icon: SiPytest, c: "#0A9EDC" },
+  // Simple Icons has no Playwright logo, so a play icon in its green.
+  { label: "Playwright", Icon: FiPlayCircle, c: "#2EAD33" },
   { label: "Docker", Icon: SiDocker, c: "#2496ED" },
   { label: "Azure", Icon: FiCloud, c: "#0078D4" },
   { label: "Git", Icon: SiGit, c: "#F05032" },
