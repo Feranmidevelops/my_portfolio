@@ -257,27 +257,6 @@ export const projects = [
     featured: true,
   },
   {
-    id: "acuop-loan-platform",
-    title: "ACUOP Loan Platform",
-    category: "Fintech · Backend",
-    year: "2026",
-    description:
-      "The pricing service behind ACUOP's loans and mortgages. A financier sets up lending products and grants them to the property developments it finances, and each development prices loans for its buyers through a console or its own software. Given a product's terms and a borrower's inputs, it returns the exact repayment schedule, every fee on its own line, and a fingerprint of the terms that produced it.",
-    highlights: [
-      "Calculation engine in pure Python with Decimal money and no database, clock or network access, checked against the finance team's spreadsheets",
-      "Three tiers of tenants (system, financier, project), each onboarded by invitation",
-      "Product approvals need two people and are tied to a content hash, so an approved rate cannot quietly change",
-      "Per project API keys, idempotent writes and an append only audit trail across 90 endpoints",
-      "1,645 tests with a 90% coverage floor, and every merge runs database migrations before deploying to Azure App Service",
-    ],
-    tech: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "pytest", "Docker", "GitHub Actions", "Azure App Service"],
-    accent: "purple",
-    liveUrl: "",
-    githubUrl: "",
-    private: true,
-    featured: true,
-  },
-  {
     id: "tickety",
     title: "Tickety",
     category: "Real Time · Full Stack",
@@ -366,24 +345,6 @@ export const projects = [
     liveUrl: "",
     githubUrl: "https://github.com/Feranmidevelops/sofaliacakesandevents",
     featured: true,
-  },
-  {
-    id: "audience-scraper",
-    title: "Audience Intelligence Scraper",
-    category: "Automation · Data",
-    year: "2025",
-    description:
-      "A Python pipeline that collected and cleaned more than 300,000 audience profiles. It had to keep going through timeouts and layout changes without losing its place, and hand back data that was actually usable.",
-    highlights: [
-      "Over 300,000 profiles processed",
-      "Crawling with Selenium that recovers instead of falling over",
-      "Structured, cleaned output ready for analysis",
-    ],
-    tech: ["Python", "Selenium", "Web Scraping", "Automation"],
-    accent: "purple",
-    liveUrl: "",
-    githubUrl: "",
-    featured: false,
   },
   {
     id: "audiophile",
