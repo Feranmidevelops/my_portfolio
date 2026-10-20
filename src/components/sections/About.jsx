@@ -1,8 +1,6 @@
 import React from "react";
-import { AnimatePresence, m } from "framer-motion";
 import { FadeIn } from "../animations/FadeIn";
-import { useRole } from "../../context/RoleContext";
-import { roleContent } from "../../data/content";
+import { intro } from "../../data/content";
 
 /**
  * Shared minimalist section heading (saddine-style: left-aligned, bold, quiet).
@@ -25,26 +23,15 @@ export const Panel = ({ children, className = "" }) => (
 );
 
 export const About = () => {
-  const { role } = useRole();
-  const c = roleContent[role];
   return (
     <section id="about" className="scroll-mt-24 py-10">
       <FadeIn>
         <SectionHeading title="About" />
         <Panel>
-          <AnimatePresence mode="wait">
-            <m.div
-              key={role}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-4 text-[var(--text-secondary)] leading-relaxed"
-            >
-              <p>{c.summary}</p>
-              <p>{c.about2}</p>
-            </m.div>
-          </AnimatePresence>
+          <div className="space-y-4 text-[var(--text-secondary)] leading-relaxed">
+            <p>{intro.summary}</p>
+            <p>{intro.about2}</p>
+          </div>
         </Panel>
       </FadeIn>
     </section>

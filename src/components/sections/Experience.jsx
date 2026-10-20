@@ -3,11 +3,9 @@ import { AnimatePresence, m } from "framer-motion";
 import { FiChevronDown, FiCode } from "react-icons/fi";
 import { SectionHeading } from "./About";
 import { FadeIn } from "../animations/FadeIn";
-import { useRole } from "../../context/RoleContext";
 import { experience } from "../../data/content";
 
-const Item = ({ exp, role, open, onToggle }) => {
-  const r = exp[role];
+const Item = ({ exp, open, onToggle }) => {
   const current = /present/i.test(exp.period);
   return (
     <div className="border-b last:border-b-0" style={{ borderColor: "var(--border)" }}>
@@ -28,22 +26,11 @@ const Item = ({ exp, role, open, onToggle }) => {
           )}
         </div>
 
-        {/* Role toggle line */}
+        {/* Job title line */}
         <button onClick={onToggle} className="w-full mt-2.5 flex items-center gap-3 text-left" aria-expanded={open}>
           <FiCode className="shrink-0 text-[var(--text-tertiary)]" size={16} />
           <span className="flex-1 min-w-0">
-            <AnimatePresence mode="wait">
-              <m.span
-                key={role + r.title}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                className="block font-medium text-[var(--text-primary)]"
-              >
-                {r.title}
-              </m.span>
-            </AnimatePresence>
+            <span className="block font-medium text-[var(--text-primary)]">{exp.title}</span>
             <span className="block text-xs text-[var(--text-tertiary)] mt-0.5">{exp.period}</span>
           </span>
           <FiChevronDown size={18} className="transition-transform text-[var(--text-tertiary)]"
@@ -60,25 +47,16 @@ const Item = ({ exp, role, open, onToggle }) => {
               className="overflow-hidden"
             >
               <div className="pt-3" style={{ paddingLeft: "1.75rem" }}>
-                <AnimatePresence mode="wait">
-                  <m.ul
-                    key={role + exp.company}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.25 }}
-                    className="space-y-2"
-                  >
-                    {r.points.map((p) => (
+                <ul className="space-y-2">
+                    {exp.points.map((p) => (
                       <li key={p} className="flex items-start gap-2 text-sm text-[var(--text-secondary)] leading-relaxed">
                         <span className="mt-2 h-1 w-1 rounded-full shrink-0" style={{ background: "var(--text-tertiary)" }} />
                         {p}
                       </li>
                     ))}
-                  </m.ul>
-                </AnimatePresence>
+                </ul>
                 <div className="flex flex-wrap gap-1.5 mt-3.5">
-                  {r.tags.map((t) => (
+                  {exp.tags.map((t) => (
                     <span key={t} className="text-[11px] px-2 py-1 rounded-md border text-[var(--text-secondary)]"
                           style={{ borderColor: "var(--border)", background: "var(--bg-secondary)" }}>
                       {t}
@@ -95,7 +73,6 @@ const Item = ({ exp, role, open, onToggle }) => {
 };
 
 export const Experience = () => {
-  const { role } = useRole();
   const [openIdx, setOpenIdx] = useState(0);
 
   return (
@@ -107,7 +84,6 @@ export const Experience = () => {
             <Item
               key={exp.company}
               exp={exp}
-              role={role}
               open={openIdx === idx}
               onToggle={() => setOpenIdx(openIdx === idx ? null : idx)}
             />

@@ -1,13 +1,7 @@
 /* ==========================================================================
    Central content for the portfolio.
-   Role-aware copy (Software Engineer vs IT Systems Engineer) + shared data.
    Edit here to update the whole site.
    ========================================================================== */
-
-import {
-  FiZap, FiLayers, FiShield, FiCpu, FiTrendingUp, FiGrid,
-  FiCloud, FiTool, FiServer, FiActivity,
-} from "react-icons/fi";
 
 export const profile = {
   name: "Feranmi Oyetunde",
@@ -22,159 +16,64 @@ export const profile = {
   availability: "Open to new opportunities",
 };
 
-/* ---- Role-specific content ---------------------------------------------- */
-export const roleContent = {
-  swe: {
-    badge: "Full Stack Software Engineer",
-    roleLabel: "Full Stack Software Engineer",
-    stack: "React · Next.js · TypeScript · Node.js · Python · .NET · PostgreSQL",
-    tagline: "I work across the whole request, browser to database.",
-    taglineAccent: "Most of what I build moves money or decides who sees what, so I put the rules first.",
-    intro:
-      "Loan pricing, expense approvals, payments, and a real time game server. React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core behind them, PostgreSQL underneath.",
-    resume: "/Feranmi_Oyetunde_Resume_SoftwareDeveloper.pdf",
-    summary:
-      "I am a full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, deployed on Azure, Vercel and Render.",
-    about2:
-      "Right now that means a loan pricing engine in FastAPI, kept honest by 1,645 tests behind a 90% coverage gate, and an expense system where the approval rules live in Postgres rather than the interface, so a check skipped in the UI still fails in the database. Before that I built an online store end to end during a remote UK internship, including the Paystack settlement flow that makes charging a customer twice impossible.",
-    focus: [
-      { icon: FiShield, title: "Rules in the database", text: "Row level security and functions that reject illegal changes, so a check skipped in the interface still fails underneath." },
-      { icon: FiZap, title: "Tested where it counts", text: "1,645 tests behind a 90% coverage floor on the loan engine, held to the finance team's own spreadsheets by golden files." },
-      { icon: FiLayers, title: "The whole request", text: "React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath." },
-      { icon: FiCpu, title: "Real time and AI", text: "WebSockets and SignalR for live state, plus vision and voice models kept server side where the keys belong." },
-    ],
-    skills: [
-      { group: "Languages", items: ["TypeScript", "JavaScript", "Python", "C#", "SQL"] },
-      { group: "Frontend", items: ["React", "Next.js", "React Native (Expo)", "Three.js (React Three Fiber)", "TanStack Query", "Zustand", "React Hook Form", "Zod", "Tailwind CSS"] },
-      { group: "Backend", items: ["Node.js", "Express", "FastAPI", "ASP.NET Core", "SignalR", "WebSockets", "REST", "OpenAPI"] },
-      { group: "Databases", items: ["PostgreSQL", "Supabase", "Prisma", "Alembic", "EF Core", "MongoDB"] },
-      { group: "Auth and Security", items: ["JWT", "Refresh Token Rotation", "CSRF Protection", "OTP Sign In", "Role Based Access", "API Keys", "Rate Limiting", "Audit Logs"] },
-      { group: "Testing", items: ["Vitest", "Playwright", "pytest", "xUnit", "Supertest", "React Testing Library", "mypy", "Ruff"] },
-      { group: "Deployment", items: ["Docker", "GitHub Actions", "Azure App Service", "Vercel", "Render", "Netlify"] },
-      { group: "Integrations", items: ["Paystack", "Dynamics 365 Business Central", "Gemini", "OpenAI Vision", "Claude API", "Deepgram", "ElevenLabs", "Power Automate"] },
-    ],
-    stats: [
-      { value: "300K+", label: "Records processed", icon: FiZap },
-      { value: "13", label: "Products shipped", icon: FiTrendingUp },
-      { value: "50+", label: "Screens built from Figma", icon: FiGrid },
-    ],
-  },
-
-  it: {
-    badge: "IT Systems Engineer",
-    roleLabel: "IT Systems Engineer",
-    stack: "Microsoft 365 · SharePoint · Power Automate · Networking · Security",
-    tagline: "I keep Microsoft 365 running for a 60 person office.",
-    taglineAccent: "Then I automate the parts nobody should be doing by hand.",
-    intro:
-      "Day to day that means accounts, access, laptops, network points, backups, and the steady work of stopping small problems from becoming outages. When the tooling runs out, I write my own.",
-    resume: "/Feranmi_Oyetunde_Resume_ITEngineer.pdf",
-    summary:
-      "I run the Microsoft 365 environment for more than 60 staff, covering Teams, SharePoint, OneDrive, Exchange, and who is allowed to see what. Alongside that I look after the network, hardware, and backups, and I spend a fair amount of time making sure people know what a phishing email looks like.",
-    about2:
-      "The part that sets me apart is that I can also build. Where Microsoft 365 stops, I write the tool that fills the gap, from the financial calculators the team used to do by hand to data pipelines that handle over 300,000 records. Most IT problems I meet are really process problems, and a short workflow usually beats another spreadsheet.",
-    focus: [
-      { icon: FiCloud, title: "Microsoft 365", text: "Teams, SharePoint, OneDrive, and Exchange for 60+ staff, including who gets access to what and when it is taken away." },
-      { icon: FiActivity, title: "Automation", text: "Power Automate and SharePoint flows that replaced tracking renewals and bookings in spreadsheets." },
-      { icon: FiServer, title: "Infrastructure", text: "Network setup, hardware procurement, backups, and keeping the intranet on its feet." },
-      { icon: FiTool, title: "Building tools", text: "When Microsoft 365 cannot do the job, I can write the thing that can. Not many IT people can." },
-    ],
-    skills: [
-      { group: "Microsoft 365", items: ["SharePoint", "Power Automate", "Teams", "OneDrive", "Exchange", "User Provisioning"] },
-      { group: "Infrastructure and Security", items: ["Network Configuration", "Hardware Procurement", "Security Awareness", "Data Backups", "First-Line Support"] },
-      { group: "Web Management", items: ["WordPress", "Website Administration", "Digital Comms Platforms"] },
-      { group: "Automation and Scripting", items: ["Python", "Selenium", "Web Scraping", "Nodemailer", "Workflow Automation"] },
-      { group: "Software Development", items: ["React.js", "TypeScript", "Node.js", "Express.js", "REST APIs", "Tailwind CSS"] },
-    ],
-    stats: [
-      { value: "60+", label: "Staff supported", icon: FiCloud },
-      { value: "300K+", label: "Records automated", icon: FiZap },
-      { value: "2", label: "Organisations", icon: FiServer },
-    ],
-  },
+/* ---- Hero and About copy ---------------------------------------------- */
+export const intro = {
+  roleLabel: "Full Stack Software Engineer",
+  tagline: "I work across the whole request, browser to database.",
+  taglineAccent: "Most of what I build moves money or decides who sees what, so I put the rules first.",
+  resume: "/Feranmi_Oyetunde_Resume_SoftwareDeveloper.pdf",
+  summary:
+    "I am a full stack engineer building production software for two Lagos cooperatives, after an internship with a UK startup. I work across the whole request: React and Next.js in the browser, Node.js, FastAPI and ASP.NET Core on the server, PostgreSQL underneath, deployed on Azure, Vercel and Render.",
+  about2:
+    "Right now that means a loan pricing engine in FastAPI, kept honest by 1,645 tests behind a 90% coverage gate, and an expense system where the approval rules live in Postgres rather than the interface, so a check skipped in the UI still fails in the database. Before that I built an online store end to end during a remote UK internship, including the Paystack settlement flow that makes charging a customer twice impossible.",
 };
 
-/* ---- Experience (role-aware titles/bullets, shared timeline) ------------- */
+/* ---- Experience ----------------------------------------------------------- */
 export const experience = [
   {
     company: "TotalEnergies Staff Housing Cooperative Multipurpose Society Limited (TEHC)",
     period: "Oct 2025 to now",
     employment: "Full-time",
-    swe: {
-      title: "Software Engineer and IT Systems Administrator",
-      points: [
-        "Built the TEHC and ACUOP Expense Tracker (Next.js 16, Supabase) for about 50 staff. Claims route through an approval chain based on department and level, Accounts checks VAT and withholding tax, Treasury pays, and paid claims post to Dynamics 365 Business Central.",
-        "Put authorization in Postgres with row level security and RPCs that reject illegal state changes, so a check skipped in the UI still fails in the database.",
-        "Wrote the integrations as Supabase Edge Functions: vendor sync with Business Central every six hours, ZeptoMail email, and Gemini receipt OCR so staff no longer type figures by hand.",
-        "Turn Figma designs into responsive React and TypeScript screens, and test each REST endpoint in Swagger and Postman before it ships.",
-        "Automated inventory renewal alerts and boardroom booking with Power Automate and SharePoint.",
-      ],
-      tags: ["Next.js", "Supabase", "PostgreSQL", "Dynamics 365", "React"],
-    },
-    it: {
-      title: "IT Systems Administrator and Software Engineer",
-      points: [
-        "Run Microsoft 365 for 60+ staff: Teams, OneDrive, SharePoint, Exchange, and access provisioning.",
-        "Replaced manual inventory tracking with a Power Automate flow that emails renewal alerts before things expire.",
-        "Handle procurement of smartboards, printers, and laptops, and set up network access for offices and conference rooms.",
-        "First line of support for hardware, software, and network faults. Run security awareness sessions and write the monthly IT report for management.",
-      ],
-      tags: ["Microsoft 365", "Power Automate", "SharePoint", "Networking"],
-    },
+    title: "Software Engineer and IT Systems Administrator",
+    points: [
+      "Built the TEHC and ACUOP Expense Tracker (Next.js 16, Supabase) for about 50 staff. Claims route through an approval chain based on department and level, Accounts checks VAT and withholding tax, Treasury pays, and paid claims post to Dynamics 365 Business Central.",
+      "Put authorization in Postgres with row level security and RPCs that reject illegal state changes, so a check skipped in the UI still fails in the database.",
+      "Wrote the integrations as Supabase Edge Functions: vendor sync with Business Central every six hours, ZeptoMail email, and Gemini receipt OCR so staff no longer type figures by hand.",
+      "Turn Figma designs into responsive React and TypeScript screens, and test each REST endpoint in Swagger and Postman before it ships.",
+      "Automated inventory renewal alerts and boardroom booking with Power Automate and SharePoint.",
+    ],
+    tags: ["Next.js", "Supabase", "PostgreSQL", "Dynamics 365", "React"],
   },
   {
     company: "Atlantic City Savings and Credit Cooperative Society Limited",
     period: "Jan 2026 to now",
     employment: "Part-time",
-    swe: {
-      title: "Web Systems Administrator and Software Developer",
-      points: [
-        "Backend engineer on the ACUOP Loan Platform, a FastAPI and PostgreSQL service that prices loans and mortgages for ACUOP and the property developments it finances.",
-        "Built the calculation engine as pure Python with Decimal money and no database, clock or network access, so the same inputs always return the same schedule. Golden file tests hold it to the finance team's spreadsheets.",
-        "Designed the three tier tenancy (system, financier, project) with invite only onboarding, a two signature approval bound to a content hash, per project API keys, idempotent writes and an append only audit trail across 90 endpoints.",
-        "Shipped behind a CI gate of 1,645 tests with a 90% coverage floor. Merges to main run Alembic migrations, then deploy to Azure App Service.",
-        "Built the Relationship Manager dashboard and the projects, products and transactions screens in the member portal (React 19, TypeScript, TanStack Query, Zustand).",
-      ],
-      tags: ["Python", "FastAPI", "PostgreSQL", "Azure", "React"],
-    },
-    it: {
-      title: "Web Systems Administrator and SME Support",
-      points: [
-        "Run and maintain the company WordPress site and its digital channels.",
-        "Built a multi-role admin portal with role-based access control on top of the existing backend.",
-        "Automated the financial calculations the team used to work out by hand.",
-        "Built real-time dashboards so management can see transactions without asking anyone for a report.",
-      ],
-      tags: ["WordPress", "RBAC", "Analytics", "Web Management"],
-    },
+    title: "Web Systems Administrator and Software Developer",
+    points: [
+      "Backend engineer on the ACUOP Loan Platform, a FastAPI and PostgreSQL service that prices loans and mortgages for ACUOP and the property developments it finances.",
+      "Built the calculation engine as pure Python with Decimal money and no database, clock or network access, so the same inputs always return the same schedule. Golden file tests hold it to the finance team's spreadsheets.",
+      "Designed the three tier tenancy (system, financier, project) with invite only onboarding, a two signature approval bound to a content hash, per project API keys, idempotent writes and an append only audit trail across 90 endpoints.",
+      "Shipped behind a CI gate of 1,645 tests with a 90% coverage floor. Merges to main run Alembic migrations, then deploy to Azure App Service.",
+      "Built the Relationship Manager dashboard and the projects, products and transactions screens in the member portal (React 19, TypeScript, TanStack Query, Zustand).",
+    ],
+    tags: ["Python", "FastAPI", "PostgreSQL", "Azure", "React"],
   },
   {
     company: "Drevad Ltd. (UK), remote",
     period: "Jan 2025 to Mar 2025",
     employment: "Internship",
-    swe: {
-      title: "Software Engineering Intern",
-      points: [
-        "Built an online store end to end on my own: catalog, cart, coupons, reviews, wishlist, checkout, order management and an admin dashboard. React and Vite on the front, Node.js and Express over PostgreSQL behind it.",
-        "Integrated Paystack with a settlement flow that confirms each payment through both the webhook and the client, checks the amount on the server, and ignores repeats, so no customer is charged or fulfilled twice.",
-        "Replaced long lived tokens with short JWTs, rotating httpOnly refresh cookies and CSRF protection, so logging out really ends the session. Super, sales and finance admins each get their own permissions.",
-        "Added CSV bulk import with per row validation, Helmet, rate limiting and Sentry, plus Vitest and Supertest suites around payments, coupons and auth.",
-      ],
-      tags: ["React", "Node.js", "Express", "Paystack", "PostgreSQL", "Vitest"],
-    },
-    it: {
-      title: "Software Engineering Intern",
-      points: [
-        "Built a full-stack e-commerce platform end to end: catalog, cart, checkout, order management, and an admin dashboard, using React with Node and Express over Postgres.",
-        "Added Paystack payments with an idempotent settlement flow, and secure sign-in using short-lived JWTs, rotating refresh cookies, and CSRF protection.",
-        "Built role-based access control, a validated CSV bulk import, and a test suite around the payment logic.",
-      ],
-      tags: ["React", "Node/Express", "Paystack", "JWT Auth", "PostgreSQL"],
-    },
+    title: "Software Engineering Intern",
+    points: [
+      "Built an online store end to end on my own: catalog, cart, coupons, reviews, wishlist, checkout, order management and an admin dashboard. React and Vite on the front, Node.js and Express over PostgreSQL behind it.",
+      "Integrated Paystack with a settlement flow that confirms each payment through both the webhook and the client, checks the amount on the server, and ignores repeats, so no customer is charged or fulfilled twice.",
+      "Replaced long lived tokens with short JWTs, rotating httpOnly refresh cookies and CSRF protection, so logging out really ends the session. Super, sales and finance admins each get their own permissions.",
+      "Added CSV bulk import with per row validation, Helmet, rate limiting and Sentry, plus Vitest and Supertest suites around payments, coupons and auth.",
+    ],
+    tags: ["React", "Node.js", "Express", "Paystack", "PostgreSQL", "Vitest"],
   },
 ];
 
-/* ---- Featured projects (shared across roles) ----------------------------- */
+/* ---- Featured projects ---------------------------------------------------- */
 export const projects = [
   {
     id: "spinmedical",

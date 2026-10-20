@@ -2,7 +2,6 @@ import React, { useState, useEffect, useLayoutEffect, useRef, useContext } from 
 import { m, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
 import { ThemeContext } from "../../context/ThemeContext";
-import { RoleToggle } from "./RoleToggle";
 
 const navItems = [
   { id: "about", label: "About" },
@@ -110,9 +109,6 @@ export const Navbar = () => {
 
           {/* Right actions */}
           <div className="flex items-center gap-2">
-            <div className="hidden sm:block">
-              <RoleToggle size="sm" />
-            </div>
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
@@ -160,9 +156,6 @@ export const Navbar = () => {
                     </a>
                   </li>
                 ))}
-                <li className="pt-3 sm:hidden">
-                  <RoleToggle />
-                </li>
               </ul>
             </m.div>
           )}

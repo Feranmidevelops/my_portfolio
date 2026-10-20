@@ -7,7 +7,6 @@ import '@fontsource-variable/inter/wght.css';
 import '@fontsource-variable/sora/wght.css';
 import './index.css';
 import App from './App';
-import { readSavedRole } from './context/RoleContext';
 
 const container = document.getElementById('root');
 const app = (
@@ -16,10 +15,10 @@ const app = (
   </React.StrictMode>
 );
 
-// The production build prerenders the page (Software track) into #root, so
-// React takes over that HTML instead of drawing it again. A visitor who last
-// picked the IT track, or the dev server's empty page, gets a normal render.
-if (container.firstElementChild && readSavedRole() === 'swe') {
+// The production build prerenders the page into #root, so React takes over
+// that HTML instead of drawing it again. The dev server's page is empty, so
+// it gets a normal render.
+if (container.firstElementChild) {
   ReactDOM.hydrateRoot(container, app);
 } else {
   container.textContent = '';
