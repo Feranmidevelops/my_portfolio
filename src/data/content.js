@@ -50,18 +50,30 @@ export const experience = [
     ],
   },
   {
-    company: "Atlantic City Savings and Credit Cooperative Society Limited",
-    period: "Jan 2026 to now",
-    employment: "Part-time",
-    title: "Web Systems Administrator and Software Developer",
-    points: [
-      "Backend engineer on the ACUOP Loan Platform, a FastAPI and PostgreSQL service that prices loans and mortgages for ACUOP and the property developments it finances.",
-      "Built the calculation engine as pure Python with Decimal money and no database, clock or network access, so the same inputs always return the same schedule. Golden file tests hold it to the finance team's spreadsheets.",
-      "Designed the three tier tenancy (system, financier, project) with invite only onboarding, a two signature approval bound to a content hash, per project API keys, idempotent writes and an append only audit trail across 90 endpoints.",
-      "Shipped behind a CI gate of 1,645 tests with a 90% coverage floor. Merges to main run Alembic migrations, then deploy to Azure App Service.",
-      "Built the Relationship Manager dashboard and the projects, products and transactions screens in the member portal (React 19, TypeScript, TanStack Query, Zustand).",
+    company: "ACUOP",
+    location: "Lagos",
+    period: "Jan 2026 to Present",
+    title: "Web Systems Administrator & Software Developer",
+    work: [
+      {
+        name: "Loan Calculator Platform",
+        tech: ["FastAPI", "PostgreSQL", "Alembic", "Azure App Service"],
+        points: [
+          "Top contributor to the calculator API that prices ACUOP's loans and mortgages, live with ACUOP as its first financier and six loan products that property developers call with their own API keys. Merged 135 pull requests in six weeks and shipped 18 production releases in three.",
+          "Wrote the amortization engine in pure Python with Decimal money and no database, clock or network access. It handles staged drawdowns tied to construction milestones, a repayment that never drops below its peak, overpayments credited to the next milestone, moratoriums and an exact final payment, and golden file tests hold it to Finance's spreadsheets.",
+          "Designed the three tier tenancy (system, financier, project): invite only onboarding, a two signature approval bound to a content hash so an approved rate cannot quietly change, per project API keys, idempotent writes and an append only audit trail across 90 endpoints.",
+          "Kept it releasable with 1,645 tests behind a 90% coverage floor, mypy, an import linter that isolates the engine, an OpenAPI snapshot check and a generated TypeScript client that fails CI on drift. Merges to main migrate and deploy to Azure.",
+        ],
+      },
+      {
+        name: "Member Portal",
+        tech: ["React 19", "TypeScript", "TanStack Query", "Zustand"],
+        points: [
+          "Set up the codebase and built the multi step membership application (validation, joint owners, prefill for Louisville clients) that has onboarded 80 members, with BVN and NIN verified through Qore.id.",
+          "Merged 37 pull requests in all, including the member dashboard, shares and profile, the Relationship Manager module, and the admin projects, products, transactions and analytics screens.",
+        ],
+      },
     ],
-    tags: ["Python", "FastAPI", "PostgreSQL", "Azure", "React"],
   },
   {
     company: "Drevad Ltd. (UK), remote",
