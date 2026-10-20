@@ -352,11 +352,9 @@ export const education = {
 };
 
 export const certifications = [
-  { name: "CS50 Web Development with Python and JavaScript", issuer: "Harvard University" },
-  { name: "Microsoft Azure Fundamentals", issuer: "Microsoft" },
-  { name: "Cloud Security Fundamentals", issuer: "" },
-  { name: "React, The Complete Guide", issuer: "" },
+  { name: "CS50 Web Programming with Python and JavaScript", issuer: "Harvard University" },
+  { name: "Microsoft Azure Fundamentals", issuer: "" },
   { name: "Backend Development with Django", issuer: "" },
   { name: "Web Scraping with Python", issuer: "" },
-  { name: "Responsive Web Design", issuer: "" },
+  { name: "Cloud Security Fundamentals", issuer: "" },
 ];
