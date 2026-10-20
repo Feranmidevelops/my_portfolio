@@ -49,7 +49,7 @@ export const roleContent = {
       { group: "Backend", items: ["Node.js", "Express", "FastAPI", "ASP.NET Core", "SignalR", "WebSockets", "REST", "OpenAPI"] },
       { group: "Databases", items: ["PostgreSQL", "Supabase", "Prisma", "Alembic", "EF Core", "MongoDB"] },
       { group: "Auth and Security", items: ["JWT", "Refresh Token Rotation", "CSRF Protection", "OTP Sign In", "Role Based Access", "API Keys", "Rate Limiting", "Audit Logs"] },
-      { group: "Testing", items: ["Vitest", "pytest", "xUnit", "Supertest", "React Testing Library", "mypy", "Ruff"] },
+      { group: "Testing", items: ["Vitest", "Playwright", "pytest", "xUnit", "Supertest", "React Testing Library", "mypy", "Ruff"] },
       { group: "Deployment", items: ["Docker", "GitHub Actions", "Azure App Service", "Vercel", "Render", "Netlify"] },
       { group: "Integrations", items: ["Paystack", "Dynamics 365 Business Central", "Gemini", "OpenAI Vision", "Claude API", "Deepgram", "ElevenLabs", "Power Automate"] },
     ],
