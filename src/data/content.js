@@ -166,14 +166,8 @@ export const projects = [
     category: "Client Site · Small Business",
     year: "2026",
     description:
-      "The website for a Lagos personal shopping and styling business, plus the quote, invoice and receipt builder the owner uses to bill clients. There is no framework and no build step, so it loads quickly on a phone and costs nothing to host.",
-    highlights: [
-      "The fee maths lives in one module shared by the site's estimator and the invoice builder, so the two can never quote different prices",
-      "That module is covered by tests on Node's built in test runner",
-      "Invoices download as PDFs, and bank details are entered at billing time instead of being stored in the code",
-      "CI checks that both pages still load and that no account number has been committed",
-    ],
-    tech: ["HTML", "CSS", "JavaScript", "Node Test Runner", "Netlify"],
+      "A live client site for a Lagos personal shopper. A tested fee calculator and invoice builder give clients a price before they commit. The request form takes up to five reference photos, budget and sizes, saves the enquiry, then opens WhatsApp with the details already filled in.",
+    tech: ["HTML", "CSS", "JavaScript", "Netlify Forms"],
     accent: "gold",
     image: "/projects/jada.webp",
     imageSize: [1400, 726],
