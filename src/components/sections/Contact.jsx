@@ -7,6 +7,8 @@ import { profile } from "../../data/content";
 // plausibly needs to fill the form.
 const COOLDOWN_MS = 60_000;
 const MIN_FILL_MS = 3_000;
+// Give up waiting on EmailJS after this long instead of spinning forever.
+const SEND_TIMEOUT_MS = 15_000;
 
 // The EmailJS SDK is only needed to send, so it loads once someone focuses
 // the form rather than with the page. Repeat calls reuse the same module.
@@ -23,6 +25,8 @@ export const Contact = () => {
   const honeypotRef = useRef("");
   const mountedAt = useRef(Date.now());
   const lastSentAt = useRef(0);
+  // A ref, not state, so a fast double click can't start two sends.
+  const sending = useRef(false);
 
   const validate = () => {
     const e = {};
@@ -61,7 +65,10 @@ export const Contact = () => {
     }
 
     if (!validate()) return;
+    if (sending.current) return;
+    sending.current = true;
     setStatus("loading");
+    let timer;
     try {
       const env = import.meta.env;
       const serviceId = env.VITE_EMAILJS_SERVICE_ID || env.REACT_APP_EMAILJS_SERVICE_ID;
@@ -69,7 +76,10 @@ export const Contact = () => {
       const publicKey = env.VITE_EMAILJS_PUBLIC_KEY || env.REACT_APP_EMAILJS_PUBLIC_KEY;
       if (!serviceId || !templateId || !publicKey) throw new Error("EmailJS config missing");
       const emailjs = await loadEmailJs();
-      await emailjs.send(
+      const timeout = new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new Error("timeout")), SEND_TIMEOUT_MS);
+      });
+      const send = emailjs.send(
         serviceId, templateId,
         {
           // These keys MUST match the {{variables}} in the EmailJS template:
@@ -81,15 +91,27 @@ export const Contact = () => {
         },
         publicKey
       );
+      await Promise.race([send, timeout]);
       lastSentAt.current = Date.now();
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
     } catch (err) {
+      if (err?.message === "timeout") {
+        // The request may still land, so treat it like a send for the
+        // cooldown rather than inviting a duplicate.
+        lastSentAt.current = Date.now();
+        setStatus("timeout");
+        setTimeout(() => setStatus("idle"), 10000);
+        return;
+      }
       // Surface the exact EmailJS reason (status + text) in the console.
       console.error("EmailJS send failed:", err?.status, err?.text || err?.message || err);
       setStatus("error");
       setTimeout(() => setStatus("idle"), 6000);
+    } finally {
+      clearTimeout(timer);
+      sending.current = false;
     }
   };
 
@@ -188,6 +210,11 @@ export const Contact = () => {
           {notice && <p className="text-sm text-[var(--text-secondary)]">{notice}</p>}
           {status === "success" && <p className="text-sm" style={{ color: "var(--ok)" }}>✓ Message sent! I'll reply soon.</p>}
           {status === "error" && <p className="text-red-500 text-sm">✗ Failed. Please email me directly.</p>}
+          {status === "timeout" && (
+            <p className="text-sm text-[var(--text-secondary)]">
+              This is taking longer than it should. Your message may still arrive, so please give it a minute before sending again, or email me directly.
+            </p>
+          )}
         </form>
       </FadeIn>
     </section>
