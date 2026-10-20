@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { m, useInView, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import { FiSmartphone } from "react-icons/fi";
 import { useTilt } from "../../hooks/useTilt";
@@ -52,7 +52,13 @@ export const TiltBanner = ({ src, alt, name = "FO" }) => {
   const [failed, setFailed] = useState(false);
   const [hovering, setHovering] = useState(false);
   const boxRef = useRef(null);
-  const reduceMotion = useReducedMotion();
+  // The page is prerendered without knowing the visitor's motion setting, so
+  // the first render always matches the HTML and the still banner swaps in
+  // once mounted.
+  const prefersReducedMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const reduceMotion = mounted && prefersReducedMotion;
   // Only follow the gyroscope / pointer while the banner is on screen.
   const inView = useInView(boxRef);
   const { x, y, needsPermission, requestPermission } = useTilt({ active: inView });
